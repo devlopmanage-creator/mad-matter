@@ -1,0 +1,129 @@
+---
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+          </svg>`,
+    title: "Custom Design",
+    description: "Tailored solutions for your unique space and lifestyle"
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>`,
+    title: "Fast Delivery",
+    description: "Quick turnaround without compromising quality"
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>`,
+    title: "Quality Guarantee",
+    description: "Premium materials and expert craftsmanship"
+  }
+];
+---
+
+<section class="features">
+  <div class="container">
+    <div class="features-grid">
+      {features.map(feature => (
+        <div class="feature-card">
+          <div class="icon-container" set:html={feature.icon} />
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: var(--spacing-lg) 0; /* Reduced from spacing-xl to spacing-lg */
+    background-color: rgba(21, 36, 42, 0.4); /* Adjusted to match --color-background (#15242a) */
+    width: 100%;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    width: 100%;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    text-align: center;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-xl);
+    }
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-md); /* Reduced from spacing-lg to spacing-md */
+    background-color: rgba(21, 36, 42, 0.6); /* Adjusted to match theme better */
+    border-radius: var(--radius-md); /* Reduced radius size */
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    background-color: rgba(21, 36, 42, 0.8); /* Adjusted hover state */
+    border-color: rgba(34, 197, 94, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .icon-container {
+    width: 3.5rem; /* Reduced from 4rem */
+    height: 3.5rem; /* Reduced from 4rem */
+    background-color: rgba(34, 197, 94, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-sm); /* Reduced from spacing-md to spacing-sm */
+    border: 1px solid rgba(34, 197, 94, 0.2); /* Reduced border width */
+  }
+
+  .icon-container :global(svg) {
+    width: 2rem;
+    height: 2rem;
+    fill: none;
+    stroke: var(--color-accent);
+    stroke-width: 2;
+  }
+
+  h3 {
+    font-size: 1.1rem; /* Reduced from 1.25rem */
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-xs); /* Reduced from spacing-sm to spacing-xs */
+    text-align: center;
+  }
+
+  p {
+    color: var(--color-muted);
+    line-height: 1.4; /* Reduced from 1.6 */
+    text-align: center;
+    max-width: 300px;
+    font-size: 0.9rem; /* Added smaller font size */
+  }
+</style>

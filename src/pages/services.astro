@@ -1,0 +1,279 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Services - FAMUAE">
+  <main>
+    <Navigation />
+    
+    <section class="hero-section">
+      <div class="content">
+        <h1>Our Services & Catalogues</h1>
+        <p>Explore our comprehensive collection of design catalogues and services.</p>
+      </div>
+    </section>
+
+    <section class="catalogues-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Design Catalogues</h2>
+          <div class="divider"></div>
+          <p>Download our latest catalogues to explore our complete range of products and design solutions.</p>
+        </div>
+
+        <div class="catalogues-grid">
+          <!-- Catálogo 1 -->
+          <div class="catalogue-card">
+            <div class="catalogue-image">
+              <img src="/images/catalogues/bathroom-catalogue.jpg" alt="Bathroom Design Catalogue 2025" />
+            </div>
+            <div class="catalogue-info">
+              <h3>Bathroom Collection 2025</h3>
+              <p>Explore our latest bathroom designs and innovations.</p>
+              <div class="catalogue-actions">
+                <a 
+                  href="https://drive.google.com/file/d/1BuOJC9lOldUkS17CK-dEAX9UvMGkNcgJ/preview" 
+                  class="download-button"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View PDF
+                  <span class="file-info">(25.5 MB)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Catálogo 2 -->
+          <div class="catalogue-card">
+            <div class="catalogue-image">
+              <img src="/images/catalogues/kitchen-catalogue.jpg" alt="Kitchen Design Catalogue 2025" />
+            </div>
+            <div class="catalogue-info">
+              <h3>Kitchen Collection 2025</h3>
+              <p>Discover our contemporary kitchen solutions.</p>
+              <div class="catalogue-actions">
+                <a href="/catalogues/kitchen-2025.pdf" class="download-button">
+                  Download PDF
+                  <span class="file-info">(28.3 MB)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Catálogo 3 -->
+          <div class="catalogue-card">
+            <div class="catalogue-image">
+              <img src="/images/catalogues/materials-catalogue.jpg" alt="Materials Catalogue 2025" />
+            </div>
+            <div class="catalogue-info">
+              <h3>Materials & Finishes 2025</h3>
+              <p>Our complete selection of materials and finishes.</p>
+              <div class="catalogue-actions">
+                <a href="/catalogues/materials-2025.pdf" class="download-button">
+                  Download PDF
+                  <span class="file-info">(15.8 MB)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  .hero-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0c0d0f;
+    color: white;
+    text-align: center;
+    padding: 8rem 1rem 4rem;
+  }
+
+  .hero-section .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .hero-section p {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .catalogues-section {
+    padding: 6rem 1rem;
+    background-color: #15242a;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    width: 60px;
+    height: 2px;
+    background-color: var(--accent-color, #ff6b6b);
+    margin: 1rem auto;
+  }
+
+  .section-header p {
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .catalogues-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    padding: 3rem 0;
+  }
+
+  .catalogue-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .catalogue-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .catalogue-image {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .catalogue-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .catalogue-card:hover .catalogue-image::after {
+    opacity: 1;
+  }
+
+  .catalogue-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .catalogue-card:hover .catalogue-image img {
+    transform: scale(1.08);
+  }
+
+  .catalogue-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  }
+
+  .catalogue-info h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .catalogue-info p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: auto;
+    font-weight: 300;
+  }
+
+  .catalogue-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background-color: rgb(26, 188, 156);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+    width: 100%;
+    border: none;
+  }
+
+  .download-button:hover {
+    background-color: rgb(22, 160, 133);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 188, 156, 0.2);
+  }
+
+  .file-info {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    .catalogues-grid {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+    }
+
+    .hero-section {
+      padding: 6rem 1rem 3rem;
+    }
+  }
+</style>

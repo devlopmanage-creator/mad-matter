@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import HeroSection from '../components/HeroSection.astro';
+import FeaturesBar from '../components/FeaturesBar.astro';
+import BrandShowcase from '../components/BrandShowcase.astro';
+import ClientTestimonials from '../components/ClientTestimonials.astro';
+import ContactSection from '../components/ContactSection.astro';
+import ExpertConsultation from '../components/ExpertConsultation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="First Consultant - Bathroom & Kitchen Design">
+  <main>
+    <Navigation />
+    <HeroSection />
+    <FeaturesBar />
+    <BrandShowcase />
+    <ClientTestimonials />
+    <ContactSection />
+    <ExpertConsultation />
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  main {
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import ContactForm from './ContactForm.astro';
+---
+
+<section class="contact-section">
+  <div class="container">
+    <div class="form-side">
+      <h2>Let's bring your vision to life</h2>
+      <p>Schedule a consultation with our design experts and start your dream project today.</p>
+      <div class="expandable-content" id="contactContent">
+        <ContactForm />
+      </div>
+      <button class="submit-btn" id="seeMoreBtn" aria-expanded="false">
+        See More
+        <span class="arrow">↓</span>
+      </button>
+    </div>
+    <div class="image-side"></div>
+  </div>
+</section>
+
+<script>
+  const seeMoreBtn = document.getElementById('seeMoreBtn');
+  const contactContent = document.getElementById('contactContent');
+
+  if (seeMoreBtn && contactContent) {
+    seeMoreBtn.addEventListener('click', () => {
+      contactContent.classList.toggle('expanded');
+      const isExpanded = contactContent.classList.contains('expanded');
+      seeMoreBtn.setAttribute('aria-expanded', String(isExpanded));
+      seeMoreBtn.innerHTML = isExpanded ? 'See Less <span class="arrow">↑</span>' : 'See More <span class="arrow">↓</span>';
+    });
+  }
+</script>
+
+<style>
+  .contact-section {
+    position: relative;
+    padding: 6rem 2rem;
+    background-color: #15242a;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .form-side {
+    max-width: 500px;
+  }
+
+  h2 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  p {
+    color: rgb(156, 163, 175);
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .expandable-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .expandable-content.expanded {
+    max-height: 1000px;
+  }
+
+  .submit-btn {
+    background-color: rgb(0, 178, 169);
+    color: white;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .submit-btn:hover {
+    background-color: rgb(0, 151, 143);
+  }
+
+  .arrow {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+  }
+
+  .image-side {
+    background-image: linear-gradient(to right, rgb(17, 24, 39), transparent),
+                      url('https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1920&h=1080');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 4rem 1rem;
+    }
+
+    .container {
+      grid-template-columns: 1fr;
+    }
+
+    .form-side {
+      max-width: 100%;
+    }
+
+    .image-side {
+      display: none;
+    }
+  }
+</style>

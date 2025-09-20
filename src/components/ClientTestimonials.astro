@@ -1,0 +1,128 @@
+---
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Homeowner",
+    text: "The transformation of our kitchen was beyond our expectations. The attention to detail and innovative design solutions made all the difference.",
+    image: "https://ui-avatars.com/api/?name=Sarah+Johnson&background=22c55e&color=fff"
+  },
+  {
+    name: "Michael Chen",
+    role: "Restaurant Owner",
+    text: "Their expertise in commercial kitchen design helped us create an efficient and beautiful space that our chefs love working in.",
+    image: "https://ui-avatars.com/api/?name=Michael+Chen&background=22c55e&color=fff"
+  },
+  {
+    name: "Emily Davis",
+    role: "Interior Designer",
+    text: "As a designer myself, I appreciate their commitment to both aesthetics and functionality. They're my go-to consultants for complex projects.",
+    image: "https://ui-avatars.com/api/?name=Emily+Davis&background=22c55e&color=fff"
+  }
+];
+---
+
+<section class="testimonials">
+  <div class="container">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonials-grid">
+      {testimonials.map(testimonial => (
+        <div class="testimonial-card">
+          <div class="testimonial-image">
+            <img src={testimonial.image} alt={`${testimonial.name}'s portrait`} />
+          </div>
+          <blockquote>
+            <p>{testimonial.text}</p>
+            <footer>
+              <cite>{testimonial.name}</cite>
+              <span>{testimonial.role}</span>
+            </footer>
+          </blockquote>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: var(--spacing-xl) 0;
+    background-color: #15242a;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-foreground);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .testimonial-card {
+    background: var(--color-background);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    transition: transform 0.3s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .testimonial-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 3px solid var(--color-accent);
+  }
+
+  .testimonial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  blockquote {
+    text-align: center;
+  }
+
+  blockquote p {
+    font-style: italic;
+    color: var(--color-foreground);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+  }
+
+  blockquote footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  cite {
+    font-style: normal;
+    font-weight: bold;
+    color: var(--color-accent);
+  }
+
+  span {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+</style>

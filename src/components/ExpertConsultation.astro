@@ -1,0 +1,92 @@
+---
+---
+
+<section class="expert-consultation">
+  <div class="image-overlay"></div>
+  <div class="container">
+    <div class="content">
+      <h2>Ready to Start Your Project?</h2>
+      <p>
+        Book a free consultation with our design experts and take the first step towards your dream space.
+      </p>
+      <a href="#consultation" class="cta-button">Schedule Free Consultation</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .expert-consultation {
+    position: relative;
+    padding: 6rem 2rem;
+    text-align: center;
+    background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&h=1080');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    isolation: isolate;
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, rgba(0, 178, 169, 0.95), #15242a);
+    z-index: -1;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .content {
+    backdrop-filter: blur(8px);
+    padding: 3rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  h2 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: white;
+    color: rgb(0, 178, 169);
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 640px) {
+    .expert-consultation {
+      padding: 4rem 1rem;
+    }
+
+    .content {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>

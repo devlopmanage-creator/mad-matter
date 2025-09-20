@@ -1,0 +1,176 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+  isButton?: boolean;
+}
+
+const navItems: NavItem[] = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Services", href: "/services" },
+  { label: "Contact", href: "#contact", isButton: true }
+];
+---
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">
+      <a href="/">
+        Famuae
+      </a>
+    </div>
+
+    <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-items">
+      {navItems.map(item => (
+        <li>
+          <a 
+            href={item.href} 
+            class={item.isButton ? 'nav-button' : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(12, 13, 15, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo span {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    padding: var(--spacing-xs);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-foreground);
+    transition: transform 0.3s ease;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-items {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-items a {
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-items a:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-button {
+    background-color: var(--color-accent);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    color: white !important;
+  }
+
+  .nav-button:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 90%, black);
+    color: white !important;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    .nav-items {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--spacing-md);
+      background: rgba(12, 13, 15, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-items.active {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navItems = document.querySelector('.nav-items');
+
+  menuToggle?.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navItems?.classList.toggle('active');
+  });
+</script>

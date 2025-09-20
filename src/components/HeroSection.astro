@@ -1,0 +1,155 @@
+---
+// No props needed for this component
+---
+
+<section id="home">
+  <!-- Background Image -->
+  <div class="background">
+    <div class="zoom-wrapper">
+      <div class="zoom-image"></div>
+    </div>
+    <div class="overlay"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <h1>
+      Transform Your Space with
+      <span class="accent">Expert Design</span>
+    </h1>
+    <p>
+      Professional bathroom and kitchen design consultancy. We create stunning, functional spaces that reflect your style and enhance your daily life.
+    </p>
+    <div class="button-group">
+      <a href="#brands" class="primary-button">
+        Explore Our Services
+      </a>
+      <button class="secondary-button">
+        View Our Work
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .zoom-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .zoom-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80');
+    background-position: center;
+    background-size: cover;
+    animation: initialZoom 4s ease-out forwards;
+  }
+
+  @keyframes initialZoom {
+    0% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 1.5rem;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .accent {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--accent-color, #ff6b6b);
+  }
+
+  p {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  @media (min-width: 640px) {
+    .button-group {
+      flex-direction: row;
+    }
+  }
+
+  button, .primary-button, .secondary-button {
+    padding: 0.75rem 2rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .primary-button {
+    background-color: var(--accent-color, #ff6b6b);
+    color: white;
+  }
+
+  .primary-button:hover {
+    background-color: color-mix(in srgb, var(--accent-color, #ff6b6b) 90%, black);
+  }
+
+  .secondary-button {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  .secondary-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+</style>

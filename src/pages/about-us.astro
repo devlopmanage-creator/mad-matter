@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import AboutContent from '../components/AboutContent.astro';
+---
+
+<Layout title="About Us - First Consultant">
+    <div class="flex flex-col min-h-screen w-full bg-[#15242a]">
+        <Navigation />
+        <main class="flex-1 w-full bg-[#15242a]">
+            <AboutContent />
+        </main>
+        <Footer />
+    </div>
+</Layout>
+
+<style>
+    /* Ensure full width and background color extends across the entire page */
+    :global(html), :global(body) {
+        background-color: #15242a !important;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+</style>

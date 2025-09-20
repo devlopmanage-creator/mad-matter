@@ -1,0 +1,78 @@
+---
+import ContactForm from './ContactForm.astro';
+---
+
+<section class="contact-section">
+  <div class="container">
+    <div class="form-side">
+      <h2>Let's bring your vision to life</h2>
+      <p>Schedule a consultation with our design experts and start your dream project today.</p>
+      <ContactForm />
+    </div>
+    <div class="image-side"></div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    position: relative;
+    padding: 6rem 2rem;
+    background-color: rgb(17, 24, 39);
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .form-side {
+    max-width: 500px;
+  }
+
+  h2 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  p {
+    color: rgb(156, 163, 175);
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .image-side {
+    background-image: linear-gradient(to right, rgb(17, 24, 39), transparent),
+                      url('https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1920&h=1080');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 4rem 1rem;
+    }
+
+    .container {
+      grid-template-columns: 1fr;
+    }
+
+    .form-side {
+      max-width: 100%;
+    }
+
+    .image-side {
+      display: none;
+    }
+  }
+</style>
