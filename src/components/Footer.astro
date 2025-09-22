@@ -1,9 +1,5 @@
 ---
-const footerLinks = [
-  { name: "About Us", url: "/about-us" },
-  { name: "Services", url: "#services" },
-  { name: "Contact", url: "#contact" }
-];
+const footerLinks = [];
 
 const services = [
   { name: "Bathroom Design", url: "#services" },
@@ -69,12 +65,7 @@ const services = [
   </div>
 
   <div class="footer-bottom">
-    <p>&copy; 2024 DesignExpert. All rights reserved.</p>
-    <ul class="footer-legal">
-      {footerLinks.map(link => (
-        <li><a href={link.url}>{link.name}</a></li>
-      ))}
-    </ul>
+    <p class="powered-by">&copy; 2025 — Powered by Miraj. All rights reserved.</p>
   </div>
 </footer>
 
@@ -187,7 +178,7 @@ const services = [
     padding-top: 2rem;
     border-top: 1px solid rgb(55, 65, 81);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
 
@@ -214,6 +205,11 @@ const services = [
     .footer-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  .powered-by {
+    color: #8b949e;
+    font-weight: 500;
   }
 
   @media (max-width: 640px) {
