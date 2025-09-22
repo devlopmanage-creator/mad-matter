@@ -62,10 +62,9 @@ const services = [
 
     <div class="footer-catalog">
       <h3>Catalog</h3>
-      <p>Get the latest design trends and tips</p>
-      <div class="newsletter-form">
-        <button>Download</button>
-      </div>
+      <ul>
+        <li><a href="/services">View Our Services</a></li>
+      </ul>
     </div>
   </div>
 
@@ -168,18 +167,18 @@ const services = [
     color: #fff;
   }
 
-  button {
-    padding: 0.75rem 1.5rem;
-    background-color: rgb(0, 178, 169);
-    color: #fff;
-    border: none;
-    border-radius: 0.375rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  .footer-catalog li {
+    margin-bottom: 0.75rem;
   }
 
-  button:hover {
-    background-color: rgb(0, 151, 143);
+  .footer-catalog a {
+    color: rgb(156, 163, 175);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-catalog a:hover {
+    color: rgb(0, 178, 169);
   }
 
   .footer-bottom {
