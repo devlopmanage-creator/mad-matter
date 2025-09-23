@@ -1,11 +1,11 @@
 ---
-// No props needed for this component
+const videoSrc = "/videos/Clip%201.mp4";
 ---
 
 <section id="home">
   <!-- Background Video -->
   <div class="background">
-    <video class="background-video" src="/videos/Clip%201.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0;"></video>
+    <video class="background-video" src={videoSrc} autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0;"></video>
     <div class="overlay"></div>
   </div>
 
