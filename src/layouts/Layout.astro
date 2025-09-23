@@ -44,6 +44,23 @@ const { title } = Astro.props;
     overflow-x: hidden;
     scroll-behavior: smooth;
   }
+
+  /* Custom scrollbar styles for elegant gray look */
+  html::-webkit-scrollbar, body::-webkit-scrollbar {
+    width: 12px;
+    background: #23272b;
+  }
+  html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+    background: #44474a;
+    border-radius: 8px;
+    border: 2px solid #23272b;
+  }
+  html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
+    background: #5a5d60;
+  }
+  html::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+    background: #23272b;
+  }
   
   * {
     box-sizing: border-box;
