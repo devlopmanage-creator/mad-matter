@@ -3,11 +3,9 @@
 ---
 
 <section id="home">
-  <!-- Background Image -->
+  <!-- Background Video -->
   <div class="background">
-    <div class="zoom-wrapper">
-      <div class="zoom-image"></div>
-    </div>
+    <video class="background-video" src="/videos/Clip%201.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0;"></video>
     <div class="overlay"></div>
   </div>
 
@@ -48,30 +46,13 @@
     overflow: hidden;
   }
 
-  .zoom-wrapper {
-    position: absolute;
+  .background-video {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-  }
-
-  .zoom-image {
+    object-fit: cover;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80');
-    background-position: center;
-    background-size: cover;
-    animation: initialZoom 4s ease-out forwards;
-  }
-
-  @keyframes initialZoom {
-    0% {
-      transform: scale(1.15);
-    }
-    100% {
-      transform: scale(1);
-    }
+    inset: 0;
+    z-index: 0;
   }
 
   .overlay {
