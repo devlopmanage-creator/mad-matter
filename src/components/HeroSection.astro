@@ -3,9 +3,23 @@
 ---
 
 <section id="home">
-  <!-- Background Video -->
+  <!-- Background Placeholder Image -->
   <div class="background">
-  <video class="background-video" src="https://res.cloudinary.com/doleg7smw/video/upload/v1758669242/Clip_1_kxpdba.mp4" autoplay muted playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0;"></video>
+    <img
+      class="background-placeholder"
+      src="https://res.cloudinary.com/doleg7smw/image/upload/v1758771282/photo_2025-09-25_00-14-17_kspwix.jpg"
+      alt="Loading Placeholder"
+    />
+    <video
+      class="background-video"
+      src="https://res.cloudinary.com/doleg7smw/video/upload/v1758669242/Clip_1_kxpdba.mp4"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+      style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0;"
+      onloadeddata="this.previousElementSibling.style.display='none';"
+    ></video>
     <div class="overlay"></div>
   </div>
 
@@ -47,6 +61,15 @@
   }
 
   .background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .background-placeholder {
     width: 100%;
     height: 100%;
     object-fit: cover;
