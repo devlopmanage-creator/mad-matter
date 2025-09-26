@@ -60,12 +60,12 @@ const brands = [
     </div>
 
     <div class="image-grid">
-      {brands.map((brand, index) => (
-        <div class="grid-item">
-          <img src={brand.image} alt={brand.description} />
-          <div class="brand-label">{brand.name}</div>
-        </div>
-      ))}
+        {brands.map((brand, index) => (
+          <a href="/services" class="grid-item" style="text-decoration: none; color: inherit;">
+            <img src={brand.image} alt={brand.description} />
+            <div class="brand-label">{brand.name}</div>
+          </a>
+        ))}
     </div>
 
   </div>
