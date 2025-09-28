@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+/*port Footer from '../components/Footer.astro';*/
 
 ---
 
@@ -25,11 +25,12 @@ import Footer from '../components/Footer.astro';
       <div class="design-subtitle"><a href="#" class="design-link">SEE ALL NEWS</a></div>
     </section>
     <section class="section design-hero">
-      <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1600&q=80" alt="Inspiration" class="design-img" />
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80" alt="Inspiration" class="design-img" />
     </section>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.24/fullpage.min.js" is:inline></script>
   <script is:inline>
+  
     if (typeof window !== 'undefined') {
       window.addEventListener('DOMContentLoaded', () => {
         if (window.fullpage) {
@@ -41,16 +42,30 @@ import Footer from '../components/Footer.astro';
             anchors: ['hero', 'focus', 'collections', 'news', 'inspiration'],
             navigationTooltips: ['Hero', 'Focus', 'Collections', 'News', 'Inspiration'],
             showActiveTooltip: true,
-            responsiveWidth: 900
+            responsiveWidth: 900,
+            credits: { enabled: false },
+            // Siempre inicia en la primera sección
+            afterRender: function() {
+              if(window.location.hash) {
+                window.fullpage_api.moveTo(1);
+                history.replaceState(null, '', window.location.pathname);
+              }
+            }
           });
         }
       });
     }
-  </script>
-  <Footer />
+    // Elimina cualquier watermark de fullPage.js después de cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.fp-watermark').forEach(el => el.remove());
+      }, 500);
+    });
+
+  /*<Footer />*/
+    </script>
   <style>
     .design-main {
-      background: #15242a;
       min-height: 100vh;
       width: 100vw;
       margin: 0;
@@ -67,7 +82,7 @@ import Footer from '../components/Footer.astro';
       align-items: center;
       margin: 0;
       padding: 0;
-      background: #15242a;
+      
     }
     .design-img {
       width: 100vw;
@@ -79,39 +94,22 @@ import Footer from '../components/Footer.astro';
       box-shadow: none;
       margin: 0;
       display: block;
-      background: #222;
+      /* background: #222; */
     }
     .design-card {
-      width: 100vw;
-      height: 100vh;
-      background: #fff;
-      border-radius: 0;
-      box-shadow: none;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      }
-      .design-card-content {
-        background: #fff;
-        border-radius: 1.5rem;
-        box-shadow: 0 2px 24px #0002;
-        padding: 3.5rem 2rem 2.5rem 2rem;
-        max-width: 1400px;
-        width: 80vw;
-        min-height: 320px;
-        text-align: center;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-    .design-title, .design-subtitle, .design-link {
-      margin-left: 0;
+  width: 100vw;
+  background: #fff;
+  box-shadow: 0 2px 24px #0002;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 320px;
+  border-radius: 0;
+  max-width: none;
     }
     .design-title {
       font-family: 'Playfair Display', serif;
@@ -142,37 +140,18 @@ import Footer from '../components/Footer.astro';
     .design-link:hover {
       color: #a88c5c;
     }
-    @media (max-width: 900px) {
+    /*@media (max-width: 900px) {
       .design-title { font-size: 2rem; }
       .design-img { width: 98vw; height: 180px; border-radius: 1rem; margin: 1.2rem 0; }
       .design-card { padding: 1.5rem 0.5rem 1.2rem 0.5rem; }
     }
-  </link>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline></script>
-  <script is:inline>
-    if (typeof window !== 'undefined') {
-      window.addEventListener('DOMContentLoaded', () => {
-        if (window.gsap && window.ScrollTrigger) {
-          gsap.registerPlugin(ScrollTrigger);
-          gsap.utils.toArray('.design-img').forEach(img => {
-            gsap.fromTo(img,
-              { opacity: 0, scale: 0.92 },
-              {
-                opacity: 1,
-                scale: 1,
-                duration: 1.6,
-                ease: 'power4.out',
-                scrollTrigger: {
-                  trigger: img,
-                  start: 'top 80%',
-                  toggleActions: 'play reverse play reverse',
-                }
-              }
-            );
-          });
-        }
-      });
-    }
-  </script>
+    @media (max-width: 600px) {
+      .design-title { font-size: 1.5rem; }
+      .design-subtitle { font-size: 0.9rem; }
+      .design-link { font-size: 0.9rem; margin-left: 1rem; }
+      .design-img { height: 140px; }
+      .design-card { padding: 1rem 0.5rem 0.8rem 0.5rem; min-height: 240px; }
+    }*/
+
+  </style>
 </Layout>
