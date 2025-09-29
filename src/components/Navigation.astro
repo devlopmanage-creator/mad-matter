@@ -10,7 +10,7 @@ const navItems: NavItem[] = [
   { label: "About Us", href: "/about-us" },
   { label: "Design", href: "/design" },
   { label: "Services", href: "/services" },
-  { label: "Contact", href: "#contact", isButton: true }
+  { label: "Contact", href: "https://wa.me/15551234567?text=Hello%2C%20I%27m%20interested%20in%20your%20building%20materials%20and%20services", isButton: true }
 ];
 ---
 
@@ -34,6 +34,8 @@ const navItems: NavItem[] = [
           <a 
             href={item.href} 
             class={item.isButton ? 'nav-button' : undefined}
+            target={item.href.startsWith('https://wa.me/') ? '_blank' : undefined}
+            rel={item.href.startsWith('https://wa.me/') ? 'noopener noreferrer' : undefined}
           >
             {item.label}
           </a>
@@ -167,11 +169,44 @@ const navItems: NavItem[] = [
 </style>
 
 <script>
-  const menuToggle = document.getElementById('menuToggle');
-  const navItems = document.querySelector('.nav-items');
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menuToggle');
+    const navItems = document.querySelector('.nav-items');
 
-  menuToggle?.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navItems?.classList.toggle('active');
+    if (menuToggle && navItems) {
+      // Menu toggle functionality
+      menuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        menuToggle.classList.toggle('active');
+        navItems.classList.toggle('active');
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        const target = e.target as Element;
+        if (target && !menuToggle.contains(target) && !navItems.contains(target)) {
+          menuToggle.classList.remove('active');
+          navItems.classList.remove('active');
+        }
+      });
+
+      // Close menu on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          menuToggle.classList.remove('active');
+          navItems.classList.remove('active');
+        }
+      });
+
+      // Close menu when clicking on nav links
+      const navLinks = navItems.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.classList.remove('active');
+          navItems.classList.remove('active');
+        });
+      });
+    }
   });
 </script>

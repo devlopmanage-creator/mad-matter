@@ -341,7 +341,7 @@ import Footer from '../components/Footer.astro';
   .download-button {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 0.75rem;
     background-color: transparent;
     color: white;
@@ -352,8 +352,10 @@ import Footer from '../components/Footer.astro';
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
     width: 100%;
+    min-height: 60px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
+    text-align: center;
   }
 
   .download-button::after {

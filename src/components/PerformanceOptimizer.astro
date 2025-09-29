@@ -1,0 +1,91 @@
+---
+// Performance optimization component
+---
+
+<!-- Critical resource hints -->
+<link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+<link rel="dns-prefetch" href="https://res.cloudinary.com" />
+
+<!-- Service Worker for caching (optional) -->
+<script is:inline>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {
+        // Service worker registration failed, continue without it
+      });
+    });
+  }
+</script>
+
+<!-- Intersection Observer for lazy loading -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      // Lazy load images that are not critical
+      const lazyImages = document.querySelectorAll('img[data-src]');
+      
+      if ('IntersectionObserver' in window && lazyImages.length > 0) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target as HTMLImageElement;
+              const dataSrc = img.getAttribute('data-src');
+              if (dataSrc) {
+                img.src = dataSrc;
+                img.classList.remove('lazy');
+                img.classList.add('loaded');
+                observer.unobserve(img);
+              }
+            }
+          });
+        }, {
+          rootMargin: '50px 0px',
+          threshold: 0.01
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+      } else {
+        // Fallback for older browsers
+        lazyImages.forEach(img => {
+          const dataSrc = img.getAttribute('data-src');
+          if (dataSrc) {
+            (img as HTMLImageElement).src = dataSrc;
+            img.classList.remove('lazy');
+            img.classList.add('loaded');
+          }
+        });
+      }
+
+      // Prefetch important pages on hover with throttling
+      const links = document.querySelectorAll('a[href^="/"]');
+      const prefetchedLinks = new Set<string>();
+      
+      links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          const linkHref = link.getAttribute('href');
+          if (linkHref && !prefetchedLinks.has(linkHref)) {
+            prefetchedLinks.add(linkHref);
+            const prefetchLink = document.createElement('link');
+            prefetchLink.rel = 'prefetch';
+            prefetchLink.href = linkHref;
+            document.head.appendChild(prefetchLink);
+          }
+        }, { passive: true });
+      });
+    } catch (error) {
+      console.warn('Performance optimizer initialization failed:', error);
+    }
+  });
+</script>
+
+<style>
+  /* Lazy loading placeholder */
+  img.lazy {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  img.lazy.loaded {
+    opacity: 1;
+  }
+</style>

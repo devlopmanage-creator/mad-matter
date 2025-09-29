@@ -1,8 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
-/*port Footer from '../components/Footer.astro';*/
-
+import Footer from '../components/Footer.astro';
 ---
 
 
@@ -30,11 +29,12 @@ import Navigation from '../components/Navigation.astro';
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.24/fullpage.min.js" is:inline></script>
   <script is:inline>
-  
-    if (typeof window !== 'undefined') {
-      window.addEventListener('DOMContentLoaded', () => {
-        if (window.fullpage) {
-          new window.fullpage('#fullpage', {
+    // Initialize fullPage.js when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if fullpage is available and element exists
+      if (typeof fullpage !== 'undefined' && document.getElementById('fullpage')) {
+        try {
+          new fullpage('#fullpage', {
             autoScrolling: true,
             navigation: true,
             scrollHorizontally: false,
@@ -44,26 +44,31 @@ import Navigation from '../components/Navigation.astro';
             showActiveTooltip: true,
             responsiveWidth: 900,
             credits: { enabled: false },
-            // Siempre inicia en la primera sección
             afterRender: function() {
-              if(window.location.hash) {
-                window.fullpage_api.moveTo(1);
+              // Always start at first section
+              if (window.location.hash) {
+                if (typeof fullpage_api !== 'undefined') {
+                  fullpage_api.moveTo(1);
+                }
                 history.replaceState(null, '', window.location.pathname);
               }
             }
           });
+        } catch (error) {
+          console.warn('FullPage.js initialization failed:', error);
         }
-      });
-    }
-    // Elimina cualquier watermark de fullPage.js después de cargar
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.fp-watermark').forEach(el => el.remove());
-      }, 500);
-    });
+      }
 
-  /*<Footer />*/
-    </script>
+      // Remove watermark after initialization
+      setTimeout(() => {
+        const watermarks = document.querySelectorAll('.fp-watermark');
+        watermarks.forEach(el => el.remove());
+      }, 1000);
+    });
+  </script>
+  
+  <Footer />
+</Layout>
   <style>
     .design-main {
       min-height: 100vh;

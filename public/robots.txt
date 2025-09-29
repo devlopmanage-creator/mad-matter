@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://famuae.com/sitemap-index.xml

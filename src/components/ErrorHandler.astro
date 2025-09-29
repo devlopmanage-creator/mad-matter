@@ -1,0 +1,45 @@
+---
+// Global error handler component
+---
+
+<script>
+  // Global error handling
+  window.addEventListener('error', (event) => {
+    console.warn('Global error caught:', {
+      message: event.message,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+      error: event.error
+    });
+    
+    // Prevent error from breaking the page
+    event.preventDefault();
+    return true;
+  });
+
+  // Handle unhandled promise rejections
+  window.addEventListener('unhandledrejection', (event) => {
+    console.warn('Unhandled promise rejection:', event.reason);
+    
+    // Prevent unhandled rejection from breaking the page
+    event.preventDefault();
+  });
+
+  // Console error override for development
+  if (import.meta.env.DEV) {
+    const originalError = console.error;
+    console.error = (...args) => {
+      // Filter out non-critical errors in development
+      const message = args.join(' ');
+      if (
+        message.includes('ResizeObserver loop limit exceeded') ||
+        message.includes('Non-passive event listener') ||
+        message.includes('Violation')
+      ) {
+        return; // Suppress these warnings
+      }
+      originalError.apply(console, args);
+    };
+  }
+</script>
