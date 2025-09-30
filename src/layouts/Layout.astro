@@ -4,38 +4,86 @@ import ErrorHandler from '../components/ErrorHandler.astro';
 
 export interface Props {
   title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  keywords?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title, 
+  description = "FAMUAE - Premium building materials, tiles, sanitary ware, and design solutions in the UAE. Transform your space with our quality products and expert consultation services.",
+  canonical = Astro.url.href,
+  ogImage = "https://famuae.com/og-image.svg",
+  keywords = "building materials, tiles, sanitary ware, bathroom fixtures, kitchen design, UAE, Dubai, premium materials, home renovation, interior design"
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="FAMUAE - Premium building materials, tiles, sanitary ware, and design solutions in the UAE. Transform your space with our quality products and expert consultation services." />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="FAMUAE" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://res.cloudinary.com" />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
     <title>{title}</title>
-      <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="FAM Building Material - Quality Tiles & Sanitary Ware" />
-  <meta property="og:description" content="Your trusted partner for tiles, sanitary ware, faucets, and wellness solutions in the UAE. Explore our catalog and services." />
-  <meta property="og:image" content="https://famuae.com/og-image.jpg" />
-  <meta property="og:url" content="https://famuae.comm" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="FAMUAE" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAMUAE" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="FAMUAE - Premium Building Materials & Design Solutions" />
-    <meta name="twitter:description" content="Premium building materials, tiles, sanitary ware, and design solutions in the UAE. Transform your space with our quality products and expert consultation services." />
-    <meta name="twitter:image" content="https://famuae.com/og-image.jpg" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:site" content="@famuae" />
     
     <!-- Performance hints -->
     <meta name="theme-color" content="#15242a" />
     <meta name="color-scheme" content="dark" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "FAMUAE",
+        "alternateName": "FAM Building Material",
+        "url": "https://famuae.com",
+        "logo": "https://famuae.com/logo.png",
+        "description": "Premium building materials, tiles, sanitary ware, and design solutions in the UAE",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "456 Construction Ave",
+          "addressLocality": "Dubai",
+          "addressCountry": "UAE"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+971-4-123-4567",
+          "contactType": "customer service",
+          "email": "info@famuae.com"
+        },
+        "sameAs": [
+          "https://famuae.com"
+        ],
+        "foundingDate": "2020",
+        "areaServed": "UAE",
+        "serviceType": "Building Materials Supply"
+      }
+    </script>
     
     <PerformanceOptimizer />
     <ErrorHandler />

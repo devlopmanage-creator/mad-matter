@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
 
+# Sitemaps
 Sitemap: https://famuae.com/sitemap-index.xml
+Sitemap: https://famuae.com/sitemap-0.xml
+
+# Crawl delay
+Crawl-delay: 1
