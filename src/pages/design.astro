@@ -2,13 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+
+const title = "Design Inspiration - FAMUAE | Modern Interior & Exterior Design Solutions";
+const description = "Discover design inspiration with FAMUAE's modern interior and exterior solutions. Explore our focus on indoor-outdoor living and contemporary design trends.";
+const keywords = "design inspiration, modern interior design, exterior design, indoor outdoor living, contemporary design UAE, design trends, FAMUAE design";
 ---
 
 
 <Layout 
-  title="Design Inspiration - FAMUAE | Modern Interior & Exterior Design Solutions"
-  description="Discover design inspiration with FAMUAE's modern interior and exterior solutions. Explore our focus on indoor-outdoor living and contemporary design trends."
-  keywords="design inspiration, modern interior design, exterior design, indoor outdoor living, contemporary design UAE, design trends, FAMUAE design"
+  title={title}
+  description={description}
+  keywords={keywords}
 >
   <Navigation />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.24/fullpage.min.css" />
