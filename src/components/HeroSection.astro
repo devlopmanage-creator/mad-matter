@@ -108,7 +108,7 @@
   .accent {
     display: block;
     margin-top: 0.5rem;
-    color: var(--accent-color, #ff6b6b);
+    color: var(--color-accent);
   }
 
   p {
@@ -145,20 +145,22 @@
   }
 
   .primary-button {
-    background-color: var(--accent-color, #ff6b6b);
+    background-color: var(--color-accent);
     color: white;
   }
 
   .primary-button:hover {
-    background-color: color-mix(in srgb, var(--accent-color, #ff6b6b) 90%, black);
+    background-color: var(--color-accent-hover);
   }
 
   .secondary-button {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    background-color: transparent;
   }
 
   .secondary-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--color-accent);
+    color: white;
   }
 </style>
