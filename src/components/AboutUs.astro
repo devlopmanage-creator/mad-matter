@@ -1,165 +1,599 @@
 ---
 import { Image } from 'astro:assets';
+
+// Animation data for counters
+const statsData = [
+  { number: 3, label: "Years Experience", suffix: "+" },
+  { number: 50, label: "Projects Completed", suffix: "+" },
+  { number: 9, label: "Premium Brands", suffix: "" },
+  { number: 24, label: "Support Available", suffix: "/7" }
+];
+
+// Services data
+const services = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>`,
+    title: "Expert Consultation",
+    description: "Our experienced team provides personalized guidance to help you select the perfect tiles, sanitary ware, and fixtures for your project."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>`,
+    title: "Premium Brands",
+    description: "We represent world-class brands including TILES, WONDA, JOMOO, F.LLI FRATTINI, I-SPA, RADAWAY, RAMONSOLAR, TECE, and STRATOZ."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>`,
+    title: "Fast Delivery",
+    description: "Quick and reliable delivery services ensure your building materials arrive on time, keeping your construction project on schedule."
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>`,
+    title: "Quality Guarantee",
+    description: "All our building materials come with comprehensive warranties and our commitment to excellence ensures your complete satisfaction."
+  }
+];
+
+// Company values
+const values = [
+  {
+    title: "Quality First",
+    description: "We source only the finest materials from trusted manufacturers, ensuring every product meets our rigorous quality standards."
+  },
+  {
+    title: "Customer Focus",
+    description: "Your vision drives our mission. We listen, understand, and deliver solutions that exceed your expectations."
+  },
+  {
+    title: "Innovation",
+    description: "We stay ahead of industry trends, offering cutting-edge products and technologies for modern living spaces."
+  },
+  {
+    title: "Reliability",
+    description: "Count on us for consistent quality, timely delivery, and dependable service throughout your project journey."
+  }
+];
 ---
 
-<section class="about">
-    <div class="container">
-        <!-- Header Section with Title and Line -->
-        <div class="header">
-            <h1>Welcome to First Consultants</h1>
-            <div class="divider"></div>
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>About <span class="accent">FAMUAE</span></h1>
+    <p>Your trusted partner in premium building materials and design excellence in the UAE</p>
+  </div>
+</section>
+
+<!-- Main About Content -->
+<section class="about-content">
+  <div class="container">
+    <!-- Story Section -->
+    <div class="story-section">
+      <div class="story-grid">
+        <div class="story-text">
+          <h2>Our Story</h2>
+          <p>FAMUAE was founded with a clear vision: to bring premium building materials and exceptional service to the UAE market. In just a few years, we have established ourselves as a trusted partner for homeowners, architects, and contractors seeking quality materials and expert guidance.</p>
+          <p>Our commitment to excellence and customer satisfaction has allowed us to grow rapidly, building lasting relationships with clients who value quality and reliability. We specialize in tiles, sanitary ware, kitchen fixtures, and wellness solutions from the world's most respected brands.</p>
+          <blockquote class="highlight-quote">
+            "Quality materials, exceptional service, and lasting partnerships."
+          </blockquote>
         </div>
-        
-        <!-- Main Content Grid -->
-        <div class="content-grid">
-            <!-- Left Column - Team Photo -->
-            <div class="photo-container">
-                <img 
-                    src="/images/team-photo.jpg" 
-                    alt="First Consultants Team" 
-                    class="team-photo"
-                />
-            </div>
-            
-            <!-- Right Column - Content -->
-            <div class="content-text">
-                <div class="text-content">
-                    <p>
-                        Welcome to First Consultant Building Materials—clients' most trusted (and loved) source for world class red-dot award sanitary ware.
-                    </p>
-                    <p>
-                        From homeowners like yourself, to contractors shaping iconic projects - we have spent countless years proudly bringing visions to life. 
-                        <span class="emphasis">We provide the best, for those who want the best.</span>
-                    </p>
-                </div>
-                
-                <!-- Statistics Boxes -->
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-number">30</div>
-                        <div class="stat-label">Successful Years</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-number">12</div>
-                        <div class="stat-label">Seasoned Experts</div>
-                    </div>
-                </div>
-            </div>
+        <div class="story-image">
+          <img 
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+            alt="FAMUAE Building Materials Showroom" 
+            loading="lazy"
+          />
         </div>
+      </div>
     </div>
+
+    <!-- Statistics Section -->
+    <div class="stats-section">
+      <h2>Our Achievements</h2>
+      <div class="stats-grid">
+        {statsData.map((stat, index) => (
+          <div class="stat-card">
+            <div class="stat-number" data-count={stat.number}>0</div>
+            <div class="stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section">
+      <h2>What We Offer</h2>
+      <div class="services-grid">
+        {services.map(service => (
+          <div class="service-card">
+            <div class="service-icon" set:html={service.icon} />
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Values Section -->
+    <div class="values-section">
+      <h2>Our Values</h2>
+      <p class="values-subtitle">The principles that guide everything we do</p>
+      <div class="values-grid">
+        {values.map(value => (
+          <div class="value-card">
+            <h3>{value.title}</h3>
+            <p>{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2>Ready to Start Your Project?</h2>
+      <p>Let our experts help you choose the perfect tiles, sanitary ware, and fixtures for your construction or renovation project</p>
+      <a href="https://wa.me/971503609253?text=Hello%2C%20I%27m%20interested%20in%20your%20building%20materials%20and%20services" class="cta-button" target="_blank" rel="noopener noreferrer">
+        Get Free Consultation
+      </a>
+    </div>
+  </div>
 </section>
 
 <style>
-    .about {
-        background-color: #1A2B36;
-        padding: 5rem 0;
-    }
+  /* Hero Section */
+  .hero-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0c0d0f;
+    color: white;
+    text-align: center;
+    padding: 10rem 1rem 6rem;
+  }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-    }
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-    .header {
-        text-align: center;
-        margin-bottom: 4rem;
-    }
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
 
-    .header h1 {
-        font-size: 3rem;
-        font-weight: 300;
-        color: white;
-        margin-bottom: 1rem;
-        line-height: 1.2;
-    }
+  .hero-content .accent {
+    color: #bfa16b;
+  }
 
-    .divider {
-        width: 8rem;
-        height: 1px;
-        background-color: white;
-        margin: 0 auto;
-    }
+  .hero-content p {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+  }
 
-    .content-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        align-items: start;
-    }
+  /* Main Content */
+  .about-content {
+    background-color: #15242a;
+    padding: 8rem 0;
+  }
 
-    @media (min-width: 1024px) {
-        .content-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-        
-        .photo-container {
-            order: 1;
-        }
-        
-        .content-text {
-            order: 2;
-        }
-    }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
 
-    .team-photo {
-        width: 100%;
-        height: 600px;
-        object-fit: cover;
-        object-position: center;
-    }
+  /* Story Section */
+  .story-section {
+    margin-bottom: 6rem;
+  }
 
-    .content-text {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
 
-    .text-content {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+  @media (min-width: 1024px) {
+    .story-grid {
+      grid-template-columns: 1fr 1fr;
     }
+  }
 
-    .text-content p {
-        color: white;
-        font-size: 1.125rem;
-        line-height: 1.75;
-    }
+  .story-text h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
 
-    .emphasis {
-        font-style: italic;
-    }
+  .story-text p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
 
+  .highlight-quote {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #bfa16b;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+    color: white;
+    font-size: 1.25rem;
+    position: relative;
+  }
+
+  .story-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .story-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .story-image:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Statistics Section */
+  .stats-section {
+    margin-bottom: 6rem;
+    text-align: center;
+  }
+
+  .stats-section h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1024px) {
     .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin-top: 3rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(191, 161, 107, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #bfa16b;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .stat-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Services Section */
+  .services-section {
+    margin-bottom: 6rem;
+    text-align: center;
+  }
+
+  .services-section h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .service-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(191, 161, 107, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    background: #bfa16b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+  }
+
+  .service-icon :global(svg) {
+    width: 24px;
+    height: 24px;
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .service-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 0.9rem;
+  }
+
+  /* Values Section */
+  .values-section {
+    margin-bottom: 6rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .values-section h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .values-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .value-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+
+  .value-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(191, 161, 107, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .value-card h3 {
+    font-size: 1.25rem;
+    color: #bfa16b;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .value-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #bfa16b;
+    color: white;
+    padding: 1.25rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(191, 161, 107, 0.3);
+  }
+
+  .cta-button:hover {
+    background: #a88c5c;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(191, 161, 107, 0.4);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 6rem 1rem 3rem;
     }
 
-    .stat-box {
-        background-color: #2A3E4C;
-        border: 1px solid white;
-        padding: 2rem;
-        text-align: center;
-        transition: transform 0.3s ease;
+    .about-content {
+      padding: 4rem 0;
     }
 
-    .stat-box:hover {
-        transform: translateY(-5px);
+    .story-section,
+    .stats-section,
+    .services-section {
+      margin-bottom: 4rem;
     }
 
-    .stat-number {
-        font-size: 3rem;
-        font-weight: bold;
-        color: white;
-        margin-bottom: 0.5rem;
-        line-height: 1;
+    .story-image img {
+      height: 300px;
     }
 
-    .stat-label {
-        color: #CBD5E0;
-        font-size: 0.875rem;
+    .stat-card,
+    .service-card {
+      padding: 2rem 1.5rem;
     }
+
+    .cta-section {
+      padding: 3rem 1.5rem;
+    }
+  }
 </style>
+
+<script>
+    // Counter Animation
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number');
+        
+        counters.forEach(counter => {
+            const dataCount = counter.getAttribute('data-count');
+            if (!dataCount) return;
+            
+            const target = parseInt(dataCount);
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = Math.floor(current).toString();
+            }, 16);
+        });
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                if (entry.target.classList.contains('stats-grid')) {
+                    animateCounters();
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        const elementsToAnimate = document.querySelectorAll('.stat-card, .stats-grid, .cta-section');
+        elementsToAnimate.forEach(el => observer.observe(el));
+    });
+</script>
