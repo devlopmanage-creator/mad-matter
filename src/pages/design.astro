@@ -20,8 +20,102 @@ import Footer from '../components/Footer.astro';
       <h1 class="design-title">RADAWAY</h1>
       <div class="design-subtitle">INDOOR &mdash; OUTDOOR</div>
     </section>
-    <section class="section design-hero">
-      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1600&q=80" alt="Collections" class="design-img" />
+    <section class="section design-hero collections-section">
+      <!-- Simple CSS Carousel -->
+      <div class="simple-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide active">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343593/23_fvxxy7.jpg" alt="Collection 1" class="design-img" loading="eager" />
+          </div>
+          <div class="carousel-slide">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/21_tucbvi.jpg" alt="Collection 2" class="design-img" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/20_ggtfms.jpg" alt="Collection 3" class="design-img" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/16_pp0gc8.jpg" alt="Collection 4" class="design-img" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/19_yldl5w.jpg" alt="Collection 5" class="design-img" loading="lazy" />
+          </div>
+        </div>
+        
+      <!-- Navigation (hidden for collections) -->
+      <div class="carousel-nav" style="display: none;">
+        <button class="carousel-btn prev" data-direction="-1">‹</button>
+        <button class="carousel-btn next" data-direction="1">›</button>
+      </div>
+      
+      <!-- Dots (hidden for collections) -->
+      <div class="carousel-dots" style="display: none;">
+        <span class="dot active" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+        <span class="dot" data-slide="3"></span>
+        <span class="dot" data-slide="4"></span>
+        <span class="dot" data-slide="5"></span>
+      </div>
+      
+      <!-- Play/Pause indicator (appears when paused) -->
+      <div class="carousel-play-indicator" style="display: none;">
+        <button class="play-btn" onclick="resumeCarousel()">▶️</button>
+        <span class="play-text">Click to resume slideshow</span>
+      </div>
+      </div>
+    </section>
+    <section class="section design-card">
+      <h2 class="design-title">Gallery</h2>
+      <div class="design-subtitle">COLLECTION SHOWCASE</div>
+    </section>
+    <section class="section design-hero gallery-section">
+      <!-- Gallery Grid -->
+        <div class="gallery-grid">
+          <div class="gallery-item" data-slide="1">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343593/23_fvxxy7.jpg" alt="Collection 1" class="gallery-img" />
+            <div class="gallery-overlay">
+              <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item" data-slide="2">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/21_tucbvi.jpg" alt="Collection 2" class="gallery-img" />
+            <div class="gallery-overlay">
+              <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item" data-slide="3">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/20_ggtfms.jpg" alt="Collection 3" class="gallery-img" />
+            <div class="gallery-overlay">
+              <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item" data-slide="4">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/16_pp0gc8.jpg" alt="Collection 4" class="gallery-img" />
+            <div class="gallery-overlay">
+              <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gallery-item" data-slide="5">
+            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/19_yldl5w.jpg" alt="Collection 5" class="gallery-img" />
+            <div class="gallery-overlay">
+              <svg class="gallery-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
     </section>
     <section class="section design-card">
       <h2 class="design-title">News</h2>
@@ -43,8 +137,8 @@ import Footer from '../components/Footer.astro';
             navigation: true,
             scrollHorizontally: false,
             fitToSection: true,
-            anchors: ['Wonda', 'focus', 'collections', 'news', 'inspiration'],
-            navigationTooltips: ['Wonda', 'Focus', 'Collections', 'News', 'Inspiration'],
+            anchors: ['Wonda', 'focus', 'collections', 'gallery', 'news', 'inspiration'],
+            navigationTooltips: ['Wonda', 'Focus', 'Collections', 'Gallery', 'News', 'Inspiration'],
             showActiveTooltip: true,
             responsiveWidth: 900,
             credits: { enabled: false },
@@ -69,10 +163,346 @@ import Footer from '../components/Footer.astro';
         watermarks.forEach(el => el.remove());
       }, 1000);
 
+      // Simple carousel functionality
+      let slideIndex = 1;
+      let autoPlayInterval;
+      
+      // Initialize carousel
+      function initCarousel() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        
+        // Preload all images to prevent size changes
+        preloadImages();
+        
+        // Show first slide
+        showSlide(1);
+        
+        // Add event listeners to navigation buttons
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => changeSlide(-1));
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => changeSlide(1));
+        }
+        
+        // Add event listeners to dots
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => currentSlide(index + 1));
+        });
+        
+        // Add keyboard navigation (disabled for collections)
+        // document.addEventListener('keydown', (e) => {
+        //   if (e.key === 'ArrowLeft') {
+        //     changeSlide(-1);
+        //   } else if (e.key === 'ArrowRight') {
+        //     changeSlide(1);
+        //   }
+        // });
+        
+        // Pause auto-play on hover (disabled for collections)
+        // const carousel = document.querySelector('.simple-carousel');
+        // if (carousel) {
+        //   carousel.addEventListener('mouseenter', stopAutoPlay);
+        //   carousel.addEventListener('mouseleave', startAutoPlay);
+        // }
+        
+        // Start auto-play
+        startAutoPlay();
+      }
+      
+      function changeSlide(n) {
+        const slides = document.querySelectorAll('.carousel-slide');
+        slideIndex += n;
+        
+        if (slideIndex > slides.length) { 
+          slideIndex = 1; 
+        }
+        if (slideIndex < 1) { 
+          slideIndex = slides.length; 
+        }
+        
+        showSlide(slideIndex);
+        restartAutoPlay(); // Restart auto-play when user interacts
+      }
+      
+      function currentSlide(n) {
+        slideIndex = n;
+        showSlide(slideIndex);
+        restartAutoPlay(); // Restart auto-play when user interacts
+      }
+      
+      function showSlide(n) {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        // Remove active class from all slides and dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current slide and dot
+        if (slides[n - 1]) {
+          slides[n - 1].classList.add('active');
+        }
+        if (dots[n - 1]) {
+          dots[n - 1].classList.add('active');
+        }
+      }
+      
+      function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+          changeSlide(1);
+        }, 4000);
+        // Hide play indicator when playing
+        const playIndicator = document.querySelector('.carousel-play-indicator');
+        if (playIndicator) {
+          playIndicator.style.display = 'none';
+        }
+      }
+      
+      function stopAutoPlay() {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+        }
+        // Show play indicator when paused
+        const playIndicator = document.querySelector('.carousel-play-indicator');
+        if (playIndicator) {
+          playIndicator.style.display = 'flex';
+        }
+      }
+      
+      function restartAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+      }
+      
+      // Preload images to prevent layout shifts
+      function preloadImages() {
+        const images = document.querySelectorAll('.carousel-slide .design-img');
+        let loadedCount = 0;
+        
+        images.forEach((img, index) => {
+          const imageLoader = new Image();
+          imageLoader.onload = function() {
+            loadedCount++;
+            console.log(`Image ${index + 1} loaded`);
+            
+            // Once all images are loaded, start the carousel
+            if (loadedCount === images.length) {
+              console.log('All images preloaded successfully');
+            }
+          };
+          imageLoader.onerror = function() {
+            console.error(`Failed to load image ${index + 1}`);
+            loadedCount++;
+          };
+          imageLoader.src = img.src;
+        });
+      }
+      
+      // Initialize carousel when DOM is ready
+      initCarousel();
+      
+      // Initialize gallery interactions
+      initGallery();
+
     });
   </script>
   
-  <Footer />
+  <script is:inline>
+    // Gallery functionality (global)
+    function initGallery() {
+      console.log('Starting gallery initialization...');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      console.log('Found gallery items:', galleryItems.length);
+      
+      if (galleryItems.length === 0) {
+        console.error('No gallery items found!');
+        return;
+      }
+      
+      galleryItems.forEach((item, index) => {
+        console.log('Adding click listener to item:', index);
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('Gallery item clicked:', index);
+          
+          const img = this.querySelector('.gallery-img');
+          if (!img) {
+            console.error('No image found in gallery item');
+            return;
+          }
+          
+          const imgSrc = img.src;
+          const imgAlt = img.alt;
+          
+          console.log('Image data:', { src: imgSrc, alt: imgAlt });
+          
+          // Open the modal directly
+          openImageViewer(imgSrc, imgAlt, index + 1);
+        });
+      });
+    }
+    
+    
+    // Global function to resume carousel
+    function resumeCarousel() {
+      if (typeof startAutoPlay === 'function') {
+        startAutoPlay();
+        console.log('Carousel resumed');
+      }
+    }
+    
+    // Global gallery functions
+    function openImageViewer(imgSrc, imgAlt, slideNumber) {
+      console.log('openImageViewer called with:', imgSrc, imgAlt, slideNumber);
+      
+      // Remove any existing modal first
+      const existingModal = document.querySelector('.image-modal');
+      if (existingModal) {
+        existingModal.remove();
+      }
+      
+      // Create modal overlay
+      const modal = document.createElement('div');
+      modal.className = 'image-modal';
+      modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        cursor: pointer;
+      `;
+      
+      modal.innerHTML = `
+        <div class="modal-content" style="
+          background: white;
+          border-radius: 12px;
+          max-width: 90vw;
+          max-height: 90vh;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          overflow: hidden;
+          cursor: default;
+        ">
+          <div class="modal-header" style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #eee;
+            background: #f8f8f8;
+          ">
+            <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #222;">${imgAlt}</h3>
+            <button class="close-btn" style="
+              background: none;
+              border: none;
+              font-size: 1.5rem;
+              cursor: pointer;
+              color: #666;
+              padding: 0;
+              width: 30px;
+              height: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+            ">&times;</button>
+          </div>
+          <div class="modal-body" style="
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: #fafafa;
+          ">
+            <img src="${imgSrc}" alt="${imgAlt}" class="modal-image" style="
+              max-width: 100%;
+              max-height: 70vh;
+              object-fit: contain;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            " />
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+      
+      console.log('Modal added to DOM');
+      
+      // Add event listeners
+      const closeBtn = modal.querySelector('.close-btn');
+      
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeImageViewer();
+      });
+      
+      // Close when clicking outside
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeImageViewer();
+        }
+      });
+      
+      // Close with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeImageViewer();
+        }
+      });
+    }
+    
+    function closeImageViewer() {
+      const modal = document.querySelector('.image-modal');
+      if (modal) {
+        modal.remove();
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+    }
+    
+    function downloadImage(imgSrc, imgAlt) {
+      const link = document.createElement('a');
+      link.href = imgSrc;
+      link.download = imgAlt.replace(/\s+/g, '_') + '.jpg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    
+    // Manual initialization function
+    function initGalleryManually() {
+      console.log('Manual gallery initialization...');
+      initGallery();
+    }
+    
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, initializing gallery...');
+      setTimeout(initGallery, 1000); // Wait 1 second to ensure everything is loaded
+    });
+    
+    // Also try to initialize after a longer delay
+    setTimeout(function() {
+      console.log('Delayed gallery initialization...');
+      initGallery();
+    }, 3000);
+  </script>
+  <!-- COMMENTED OUT FOOTER -->
+  <!-- <Footer /> -->
 </Layout>
   <style>
     .design-main {
@@ -161,18 +591,505 @@ import Footer from '../components/Footer.astro';
     .design-link:hover {
       color: #a88c5c;
     }
-    /*@media (max-width: 900px) {
-      .design-title { font-size: 2rem; }
-      .design-img { width: 98vw; height: 180px; border-radius: 1rem; margin: 1.2rem 0; }
-      .design-card { padding: 1.5rem 0.5rem 1.2rem 0.5rem; }
+    
+    /* Simple Carousel Styles */
+    .collections-section {
+      position: relative;
+      overflow: hidden;
     }
+    
+    .simple-carousel {
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+      max-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .carousel-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      min-height: 100vh;
+      max-height: 100vh;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      overflow: hidden;
+    }
+    
+    .carousel-slide.active {
+      opacity: 1;
+    }
+    
+    .carousel-slide .design-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      margin: 0;
+      padding: 0;
+      transition: opacity 0.5s ease-in-out;
+      background-color: #f0f0f0;
+    }
+    
+    /* Preloader for images */
+    .carousel-slide .design-img:not([src]) {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+    
+    /* Navigation buttons */
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 30px;
+      z-index: 10;
+      transform: translateY(-50%);
+    }
+    
+    .carousel-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(191, 161, 107, 0.3);
+      color: #bfa16b;
+      font-size: 24px;
+      font-weight: bold;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      outline: none;
+    }
+    
+    .carousel-btn:hover {
+      background: rgba(191, 161, 107, 0.25);
+      border-color: rgba(191, 161, 107, 0.6);
+      transform: scale(1.1);
+      color: #fff;
+    }
+    
+    .carousel-btn:active {
+      transform: scale(0.95);
+    }
+    
+    /* Dots */
+    .carousel-dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .dot.active {
+      background: #bfa16b;
+      transform: scale(1.2);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .dot:hover {
+      background: rgba(191, 161, 107, 0.8);
+      transform: scale(1.1);
+    }
+    
+    /* Gallery Styles */
+    .gallery-section {
+      background: #f8f8f8;
+      padding: 2rem 0;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-item:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+    
+    /* Add a subtle overlay on hover to indicate clickability */
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(191, 161, 107, 0);
+      transition: background 0.3s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .gallery-item:hover::before {
+      background: rgba(191, 161, 107, 0.1);
+    }
+    
+    /* Gallery overlay and icon */
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-icon {
+      width: 2rem;
+      height: 2rem;
+      color: white;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-icon {
+      transform: scale(1.1);
+    }
+    
+    /* Play/Pause indicator */
+    .carousel-play-indicator {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+    
+    .play-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+    .play-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .play-text {
+      color: white;
+      font-size: 0.9rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    
+    /* Image Modal Styles */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #eee;
+      background: #f8f8f8;
+    }
+    
+    .modal-header h3 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #222;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+    
+    .close-btn:hover {
+      background: #e0e0e0;
+      color: #222;
+    }
+    
+    .modal-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: #fafafa;
+    }
+    
+    .modal-image {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-footer {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid #eee;
+      background: #f8f8f8;
+    }
+    
+    .download-btn, .close-btn-secondary {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .download-btn {
+      background: #bfa16b;
+      color: white;
+    }
+    
+    .download-btn:hover {
+      background: #a88c5c;
+      transform: translateY(-1px);
+    }
+    
+    .close-btn-secondary {
+      background: #e0e0e0;
+      color: #666;
+    }
+    
+    .close-btn-secondary:hover {
+      background: #d0d0d0;
+      color: #222;
+    }
+    
+    .gallery-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 900px) {
+      .design-title { font-size: 2rem; }
+      .design-card { padding: 1.5rem 0.5rem 1.2rem 0.5rem; }
+      
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+      
+      .carousel-nav {
+        padding: 0 15px;
+      }
+      
+      .carousel-dots {
+        bottom: 20px;
+      }
+      
+      .dot {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    
     @media (max-width: 600px) {
       .design-title { font-size: 1.5rem; }
       .design-subtitle { font-size: 0.9rem; }
       .design-link { font-size: 0.9rem; margin-left: 1rem; }
-      .design-img { height: 140px; }
       .design-card { padding: 1rem 0.5rem 0.8rem 0.5rem; min-height: 240px; }
-    }*/
+      
+      .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        display: none; /* Hide navigation arrows on very small screens */
+      }
+      
+      .dot {
+        width: 8px;
+        height: 8px;
+      }
+      
+      /* Gallery responsive */
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        padding: 0 1rem;
+      }
+      
+      .gallery-img {
+        height: 200px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
+      }
+      
+      .gallery-img {
+        height: 180px;
+      }
+      
+      /* Play indicator responsive */
+      .carousel-play-indicator {
+        bottom: 30px;
+        padding: 8px 15px;
+      }
+      
+      .play-text {
+        font-size: 0.8rem;
+      }
+      
+      /* Modal responsive */
+      .modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+      }
+      
+      .modal-header {
+        padding: 0.75rem 1rem;
+      }
+      
+      .modal-header h3 {
+        font-size: 1rem;
+      }
+      
+      .modal-body {
+        padding: 0.5rem;
+      }
+      
+      .modal-footer {
+        padding: 0.75rem 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .download-btn, .close-btn-secondary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+    }
 
   </style>
 </Layout>
