@@ -46,7 +46,7 @@ import ContactForm from './ContactForm.astro';
         muted 
         loop 
         playsinline
-        data-gsap="scale-in"
+        data-gsap="fade-in"
         data-gsap-delay="0.5"
       >
         <source src="https://res.cloudinary.com/doleg7smw/video/upload/v1759405605/FURO_WALK-IN_ndoxtu.mp4" type="video/mp4">
@@ -66,6 +66,7 @@ import ContactForm from './ContactForm.astro';
     // Add CSS classes for animations
     const fadeUpElements = document.querySelectorAll('[data-gsap="fade-up"]');
     const slideLeftElements = document.querySelectorAll('[data-gsap="slide-left"]');
+    const fadeInElements = document.querySelectorAll('[data-gsap="fade-in"]');
     const videoElement = document.querySelector('.luxury-video') as HTMLElement;
     const overlayElement = document.querySelector('.overlay-info') as HTMLElement;
 
@@ -84,16 +85,9 @@ import ContactForm from './ContactForm.astro';
     }, observerOptions);
 
     // Observe all animated elements
-    [...fadeUpElements, ...slideLeftElements, videoElement, overlayElement].forEach(el => {
+    [...fadeUpElements, ...slideLeftElements, ...fadeInElements, videoElement, overlayElement].forEach(el => {
       if (el) observer.observe(el);
     });
-
-    // Ensure video is visible after a short delay as fallback
-    setTimeout(() => {
-      if (videoElement && !videoElement.classList.contains('animate-in')) {
-        videoElement.classList.add('animate-in');
-      }
-    }, 1000);
 
     // Hover effects for feature items
     const featureItems = document.querySelectorAll('.feature-item');
@@ -296,6 +290,8 @@ import ContactForm from './ContactForm.astro';
     object-fit: cover;
     border-radius: 1rem;
     display: block;
+    background: #000;
+    transition: all 0.8s ease-out;
   }
 
   .video-overlay {
@@ -304,8 +300,9 @@ import ContactForm from './ContactForm.astro';
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(21, 36, 42, 0.3) 0%, rgba(30, 42, 53, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(21, 36, 42, 0.1) 0%, rgba(30, 42, 53, 0.05) 100%);
     border-radius: 1rem;
+    pointer-events: none;
   }
 
   .overlay-info {
@@ -407,21 +404,15 @@ import ContactForm from './ContactForm.astro';
     transform: translateX(0);
   }
 
-  .luxury-video {
+  [data-gsap="fade-in"] {
     opacity: 0;
-    transform: scale(0.8);
-    transition: all 1.2s ease-out;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
   }
 
-  .luxury-video.animate-in {
+  [data-gsap="fade-in"].animate-in {
     opacity: 1;
-    transform: scale(1);
-  }
-
-  /* Fallback: ensure video is visible even without animation */
-  .luxury-video:not(.animate-in) {
-    opacity: 0.8;
-    transform: scale(0.95);
+    transform: translateY(0);
   }
 
   .overlay-info {
