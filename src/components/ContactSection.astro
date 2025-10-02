@@ -5,12 +5,12 @@ import ContactForm from './ContactForm.astro';
 <section class="contact-section">
   <div class="container">
     <div class="form-side">
-      <h1 class="brand-name" data-gsap="fade-up">WONDA</h1>
+      <h1 class="brand-name" data-gsap="fade-up">WADAWAY</h1>
       <p class="slogan" data-gsap="fade-up" data-gsap-delay="0.2">Innovation in Motion Since 2020</p>
       
       <div class="luxury-tag" data-gsap="fade-up" data-gsap-delay="0.4">SMART HOME SOLUTIONS</div>
       
-      <p class="description" data-gsap="fade-up" data-gsap-delay="0.6">Revolutionary smart home technology that transforms your living space. Wonda represents the future of home automation, combining cutting-edge innovation with elegant design and seamless integration.</p>
+      <p class="description" data-gsap="fade-up" data-gsap-delay="0.6">Revolutionary smart home technology that transforms your living space. Wadaway represents the future of home automation, combining cutting-edge innovation with elegant design and seamless integration.</p>
       
       <div class="features-section" data-gsap="fade-up" data-gsap-delay="0.8">
         <h3 class="features-title">Key Features:</h3>
@@ -35,7 +35,7 @@ import ContactForm from './ContactForm.astro';
       </div>
       
       <a href="/design" class="explore-btn" data-gsap="fade-up" data-gsap-delay="1.5">
-        Explore Wonda Products
+        Explore Wadaway Products
         <span class="arrow">→</span>
       </a>
     </div>
@@ -49,13 +49,12 @@ import ContactForm from './ContactForm.astro';
         data-gsap="scale-in"
         data-gsap-delay="0.5"
       >
-        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
-        <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+        <source src="https://res.cloudinary.com/doleg7smw/video/upload/v1759405605/FURO_WALK-IN_ndoxtu.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <div class="video-overlay"></div>
       <div class="overlay-info" data-gsap="fade-in" data-gsap-delay="1.0">
-        <div class="country">WONDA</div>
+        <div class="country">WADAWAY</div>
       </div>
     </div>
   </div>
@@ -232,38 +231,37 @@ import ContactForm from './ContactForm.astro';
   }
 
   .checkmark {
-    color: #00bcd4;
+    color: #20b2aa;
     font-weight: bold;
     font-size: 1.2em;
-    text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+    text-shadow: 0 0 10px rgba(32, 178, 170, 0.3);
   }
 
   .explore-btn {
-    background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+    background: linear-gradient(135deg, #20b2aa 0%, #008b8b 100%);
     color: #ffffff;
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 100%;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
     margin-top: 1.5rem;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     letter-spacing: 0.02em;
-    box-shadow: 0 4px 20px rgba(0, 188, 212, 0.3);
+    box-shadow: 0 4px 20px rgba(32, 178, 170, 0.3);
   }
 
   .explore-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 188, 212, 0.4);
-    background: linear-gradient(135deg, #26c6da 0%, #00bcd4 100%);
+    box-shadow: 0 8px 30px rgba(32, 178, 170, 0.4);
+    background: linear-gradient(135deg, #48d1cc 0%, #20b2aa 100%);
   }
 
   .arrow {
@@ -279,15 +277,15 @@ import ContactForm from './ContactForm.astro';
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
-    min-height: 600px;
-    max-height: 600px;
+    min-height: 750px;
+    max-height: 750px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   }
 
   .luxury-video {
     width: 100%;
     height: 100%;
-    min-height: 600px;
+    min-height: 750px;
     object-fit: cover;
     border-radius: 1rem;
     display: block;
@@ -347,7 +345,7 @@ import ContactForm from './ContactForm.astro';
     }
 
     .video-side {
-      min-height: 400px;
+      min-height: 500px;
     }
 
     .brand-name {
@@ -374,8 +372,8 @@ import ContactForm from './ContactForm.astro';
     }
 
     .explore-btn {
-      padding: 0.875rem 1.5rem;
-      font-size: 1rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
     }
   }
 
