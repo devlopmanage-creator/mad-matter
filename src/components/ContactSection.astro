@@ -88,6 +88,13 @@ import ContactForm from './ContactForm.astro';
       if (el) observer.observe(el);
     });
 
+    // Ensure video is visible after a short delay as fallback
+    setTimeout(() => {
+      if (videoElement && !videoElement.classList.contains('animate-in')) {
+        videoElement.classList.add('animate-in');
+      }
+    }, 1000);
+
     // Hover effects for feature items
     const featureItems = document.querySelectorAll('.feature-item');
     featureItems.forEach(item => {
@@ -409,6 +416,12 @@ import ContactForm from './ContactForm.astro';
   .luxury-video.animate-in {
     opacity: 1;
     transform: scale(1);
+  }
+
+  /* Fallback: ensure video is visible even without animation */
+  .luxury-video:not(.animate-in) {
+    opacity: 0.8;
+    transform: scale(0.95);
   }
 
   .overlay-info {

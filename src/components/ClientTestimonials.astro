@@ -4,19 +4,19 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "Homeowner",
     text: "The transformation of our kitchen was beyond our expectations. The attention to detail and innovative design solutions made all the difference.",
-    image: "https://ui-avatars.com/api/?name=Sarah+Johnson&background=22c55e&color=fff"
+    image: "https://ui-avatars.com/api/?name=Sarah+Johnson&background=00b2a9&color=fff"
   },
   {
     name: "Michael Chen",
     role: "Restaurant Owner",
     text: "Their expertise in commercial kitchen design helped us create an efficient and beautiful space that our chefs love working in.",
-    image: "https://ui-avatars.com/api/?name=Michael+Chen&background=22c55e&color=fff"
+    image: "https://ui-avatars.com/api/?name=Michael+Chen&background=00b2a9&color=fff"
   },
   {
     name: "Emily Davis",
     role: "Interior Designer",
     text: "As a designer myself, I appreciate their commitment to both aesthetics and functionality. They're my go-to consultants for complex projects.",
-    image: "https://ui-avatars.com/api/?name=Emily+Davis&background=22c55e&color=fff"
+    image: "https://ui-avatars.com/api/?name=Emily+Davis&background=00b2a9&color=fff"
   }
 ];
 ---
@@ -46,7 +46,7 @@ const testimonials = [
 <style>
   .testimonials {
     padding: var(--spacing-xl) 0;
-    background-color: #15242a;
+    background-color: rgba(21, 36, 42, 0.6);
   }
 
   h2 {
@@ -69,17 +69,19 @@ const testimonials = [
   }
 
   .testimonial-card {
-    background: var(--color-background);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md);
     padding: var(--spacing-lg);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease;
   }
 
   .testimonial-card:hover {
     transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .testimonial-image {
@@ -88,7 +90,7 @@ const testimonials = [
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
-    border: 3px solid var(--color-accent);
+    border: 2px solid rgba(0, 178, 169, 0.6);
   }
 
   .testimonial-image img {
@@ -118,7 +120,7 @@ const testimonials = [
   cite {
     font-style: normal;
     font-weight: bold;
-    color: var(--color-accent);
+    color: rgba(0, 178, 169, 0.9);
   }
 
   span {
