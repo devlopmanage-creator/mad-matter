@@ -1,0 +1,313 @@
+---
+// Full Gallery Component for the /gallery page
+---
+
+<div class="full-gallery-page">
+  <section class="gallery-hero">
+    <div class="gallery-hero-content">
+      <h1 class="gallery-title">Gallery</h1>
+      <div class="gallery-subtitle">COLLECTION SHOWCASE</div>
+      <p class="gallery-description">Discover our curated collection of modern design solutions</p>
+    </div>
+  </section>
+  
+  <section class="gallery-grid-section">
+    <div class="gallery-grid">
+      <div class="gallery-item" data-slide="1">
+        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343593/23_fvxxy7.jpg" alt="Collection 1" class="gallery-img" />
+      </div>
+      <div class="gallery-item" data-slide="2">
+        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/21_tucbvi.jpg" alt="Collection 2" class="gallery-img" />
+      </div>
+      <div class="gallery-item" data-slide="3">
+        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/20_ggtfms.jpg" alt="Collection 3" class="gallery-img" />
+      </div>
+      <div class="gallery-item" data-slide="4">
+        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/16_pp0gc8.jpg" alt="Collection 4" class="gallery-img" />
+      </div>
+      <div class="gallery-item" data-slide="5">
+        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/19_yldl5w.jpg" alt="Collection 5" class="gallery-img" />
+      </div>
+      <div class="gallery-item" data-slide="6">
+        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/15_abc123.jpg" alt="Collection 6" class="gallery-img" />
+      </div>
+      <div class="gallery-item" data-slide="7">
+        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/14_def456.jpg" alt="Collection 7" class="gallery-img" />
+      </div>
+      <div class="gallery-item" data-slide="8">
+        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/13_ghi789.jpg" alt="Collection 8" class="gallery-img" />
+      </div>
+    </div>
+  </section>
+</div>
+
+<script is:inline>
+  // Gallery modal functionality
+  function initGalleryModal() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const img = this.querySelector('.gallery-img');
+        if (!img) return;
+        
+        const imgSrc = img.src;
+        const imgAlt = img.alt;
+        
+        openImageModal(imgSrc, imgAlt, index + 1);
+      });
+    });
+  }
+  
+  function openImageModal(imgSrc, imgAlt, slideNumber) {
+    // Remove any existing modal first
+    const existingModal = document.querySelector('.image-modal');
+    if (existingModal) {
+      existingModal.remove();
+    }
+    
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    modal.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+    `;
+    
+    modal.innerHTML = `
+      <div class="modal-content" style="
+        background: white;
+        border-radius: 12px;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        cursor: default;
+      ">
+        <div class="modal-header" style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1.5rem;
+          border-bottom: 1px solid #eee;
+          background: #f8f8f8;
+        ">
+          <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #222;">${imgAlt}</h3>
+          <button class="close-btn" style="
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+          ">&times;</button>
+        </div>
+        <div class="modal-body" style="
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 1rem;
+          background: #fafafa;
+        ">
+          <img src="${imgSrc}" alt="${imgAlt}" class="modal-image" style="
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          " />
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+    
+    // Add event listeners
+    const closeBtn = modal.querySelector('.close-btn');
+    
+    closeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeImageModal();
+    });
+    
+    closeBtn.addEventListener('mouseenter', function() {
+      this.style.background = '#e0e0e0';
+      this.style.color = '#222';
+    });
+    
+    closeBtn.addEventListener('mouseleave', function() {
+      this.style.background = 'none';
+      this.style.color = '#666';
+    });
+    
+    // Close when clicking outside
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeImageModal();
+      }
+    });
+    
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeImageModal();
+      }
+    });
+  }
+  
+  function closeImageModal() {
+    const modal = document.querySelector('.image-modal');
+    if (modal) {
+      modal.remove();
+      document.body.style.overflow = 'auto';
+    }
+  }
+  
+  // Initialize when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    initGalleryModal();
+  });
+</script>
+
+<style>
+  .full-gallery-page {
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  .gallery-hero {
+    height: 60vh;
+    background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .gallery-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80') center/cover;
+    opacity: 0.3;
+    z-index: 1;
+  }
+  
+  .gallery-hero-content {
+    position: relative;
+    z-index: 2;
+    color: #222;
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+  
+  .gallery-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 400;
+    color: #222;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gallery-subtitle {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.3rem;
+    color: #bfa16b;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .gallery-description {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .gallery-grid-section {
+    background: #f8f8f8;
+    padding: 4rem 2rem;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background: white;
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  }
+  
+  .gallery-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .gallery-title { font-size: 3rem; }
+    .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .gallery-img { height: 250px; }
+  }
+  
+  @media (max-width: 480px) {
+    .gallery-title { font-size: 2.5rem; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-img { height: 200px; }
+  }
+</style>
