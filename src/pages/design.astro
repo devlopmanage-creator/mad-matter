@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.24/fullpage.min.css" />
   <div id="fullpage">
     <section class="section design-hero">
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80" alt="Minotti Hero" class="design-img" loading="lazy" />
+      <video src="https://res.cloudinary.com/doleg7smw/video/upload/v1759340239/WONDA_MOVIE__dlaopm.mp4" class="design-video" autoplay muted loop playsinline controls></video>
     </section>
     <section class="section design-card">
       <h1 class="design-title">Focus On</h1>
@@ -43,8 +43,8 @@ import Footer from '../components/Footer.astro';
             navigation: true,
             scrollHorizontally: false,
             fitToSection: true,
-            anchors: ['hero', 'focus', 'collections', 'news', 'inspiration'],
-            navigationTooltips: ['Hero', 'Focus', 'Collections', 'News', 'Inspiration'],
+            anchors: ['Wonda', 'focus', 'collections', 'news', 'inspiration'],
+            navigationTooltips: ['Wonda', 'Focus', 'Collections', 'News', 'Inspiration'],
             showActiveTooltip: true,
             responsiveWidth: 900,
             credits: { enabled: false },
@@ -68,6 +68,7 @@ import Footer from '../components/Footer.astro';
         const watermarks = document.querySelectorAll('.fp-watermark');
         watermarks.forEach(el => el.remove());
       }, 1000);
+
     });
   </script>
   
@@ -104,6 +105,17 @@ import Footer from '../components/Footer.astro';
       margin: 0;
       display: block;
       /* background: #222; */
+    }
+    .design-video {
+      width: 100vw;
+      height: 100vh;
+      min-height: 400px;
+      max-height: 100vh;
+      object-fit: cover;
+      border-radius: 0;
+      box-shadow: none;
+      margin: 0;
+      display: block;
     }
     .design-card {
   width: 100vw;
