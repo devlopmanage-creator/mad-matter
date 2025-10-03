@@ -1,5 +1,22 @@
 ---
 // Full Gallery Component for the /gallery page
+
+// Import all images from the radaway folder using Astro's glob import
+const imageModules = import.meta.glob('../assets/radaway/*.jpg', { eager: true });
+
+// Convert to array and sort numerically
+const imageImports = Object.entries(imageModules)
+  .map(([path, module]) => {
+    const filename = path.split('/').pop()?.replace('.jpg', '') || '';
+    const imageModule = module as { default: { src: string } };
+    return {
+      src: imageModule.default.src,
+      alt: `Radaway Collection ${filename}`,
+      filename: `${filename}.jpg`,
+      index: parseInt(filename) || 0
+    };
+  })
+  .sort((a, b) => a.index - b.index);
 ---
 
 <div class="full-gallery-page">
@@ -13,30 +30,11 @@
   
   <section class="gallery-grid-section">
     <div class="gallery-grid">
-      <div class="gallery-item" data-slide="1">
-        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343593/23_fvxxy7.jpg" alt="Collection 1" class="gallery-img" />
-      </div>
-      <div class="gallery-item" data-slide="2">
-        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/21_tucbvi.jpg" alt="Collection 2" class="gallery-img" />
-      </div>
-      <div class="gallery-item" data-slide="3">
-        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/20_ggtfms.jpg" alt="Collection 3" class="gallery-img" />
-      </div>
-      <div class="gallery-item" data-slide="4">
-        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/16_pp0gc8.jpg" alt="Collection 4" class="gallery-img" />
-      </div>
-      <div class="gallery-item" data-slide="5">
-        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/19_yldl5w.jpg" alt="Collection 5" class="gallery-img" />
-      </div>
-      <div class="gallery-item" data-slide="6">
-        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/15_abc123.jpg" alt="Collection 6" class="gallery-img" />
-      </div>
-      <div class="gallery-item" data-slide="7">
-        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/14_def456.jpg" alt="Collection 7" class="gallery-img" />
-      </div>
-      <div class="gallery-item" data-slide="8">
-        <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/13_ghi789.jpg" alt="Collection 8" class="gallery-img" />
-      </div>
+      {imageImports.map((image, index) => (
+        <div class="gallery-item" data-slide={index + 1}>
+          <img src={image.src} alt={image.alt} class="gallery-img" />
+        </div>
+      ))}
     </div>
   </section>
 </div>
