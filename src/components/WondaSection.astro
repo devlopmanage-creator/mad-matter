@@ -3,7 +3,7 @@
 
 <section class="wonda-section">
   <div class="container">
-    <div class="image-side">
+    <div class="video-side">
       <video 
         class="luxury-video" 
         autoplay 
@@ -16,7 +16,7 @@
         <source src="https://res.cloudinary.com/doleg7smw/video/upload/v1759340262/SM_Clip3_urwp1o.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <div class="image-overlay"></div>
+      <div class="video-overlay"></div>
       <div class="overlay-info" data-gsap="fade-in" data-gsap-delay="1.0">
         <div class="country">WONDA</div>
       </div>
@@ -271,7 +271,7 @@
     transform: translateX(4px);
   }
 
-  .image-side {
+  .video-side {
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
@@ -291,14 +291,15 @@
     transition: all 0.8s ease-out;
   }
 
-  .image-overlay {
+  .video-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(21, 36, 42, 0.3) 0%, rgba(30, 42, 53, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(21, 36, 42, 0.1) 0%, rgba(30, 42, 53, 0.05) 100%);
     border-radius: 1rem;
+    pointer-events: none;
   }
 
   .overlay-info {
@@ -344,7 +345,7 @@
       max-width: 100%;
     }
 
-    .image-side {
+    .video-side {
       min-height: 500px;
     }
 
