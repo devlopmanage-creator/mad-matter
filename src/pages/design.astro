@@ -162,7 +162,7 @@ import Footer from '../components/Footer.astro';
         const prevBtn = document.querySelector('.carousel-btn.prev');
         const nextBtn = document.querySelector('.carousel-btn.next');
         
-        // Preload all images to prevent size changes
+        // Preload images for better performance
         preloadImages();
         
         // Show first slide
@@ -182,21 +182,6 @@ import Footer from '../components/Footer.astro';
           dot.addEventListener('click', () => currentSlide(index + 1));
         });
         
-        // Add keyboard navigation (disabled for collections)
-        // document.addEventListener('keydown', (e) => {
-        //   if (e.key === 'ArrowLeft') {
-        //     changeSlide(-1);
-        //   } else if (e.key === 'ArrowRight') {
-        //     changeSlide(1);
-        //   }
-        // });
-        
-        // Pause auto-play on hover (disabled for collections)
-        // const carousel = document.querySelector('.simple-carousel');
-        // if (carousel) {
-        //   carousel.addEventListener('mouseenter', stopAutoPlay);
-        //   carousel.addEventListener('mouseleave', startAutoPlay);
-        // }
         
         // Start auto-play
         startAutoPlay();
@@ -276,15 +261,11 @@ import Footer from '../components/Footer.astro';
           const imageLoader = new Image();
           imageLoader.onload = function() {
             loadedCount++;
-            console.log(`Image ${index + 1} loaded`);
-            
-            // Once all images are loaded, start the carousel
             if (loadedCount === images.length) {
               console.log('All images preloaded successfully');
             }
           };
           imageLoader.onerror = function() {
-            console.error(`Failed to load image ${index + 1}`);
             loadedCount++;
           };
           imageLoader.src = img.src;
@@ -437,11 +418,13 @@ import Footer from '../components/Footer.astro';
       });
       
       // Close with Escape key
-      document.addEventListener('keydown', function(e) {
+      const escapeHandler = function(e) {
         if (e.key === 'Escape') {
           closeImageModal();
+          document.removeEventListener('keydown', escapeHandler);
         }
-      });
+      };
+      document.addEventListener('keydown', escapeHandler);
     }
     
     function closeImageModal() {
@@ -465,36 +448,26 @@ import Footer from '../components/Footer.astro';
     .section {
       width: 100vw;
       height: 100vh;
-      min-height: 100vh;
-      max-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin: 0;
       padding: 0;
-      
     }
     .design-img {
       width: 100vw;
       height: 100vh;
       min-height: 400px;
-      max-height: 100vh;
       object-fit: cover;
-      border-radius: 0;
-      box-shadow: none;
       margin: 0;
       display: block;
-      /* background: #222; */
     }
     .design-video {
       width: 100vw;
       height: 100vh;
       min-height: 400px;
-      max-height: 100vh;
       object-fit: cover;
-      border-radius: 0;
-      box-shadow: none;
       margin: 0;
       display: block;
     }
@@ -510,8 +483,6 @@ import Footer from '../components/Footer.astro';
   justify-content: center;
   height: auto;
   min-height: 320px;
-  border-radius: 0;
-  max-width: none;
     }
     .design-title {
       font-family: 'Playfair Display', serif;
@@ -552,8 +523,6 @@ import Footer from '../components/Footer.astro';
     .simple-carousel {
       width: 100vw;
       height: 100vh;
-      min-height: 100vh;
-      max-height: 100vh;
       position: relative;
       overflow: hidden;
     }
@@ -571,8 +540,6 @@ import Footer from '../components/Footer.astro';
       left: 0;
       width: 100%;
       height: 100vh;
-      min-height: 100vh;
-      max-height: 100vh;
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
       overflow: hidden;
@@ -808,8 +775,6 @@ import Footer from '../components/Footer.astro';
       padding: 2rem;
       overflow: hidden;
       height: 100vh;
-      min-height: 100vh;
-      max-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -874,7 +839,6 @@ import Footer from '../components/Footer.astro';
       display: grid;
       grid-template-columns: 1fr 1fr;
       height: 100vh;
-      max-height: 100vh;
       width: 100vw;
     }
     
@@ -954,7 +918,6 @@ import Footer from '../components/Footer.astro';
       position: relative;
       overflow: hidden;
       height: 100vh;
-      max-height: 100vh;
     }
     
     .inspiration-image .design-img {
