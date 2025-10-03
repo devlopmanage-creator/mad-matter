@@ -57,6 +57,9 @@ const brands = [
   }
 ];
 
+const initialBrandsToShow = 6;
+const remainingBrands = brands.slice(initialBrandsToShow);
+
 ---
 
 <section id="brands" class="brands">
@@ -70,12 +73,32 @@ const brands = [
     </div>
 
     <div class="image-grid">
-        {brands.map((brand, index) => (
+        {brands.slice(0, initialBrandsToShow).map((brand, index) => (
           <a href="/services" class="grid-item" style="text-decoration: none; color: inherit;">
             <img src={brand.image} alt={brand.description} />
             <div class="brand-label">{brand.name}</div>
           </a>
         ))}
+    </div>
+
+    <!-- Hidden brands that will be shown when expanded -->
+    <div class="image-grid expanded-brands" id="expandedBrands" style="display: none;">
+        {remainingBrands.map((brand, index) => (
+          <a href="/services" class="grid-item" style="text-decoration: none; color: inherit;">
+            <img src={brand.image} alt={brand.description} />
+            <div class="brand-label">{brand.name}</div>
+          </a>
+        ))}
+    </div>
+
+    <!-- Show More/Less Button -->
+    <div class="show-more-container">
+      <button id="showMoreBtn" class="show-more-btn">
+        <span class="btn-text">Show More Brands</span>
+        <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6,9 12,15 18,9"/>
+        </svg>
+      </button>
     </div>
 
   </div>
@@ -175,12 +198,6 @@ const brands = [
 
 
 
-  .product-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 0;
-  }
 
   /* Tablet and smaller desktop screens */
   @media (max-width: 1024px) {
@@ -228,52 +245,127 @@ const brands = [
     }
   }
 
-  .product-card {
-    position: relative;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    border-radius: var(--radius-md);
-    transition: all 0.3s ease;
+
+  /* Show More Button Styles */
+  .show-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    padding: 0 1rem;
+  }
+
+  .show-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
   }
 
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .product-card:hover img {
-    transform: scale(1.05);
-  }
-
-  .product-card img {
+  .show-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
   }
 
-  .product-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--spacing-md);
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
-    color: white;
+  .show-more-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
   }
 
-  .product-info h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: white;
-    margin-bottom: var(--spacing-xs);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  .show-more-btn:hover::before {
+    left: 100%;
   }
 
-  .product-info p {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  .btn-icon {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+  }
+
+  .show-more-btn:hover .btn-icon {
+    transform: translateY(-1px);
+  }
+
+  .show-more-btn.expanded .btn-icon {
+    transform: rotate(180deg);
+  }
+
+  .show-more-btn:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+
+  /* Expanded brands animation */
+  .expanded-brands {
+    animation: slideDown 0.5s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile adjustments for button */
+  @media (max-width: 768px) {
+    .show-more-container {
+      margin-top: 2rem;
+    }
+    
+    .show-more-btn {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.85rem;
+    }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    const expandedBrands = document.getElementById('expandedBrands');
+    
+    if (showMoreBtn && expandedBrands) {
+      const btnText = showMoreBtn.querySelector('.btn-text');
+      
+      if (btnText) {
+        showMoreBtn.addEventListener('click', function() {
+          const isExpanded = expandedBrands.style.display !== 'none';
+          
+          if (isExpanded) {
+            // Collapse
+            expandedBrands.style.display = 'none';
+            btnText.textContent = 'Show More Brands';
+            showMoreBtn.classList.remove('expanded');
+          } else {
+            // Expand
+            expandedBrands.style.display = 'grid';
+            btnText.textContent = 'Show Less Brands';
+            showMoreBtn.classList.add('expanded');
+          }
+        });
+      }
+    }
+  });
+</script>
