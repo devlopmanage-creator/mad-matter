@@ -235,20 +235,27 @@ const brands = ["TILES", "WONDA", "JOMOO", "F.LLI FRATTINI", "I-SPA", "RADAWAY",
 
   @media (max-width: 767px) {
     .brands-carousel-section {
-      margin-top: var(--spacing-lg);
+      padding: var(--spacing-md) 0; /* Reduced padding for mobile */
+      margin-top: var(--spacing-sm); /* Reduced margin */
     }
     
     .carousel-title {
-      font-size: 1.5rem;
+      font-size: 1.2rem; /* Reduced font size */
+      margin-bottom: var(--spacing-md); /* Reduced margin */
+    }
+    
+    .brands-track {
+      gap: 2rem; /* Reduced gap between brands */
+      padding: 0 1rem; /* Reduced padding */
     }
     
     .brand-item {
-      padding: var(--spacing-sm) var(--spacing-md);
-      min-width: 160px;
+      padding: var(--spacing-xs) var(--spacing-sm); /* Reduced padding */
+      min-width: 120px; /* Reduced min-width */
     }
     
     .brand-item span {
-      font-size: 0.9rem;
+      font-size: 0.8rem; /* Reduced font size */
     }
   }
 </style>
