@@ -147,6 +147,13 @@ import Footer from '../components/Footer.astro';
             showActiveTooltip: true,
             responsiveWidth: 900,
             credits: { enabled: false },
+            // Optimizaciones para móviles
+            scrollBar: false,
+            easingcss3: 'ease',
+            scrollingSpeed: 700,
+            // Asegurar que las secciones ocupen toda la altura en móviles
+            paddingTop: '0px',
+            paddingBottom: '0px',
             afterRender: function() {
               // Always start at first section
               if (window.location.hash) {
@@ -154,6 +161,17 @@ import Footer from '../components/Footer.astro';
                   fullpage_api.moveTo(1);
                 }
                 history.replaceState(null, '', window.location.pathname);
+              }
+              
+              // Ajustar altura en móviles después del render
+              if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                  const sections = document.querySelectorAll('.section');
+                  sections.forEach(section => {
+                    section.style.height = '100vh';
+                    section.style.minHeight = '100vh';
+                  });
+                }, 100);
               }
             }
           });
@@ -590,12 +608,14 @@ import Footer from '../components/Footer.astro';
     .section {
       width: 100vw;
       height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin: 0;
       padding: 0;
+      position: relative;
     }
     .design-img {
       width: 100vw;
@@ -924,6 +944,23 @@ import Footer from '../components/Footer.astro';
     }
     
     @media (max-width: 600px) {
+      /* Asegurar que no haya espacio blanco en móviles */
+      body, html {
+        height: 100%;
+        overflow-x: hidden;
+      }
+      
+      #fullpage {
+        height: 100vh;
+        min-height: 100vh;
+      }
+      
+      .section {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh;
+      }
+      
       .design-title { font-size: 1.5rem; }
       .design-subtitle { font-size: 0.9rem; }
       .design-link { font-size: 0.9rem; margin-left: 1rem; }
@@ -1247,8 +1284,14 @@ import Footer from '../components/Footer.astro';
     }
     
     @media (max-width: 600px) {
+      .inspiration-content {
+        height: 100vh;
+        min-height: 100vh;
+      }
+      
       .inspiration-text {
         padding: 1.5rem 1rem;
+        min-height: 45vh;
       }
       
       .inspiration-title {
@@ -1273,8 +1316,9 @@ import Footer from '../components/Footer.astro';
       }
       
       .inspiration-image {
-        height: 50vh;
-        min-height: 250px;
+        height: 55vh;
+        min-height: 55vh;
+        flex: 1;
       }
       
       .image-overlay {
