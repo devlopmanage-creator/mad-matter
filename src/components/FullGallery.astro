@@ -193,7 +193,8 @@ const imageImports = Object.entries(imageModules)
 <style>
   .full-gallery-page {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 80px); /* Account for navigation height */
+    padding-bottom: 2rem; /* Ensure bottom spacing */
   }
   
   .gallery-hero {
@@ -258,7 +259,7 @@ const imageImports = Object.entries(imageModules)
   
   .gallery-grid-section {
     background: #f8f8f8;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 6rem 2rem; /* Increased bottom padding */
   }
   
   .gallery-grid {
@@ -298,14 +299,69 @@ const imageImports = Object.entries(imageModules)
   
   /* Responsive */
   @media (max-width: 768px) {
-    .gallery-title { font-size: 3rem; }
-    .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .full-gallery-page {
+      min-height: calc(100vh - 60px); /* Smaller navigation on mobile */
+      padding-bottom: 3rem; /* More bottom padding on mobile */
+    }
+    
+    .gallery-hero {
+      height: 50vh; /* Reduce hero height on mobile */
+    }
+    
+    .gallery-title { 
+      font-size: 3rem; 
+      margin-bottom: 1rem; /* Reduce margin on mobile */
+    }
+    
+    .gallery-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .gallery-description {
+      font-size: 1rem;
+    }
+    
+    .gallery-grid-section {
+      padding: 3rem 1.5rem 5rem 1.5rem; /* Adjust mobile padding */
+    }
+    
+    .gallery-grid { 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 1.5rem; /* Reduce gap on mobile */
+    }
+    
     .gallery-img { height: 250px; }
   }
   
   @media (max-width: 480px) {
-    .gallery-title { font-size: 2.5rem; }
-    .gallery-grid { grid-template-columns: 1fr; }
+    .full-gallery-page {
+      padding-bottom: 4rem; /* Even more bottom padding on small mobile */
+    }
+    
+    .gallery-hero {
+      height: 45vh; /* Further reduce hero height */
+    }
+    
+    .gallery-title { 
+      font-size: 2.5rem; 
+      letter-spacing: 1px; /* Reduce letter spacing on small screens */
+    }
+    
+    .gallery-subtitle {
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+    
+    .gallery-grid-section {
+      padding: 2rem 1rem 4rem 1rem; /* Minimal padding on small mobile */
+    }
+    
+    .gallery-grid { 
+      grid-template-columns: 1fr; 
+      gap: 1rem; /* Minimal gap on small mobile */
+    }
+    
     .gallery-img { height: 200px; }
   }
 </style>
