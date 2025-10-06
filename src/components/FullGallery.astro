@@ -361,25 +361,108 @@ const imageImports = Object.entries(imageModules)
     if (!modal) return;
     
     const allImages = Array.from(document.querySelectorAll('.gallery-img'));
-    const prevBtn = modal.querySelector('.nav-prev');
-    const nextBtn = modal.querySelector('.nav-next');
+    const modalBody = modal.querySelector('.modal-body');
+    let prevBtn = modal.querySelector('.nav-prev');
+    let nextBtn = modal.querySelector('.nav-next');
     
-    // Update previous button
-    if (prevBtn) {
-      if (currentIndex > 0) {
-        prevBtn.style.display = 'flex';
-      } else {
-        prevBtn.style.display = 'none';
-      }
+    // Remove existing buttons
+    if (prevBtn) prevBtn.remove();
+    if (nextBtn) nextBtn.remove();
+    
+    // Create previous button if needed
+    if (currentIndex > 0) {
+      prevBtn = document.createElement('button');
+      prevBtn.className = 'nav-arrow nav-prev';
+      prevBtn.innerHTML = '&#10094;';
+      prevBtn.style.cssText = `
+        position: absolute;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.4);
+        border: none;
+        color: white;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 300;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      `;
+      
+      prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navigateToImage(modal.currentIndex - 1);
+      });
+      
+      prevBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-50%) scale(1.05)';
+        this.style.background = 'rgba(0, 0, 0, 0.6)';
+        this.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.3)';
+      });
+      
+      prevBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(-50%) scale(1)';
+        this.style.background = 'rgba(0, 0, 0, 0.4)';
+        this.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+      });
+      
+      modalBody.appendChild(prevBtn);
     }
     
-    // Update next button
-    if (nextBtn) {
-      if (currentIndex < allImages.length - 1) {
-        nextBtn.style.display = 'flex';
-      } else {
-        nextBtn.style.display = 'none';
-      }
+    // Create next button if needed
+    if (currentIndex < allImages.length - 1) {
+      nextBtn = document.createElement('button');
+      nextBtn.className = 'nav-arrow nav-next';
+      nextBtn.innerHTML = '&#10095;';
+      nextBtn.style.cssText = `
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.4);
+        border: none;
+        color: white;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 300;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      `;
+      
+      nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navigateToImage(modal.currentIndex + 1);
+      });
+      
+      nextBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-50%) scale(1.05)';
+        this.style.background = 'rgba(0, 0, 0, 0.6)';
+        this.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.3)';
+      });
+      
+      nextBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(-50%) scale(1)';
+        this.style.background = 'rgba(0, 0, 0, 0.4)';
+        this.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+      });
+      
+      modalBody.appendChild(nextBtn);
     }
   }
   
