@@ -1,51 +1,238 @@
 ---
+interface SubMenuItem {
+  label: string;
+  href: string;
+}
+
 interface NavItem {
   label: string;
   href: string;
-  isButton?: boolean;
+  submenu?: SubMenuItem[];
 }
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about-us" },
-  { label: "Design", href: "/design" },
-  { label: "Services", href: "/services" },
-  { label: "Contact", href: "https://wa.me/15551234567?text=Hello%2C%20I%27m%20interested%20in%20your%20building%20materials%20and%20services", isButton: true }
+  {
+    label: "Home",
+    href: "/",
+    submenu: [
+      { label: "Overview", href: "/" },
+      { label: "Featured Brands", href: "/#brands" },
+      { label: "Our Story", href: "/about-us" }
+    ]
+  },
+  {
+    label: "About Us",
+    href: "/about-us",
+    submenu: [
+      { label: "Who we are", href: "/about-us" },
+      { label: "Journey", href: "/about-us#journey" },
+      { label: "Innovation", href: "/about-us#innovation" },
+      { label: "Commitment", href: "/about-us#commitment" },
+      { label: "News", href: "/about-us#news" },
+      { label: "Career", href: "/about-us#career" }
+    ]
+  },
+  {
+    label: "Design",
+    href: "/design",
+    submenu: [
+      { label: "Design Solutions", href: "/design" },
+      { label: "Portfolio", href: "/design#portfolio" },
+      { label: "Project Planning", href: "/design#process" },
+      { label: "Gallery", href: "/gallery" }
+    ]
+  },
+  {
+    label: "Services",
+    href: "/services",
+    submenu: [
+      { label: "Our Services", href: "/services" },
+      { label: "Partnerships", href: "/services#partnerships" },
+      { label: "Consulting", href: "/services#consulting" },
+      { label: "Careers", href: "/services#careers" }
+    ]
+  },
+  {
+    label: "Contact",
+    href: "https://wa.me/15551234567?text=Hello%2C%20I%27m%20interested%20in%20your%20building%20materials%20and%20services"
+  }
+];
+
+// Extended menu for mobile with submenus
+const mobileMenuItems: NavItem[] = [
+  {
+    label: "Product",
+    href: "/",
+    submenu: [
+      { label: "Overview", href: "/" },
+      { label: "Featured Brands", href: "/#brands" },
+      { label: "Gallery", href: "/gallery" }
+    ]
+  },
+  {
+    label: "For Professionals",
+    href: "/design",
+    submenu: [
+      { label: "Design Solutions", href: "/design" },
+      { label: "Portfolio", href: "/design#portfolio" },
+      { label: "Project Planning", href: "/design#process" }
+    ]
+  },
+  {
+    label: "Inspiration",
+    href: "/gallery",
+    submenu: [
+      { label: "Gallery", href: "/gallery" },
+      { label: "Case Studies", href: "/design#cases" },
+      { label: "Latest Trends", href: "/gallery#trends" }
+    ]
+  },
+  {
+    label: "About Us",
+    href: "/about-us",
+    submenu: [
+      { label: "Who we are", href: "/about-us" },
+      { label: "Journey", href: "/about-us#journey" },
+      { label: "Innovation", href: "/about-us#innovation" },
+      { label: "Commitment", href: "/about-us#commitment" },
+      { label: "News", href: "/about-us#news" },
+      { label: "Career", href: "/about-us#career" }
+    ]
+  },
+  {
+    label: "Collaborate",
+    href: "/services",
+    submenu: [
+      { label: "Services", href: "/services" },
+      { label: "Partnerships", href: "/services#partnerships" },
+      { label: "Consulting", href: "/services#consulting" }
+    ]
+  },
+  {
+    label: "Contact",
+    href: "https://wa.me/15551234567?text=Hello%2C%20I%27m%20interested%20in%20your%20building%20materials%20and%20services"
+  }
 ];
 ---
 
-<nav>
+<nav id="mainNav">
   <div class="nav-container">
+    <!-- Logo -->
     <div class="logo">
-      <a href="/">
-        Famuae
-      </a>
+      <a href="/">Famuae</a>
     </div>
 
-    <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <ul class="nav-items">
+    <!-- Desktop Navigation -->
+    <ul class="desktop-nav">
       {navItems.map(item => (
-        <li>
+        <li class={item.submenu ? 'has-dropdown' : ''}>
           <a 
-            href={item.href} 
-            class={item.isButton ? 'nav-button' : undefined}
-            target={item.href.startsWith('https://wa.me/') ? '_blank' : undefined}
-            rel={item.href.startsWith('https://wa.me/') ? 'noopener noreferrer' : undefined}
+            href={item.href}
+            target={item.href.startsWith('https://') ? '_blank' : undefined}
+            rel={item.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
+            class="nav-link"
           >
             {item.label}
+            {item.submenu && (
+              <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            )}
           </a>
+          
+          {item.submenu && (
+            <div class="dropdown-menu">
+              <button class="dropdown-close" aria-label="Close dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+              <div class="dropdown-content">
+                <div class="dropdown-left">
+                  <div class="dropdown-header">
+                    <h3 class="dropdown-title">{item.label}</h3>
+                    <p class="dropdown-description">
+                      {item.label === 'Home' && 'Discover our premium collection of building materials and bathroom solutions for your dream space.'}
+                      {item.label === 'About Us' && 'We are an innovative international enterprise, and a global leader in digital bathroom solutions.'}
+                      {item.label === 'Design' && 'Professional tools and resources for architects, designers, and contractors.'}
+                      {item.label === 'Services' && 'Partner with us to create exceptional spaces and grow your business.'}
+                    </p>
+                  </div>
+                  <div class="dropdown-list">
+                    {item.submenu.map(subItem => (
+                      <a href={subItem.href} class="dropdown-item">
+                        {subItem.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                <div class="dropdown-right">
+                  <img 
+                    src="https://res.cloudinary.com/doleg7smw/image/upload/c_scale,w_800,q_auto,f_auto/v1758771282/photo_2025-09-25_00-14-17_kspwix.jpg" 
+                    alt={item.label}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </li>
       ))}
     </ul>
+
+    <!-- Right side: Menu Toggle (Mobile) -->
+    <div class="nav-actions">
+      <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+        <span class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
   </div>
 </nav>
 
+<!-- Fullscreen Menu Overlay (Mobile Only) -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-content">
+    <div class="menu-items">
+      {mobileMenuItems.map((item, index) => (
+        <div class="menu-item" data-index={index}>
+          <div class="menu-item-wrapper">
+            <a 
+              href={item.href} 
+              class="menu-link"
+              target={item.href.startsWith('https://') ? '_blank' : undefined}
+              rel={item.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
+            >
+              {item.label}
+            </a>
+            {item.submenu && (
+              <button class="dropdown-toggle" aria-label={`Toggle ${item.label} submenu`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+            )}
+          </div>
+          {item.submenu && (
+            <div class="submenu">
+              {item.submenu.map(subItem => (
+                <a href={subItem.href} class="submenu-link">
+                  {subItem.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 <style>
+  /* Navigation Bar */
   nav {
     position: fixed;
     top: 0;
@@ -53,164 +240,596 @@ const navItems: NavItem[] = [
     right: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(12, 13, 15, 0.8);
+    background: transparent;
+    transition: transform 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+    transform: translateY(0);
+  }
+
+  nav.scrolled {
+    background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-border);
+  }
+
+  nav.nav-hidden {
+    transform: translateY(-100%);
+  }
+
+  nav.nav-visible {
+    transform: translateY(0);
   }
 
   .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem var(--spacing-md);
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
   }
 
   .logo a {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-foreground);
+    color: white;
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
+    letter-spacing: 0.05em;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
   }
 
-  .logo span {
-    font-size: 0.875rem;
-    color: var(--color-accent);
+  .logo a:hover {
+    opacity: 0.8;
   }
 
-  .menu-toggle {
+  /* Desktop Navigation */
+  .desktop-nav {
     display: none;
-    flex-direction: column;
-    gap: 6px;
-    padding: 0.75rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    min-width: 44px;
-    min-height: 44px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .menu-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: var(--color-foreground);
-    transition: transform 0.3s ease;
-  }
-
-  .menu-toggle.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  .nav-items {
-    display: flex;
-    gap: var(--spacing-lg);
     list-style: none;
     margin: 0;
     padding: 0;
+    gap: 2rem;
+    flex: 1;
+    justify-content: flex-end;
   }
 
-  .nav-items a {
-    color: var(--color-foreground);
+  @media (min-width: 1024px) {
+    .desktop-nav {
+      display: flex;
+    }
+  }
+
+  .desktop-nav li {
+    margin: 0;
+    position: relative;
+  }
+
+  .desktop-nav .nav-link {
+    color: white;
     text-decoration: none;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 400;
     transition: color 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 
-  .nav-items a:hover {
-    color: var(--color-accent);
+  .desktop-nav .nav-link:hover {
+    color: #bfa16b;
   }
 
-  .nav-button {
-    background-color: #bfa16b;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-md);
-    color: white !important;
+  .chevron-icon {
+    transition: transform 0.3s ease;
   }
 
-  .nav-button:hover {
-    background-color: #a88c5c;
-    color: white !important;
+  .has-dropdown:hover .chevron-icon {
+    transform: rotate(180deg);
   }
 
-  @media (max-width: 768px) {
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.5s, 
+                visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.5s,
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+    z-index: 999;
+    background: #1a1a1a;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+  }
+
+  @media (min-width: 1024px) {
+    .dropdown-menu {
+      top: 4rem;
+    }
+  }
+
+  .has-dropdown:hover .dropdown-menu,
+  .dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+    pointer-events: auto;
+  }
+
+  .dropdown-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .dropdown-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+  }
+
+  .dropdown-menu.force-hide {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-20px) !important;
+  }
+
+  .dropdown-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 700px;
+    gap: 3rem;
+    overflow: hidden;
+    min-height: 500px;
+    pointer-events: auto;
+  }
+
+  .dropdown-left {
+    padding: 3.5rem 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    pointer-events: auto;
+  }
+
+  .dropdown-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .dropdown-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+  }
+
+  .has-dropdown:hover .dropdown-title {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .dropdown-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+  }
+
+  .has-dropdown:hover .dropdown-description {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .dropdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    pointer-events: auto;
+  }
+
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, padding-left 0.3s ease, opacity 0.4s ease, transform 0.4s ease;
+    display: block;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateX(-10px);
+    pointer-events: none;
+    cursor: pointer;
+  }
+
+  .has-dropdown:hover .dropdown-item {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .has-dropdown:hover .dropdown-item:nth-child(1) { transition-delay: 0.2s; }
+  .has-dropdown:hover .dropdown-item:nth-child(2) { transition-delay: 0.25s; }
+  .has-dropdown:hover .dropdown-item:nth-child(3) { transition-delay: 0.3s; }
+  .has-dropdown:hover .dropdown-item:nth-child(4) { transition-delay: 0.35s; }
+  .has-dropdown:hover .dropdown-item:nth-child(5) { transition-delay: 0.4s; }
+  .has-dropdown:hover .dropdown-item:nth-child(6) { transition-delay: 0.45s; }
+
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-item:hover {
+    color: #bfa16b;
+    padding-left: 0.5rem;
+  }
+
+  .dropdown-right {
+    width: 700px;
+    height: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+  }
+
+  .has-dropdown:hover .dropdown-right {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .dropdown-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(26, 26, 26, 0.8) 0%, transparent 50%);
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .dropdown-right img {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+  }
+
+  .has-dropdown:hover .dropdown-right img {
+    transform: scale(1.08);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  @media (min-width: 1024px) {
     .menu-toggle {
-      display: flex;
-    }
-
-    .nav-items {
       display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-      align-items: center;
-      padding: var(--spacing-md);
-      background: rgba(12, 13, 15, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--color-border);
+    }
+  }
+
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 20px;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .menu-toggle.active .menu-icon span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle.active .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .menu-icon span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Fullscreen Menu Overlay (Mobile Only) */
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.98);
+    z-index: 999;
+    padding-top: 5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    overflow-y: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .menu-overlay {
+      display: none;
+    }
+  }
+
+  .menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 5rem);
+  }
+
+  .menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .menu-item {
+    transform: translateX(-2rem);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  .menu-overlay.active .menu-item {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .menu-overlay.active .menu-item:nth-child(1) { transition-delay: 0.1s; }
+  .menu-overlay.active .menu-item:nth-child(2) { transition-delay: 0.15s; }
+  .menu-overlay.active .menu-item:nth-child(3) { transition-delay: 0.2s; }
+  .menu-overlay.active .menu-item:nth-child(4) { transition-delay: 0.25s; }
+  .menu-overlay.active .menu-item:nth-child(5) { transition-delay: 0.3s; }
+  .menu-overlay.active .menu-item:nth-child(6) { transition-delay: 0.35s; }
+
+  .menu-item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .menu-link {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+  }
+
+  .menu-link:hover {
+    color: #bfa16b;
+  }
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    padding: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .dropdown-toggle:hover {
+    color: #bfa16b;
+  }
+
+  .menu-item.active .dropdown-toggle {
+    transform: rotate(180deg);
+  }
+
+  .submenu {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 2rem;
+    margin-top: 0;
+    transition: max-height 0.3s ease, margin-top 0.3s ease;
+  }
+
+  .menu-item.active .submenu {
+    max-height: 500px;
+    margin-top: 1rem;
+  }
+
+  .submenu-link {
+    display: block;
+    font-size: clamp(1.125rem, 3vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .submenu-link:hover {
+    color: white;
+    padding-left: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .menu-content {
+      padding: 3rem;
     }
 
-    .nav-items.active {
-      display: flex;
+    .menu-items {
+      gap: 1.75rem;
+    }
+
+    .submenu {
+      padding-left: 2.5rem;
     }
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('mainNav');
     const menuToggle = document.getElementById('menuToggle');
-    const navItems = document.querySelector('.nav-items');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    const menuLinks = document.querySelectorAll('.menu-link, .submenu-link');
+    const dropdownCloseButtons = document.querySelectorAll('.dropdown-close');
 
-    if (menuToggle && navItems) {
-      // Menu toggle functionality
-      menuToggle.addEventListener('click', (e) => {
-        e.preventDefault();
+    // Close dropdown functionality
+    dropdownCloseButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
         e.stopPropagation();
-        menuToggle.classList.toggle('active');
-        navItems.classList.toggle('active');
+        const dropdown = button.closest('.dropdown-menu');
+        dropdown?.classList.add('force-hide');
+        setTimeout(() => {
+          dropdown?.classList.remove('force-hide');
+        }, 500);
       });
+    });
 
-      // Close menu when clicking outside
-      document.addEventListener('click', (e) => {
-        const target = e.target as Element;
-        if (target && !menuToggle.contains(target) && !navItems.contains(target)) {
-          menuToggle.classList.remove('active');
-          navItems.classList.remove('active');
+    // Scroll effect for navbar with hide/show
+    let lastScrollTop = 0;
+    let scrollThreshold = 100;
+
+    const handleScroll = () => {
+      const currentScroll = window.scrollY || document.documentElement.scrollTop;
+      
+      // Add/remove scrolled class for background
+      if (currentScroll > 50) {
+        nav?.classList.add('scrolled');
+      } else {
+        nav?.classList.remove('scrolled');
+      }
+
+      // Hide/show navbar based on scroll direction
+      if (currentScroll > scrollThreshold) {
+        if (currentScroll > lastScrollTop) {
+          // Scrolling down - hide navbar
+          nav?.classList.add('nav-hidden');
+          nav?.classList.remove('nav-visible');
+        } else {
+          // Scrolling up - show navbar
+          nav?.classList.remove('nav-hidden');
+          nav?.classList.add('nav-visible');
         }
-      });
+      } else {
+        // Always show when near top
+        nav?.classList.remove('nav-hidden');
+        nav?.classList.add('nav-visible');
+      }
 
-      // Close menu on escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          menuToggle.classList.remove('active');
-          navItems.classList.remove('active');
-        }
-      });
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    };
 
-      // Close menu when clicking on nav links
-      const navLinks = navItems.querySelectorAll('a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          menuToggle.classList.remove('active');
-          navItems.classList.remove('active');
+    window.addEventListener('scroll', handleScroll);
+
+    // Menu toggle
+    menuToggle?.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      menuOverlay?.classList.toggle('active');
+      document.body.style.overflow = menuOverlay?.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Dropdown toggles
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const menuItem = toggle.closest('.menu-item');
+        const isActive = menuItem?.classList.contains('active');
+        
+        // Close all other dropdowns
+        document.querySelectorAll('.menu-item').forEach(item => {
+          if (item !== menuItem) {
+            item.classList.remove('active');
+          }
         });
+        
+        // Toggle current dropdown
+        menuItem?.classList.toggle('active', !isActive);
       });
-    }
+    });
+
+    // Close menu when clicking on links
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle?.classList.remove('active');
+        menuOverlay?.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuOverlay?.classList.contains('active')) {
+        menuToggle?.classList.remove('active');
+        menuOverlay?.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close menu when clicking overlay background
+    menuOverlay?.addEventListener('click', (e) => {
+      if (e.target === menuOverlay) {
+        menuToggle?.classList.remove('active');
+        menuOverlay?.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   });
 </script>
