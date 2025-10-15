@@ -17,40 +17,34 @@ const navItems: NavItem[] = [
     submenu: [
       { label: "Overview", href: "/" },
       { label: "Featured Brands", href: "/#brands" },
-      { label: "Our Story", href: "/about-us" }
+      { label: "Wonda Collection", href: "/#wonda" },
+      { label: "Contact Us", href: "/#contact" }
     ]
   },
   {
     label: "About Us",
     href: "/about-us",
     submenu: [
-      { label: "Who we are", href: "/about-us" },
-      { label: "Journey", href: "/about-us#journey" },
-      { label: "Innovation", href: "/about-us#innovation" },
-      { label: "Commitment", href: "/about-us#commitment" },
-      { label: "News", href: "/about-us#news" },
-      { label: "Career", href: "/about-us#career" }
+      { label: "Who We Are", href: "/about-us#who-we-are" },
+      { label: "Our Achievements", href: "/about-us#achievements" },
+      { label: "What We Offer", href: "/about-us#innovation" },
+      { label: "Our Values", href: "/about-us#commitment" }
     ]
   },
   {
     label: "Design",
     href: "/design",
     submenu: [
-      { label: "Design Solutions", href: "/design" },
-      { label: "Portfolio", href: "/design#portfolio" },
-      { label: "Project Planning", href: "/design#process" },
-      { label: "Gallery", href: "/gallery" }
+      { label: "Wonda", href: "/design#Wonda" },
+      { label: "Radaway", href: "/design#Radaway" },
+      { label: "Collections", href: "/design#collections" },
+      { label: "Gallery", href: "/design#gallery-link" },
+      { label: "Inspiration", href: "/design#inspiration" }
     ]
   },
   {
     label: "Services",
-    href: "/services",
-    submenu: [
-      { label: "Our Services", href: "/services" },
-      { label: "Partnerships", href: "/services#partnerships" },
-      { label: "Consulting", href: "/services#consulting" },
-      { label: "Careers", href: "/services#careers" }
-    ]
+    href: "/services"
   },
   {
     label: "Contact",
@@ -61,52 +55,39 @@ const navItems: NavItem[] = [
 // Extended menu for mobile with submenus
 const mobileMenuItems: NavItem[] = [
   {
-    label: "Product",
+    label: "Home",
     href: "/",
     submenu: [
       { label: "Overview", href: "/" },
       { label: "Featured Brands", href: "/#brands" },
-      { label: "Gallery", href: "/gallery" }
-    ]
-  },
-  {
-    label: "For Professionals",
-    href: "/design",
-    submenu: [
-      { label: "Design Solutions", href: "/design" },
-      { label: "Portfolio", href: "/design#portfolio" },
-      { label: "Project Planning", href: "/design#process" }
-    ]
-  },
-  {
-    label: "Inspiration",
-    href: "/gallery",
-    submenu: [
-      { label: "Gallery", href: "/gallery" },
-      { label: "Case Studies", href: "/design#cases" },
-      { label: "Latest Trends", href: "/gallery#trends" }
+      { label: "Wonda Collection", href: "/#wonda" },
+      { label: "Contact Us", href: "/#contact" }
     ]
   },
   {
     label: "About Us",
     href: "/about-us",
     submenu: [
-      { label: "Who we are", href: "/about-us" },
-      { label: "Journey", href: "/about-us#journey" },
-      { label: "Innovation", href: "/about-us#innovation" },
-      { label: "Commitment", href: "/about-us#commitment" },
-      { label: "News", href: "/about-us#news" },
-      { label: "Career", href: "/about-us#career" }
+      { label: "Who We Are", href: "/about-us#who-we-are" },
+      { label: "Our Achievements", href: "/about-us#achievements" },
+      { label: "What We Offer", href: "/about-us#innovation" },
+      { label: "Our Values", href: "/about-us#commitment" }
     ]
   },
   {
-    label: "Collaborate",
-    href: "/services",
+    label: "Design",
+    href: "/design",
     submenu: [
-      { label: "Services", href: "/services" },
-      { label: "Partnerships", href: "/services#partnerships" },
-      { label: "Consulting", href: "/services#consulting" }
+      { label: "Wonda", href: "/design#Wonda" },
+      { label: "Radaway", href: "/design#Radaway" },
+      { label: "Collections", href: "/design#collections" },
+      { label: "Gallery", href: "/design#gallery-link" },
+      { label: "Inspiration", href: "/design#inspiration" }
     ]
+  },
+  {
+    label: "Services",
+    href: "/services"
   },
   {
     label: "Contact",
@@ -153,10 +134,10 @@ const mobileMenuItems: NavItem[] = [
                   <div class="dropdown-header">
                     <h3 class="dropdown-title">{item.label}</h3>
                     <p class="dropdown-description">
-                      {item.label === 'Home' && 'Discover our premium collection of building materials and bathroom solutions for your dream space.'}
-                      {item.label === 'About Us' && 'We are an innovative international enterprise, and a global leader in digital bathroom solutions.'}
-                      {item.label === 'Design' && 'Professional tools and resources for architects, designers, and contractors.'}
-                      {item.label === 'Services' && 'Partner with us to create exceptional spaces and grow your business.'}
+                      {item.label === 'Home' && 'Explore premium building materials, featured brands, and innovative design solutions for your projects.'}
+                      {item.label === 'About Us' && 'Learn about our journey, innovation, and commitment to excellence in building materials.'}
+                      {item.label === 'Design' && 'Explore Wonda, Radaway collections, gallery showcase, and exclusive design inspiration.'}
+                      {item.label === 'Services' && 'Browse our product catalogues, tiles collection, bathroom solutions, and professional consultation services.'}
                     </p>
                   </div>
                   <div class="dropdown-list">
@@ -258,6 +239,12 @@ const mobileMenuItems: NavItem[] = [
     transform: translateY(0);
   }
 
+  /* Change navbar background when dropdown is open */
+  nav.dropdown-open {
+    background: rgba(26, 26, 26, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
   .nav-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -343,7 +330,6 @@ const mobileMenuItems: NavItem[] = [
     z-index: 999;
     background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     pointer-events: none;
   }
 
@@ -854,6 +840,30 @@ const mobileMenuItems: NavItem[] = [
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     const menuLinks = document.querySelectorAll('.menu-link, .submenu-link');
     const dropdownCloseButtons = document.querySelectorAll('.dropdown-close');
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+
+    // Change navbar background when dropdown is open
+    dropdownItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        nav?.classList.add('dropdown-open');
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        nav?.classList.remove('dropdown-open');
+      });
+    });
+
+    // Also listen to dropdown-menu hover
+    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+    dropdownMenus.forEach(menu => {
+      menu.addEventListener('mouseenter', () => {
+        nav?.classList.add('dropdown-open');
+      });
+      
+      menu.addEventListener('mouseleave', () => {
+        nav?.classList.remove('dropdown-open');
+      });
+    });
 
     // Close dropdown functionality
     dropdownCloseButtons.forEach(button => {
@@ -861,6 +871,7 @@ const mobileMenuItems: NavItem[] = [
         e.stopPropagation();
         const dropdown = button.closest('.dropdown-menu');
         dropdown?.classList.add('force-hide');
+        nav?.classList.remove('dropdown-open');
         setTimeout(() => {
           dropdown?.classList.remove('force-hide');
         }, 500);
