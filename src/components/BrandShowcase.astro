@@ -3,12 +3,20 @@ const brands = [
   {
     name: "Tiles",
     image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&h=400",
-    description: "Premium ceramic and porcelain tiles for every space"
+    description: "Premium ceramic and porcelain tiles for every space",
+    pdfUrl: "https://drive.google.com/file/d/1BuOJC9lOldUkS17CK-dEAX9UvMGkNcgJ/preview"
   },
   { 
     name: "WONDA", 
     image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=600&h=400",
-    description: "Innovative smart bathroom technology and fixtures"
+    description: "Innovative smart bathroom technology and fixtures",
+    pdfUrl: "/catalogues/Katalog_compressed.pdf"
+  },
+  { 
+    name: "La Concept Furniture", 
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&h=400",
+    description: "Elegant furniture for modern living spaces",
+    pdfUrl: "/catalogues/Laconcept_Collection_2025_ .pdf_compressed.pdf"
   },
   { 
     name: "JOMOO", 
@@ -49,11 +57,6 @@ const brands = [
     name: "nofer", 
     image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&h=400",
     description: "Professional-grade bathroom accessories"
-  },
-  { 
-    name: "La Concept Furniture", 
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&h=400",
-    description: "Elegant furniture for modern living spaces"
   }
 ];
 
@@ -74,20 +77,42 @@ const remainingBrands = brands.slice(initialBrandsToShow);
 
     <div class="image-grid">
         {brands.slice(0, initialBrandsToShow).map((brand, index) => (
-          <a href="/services" class="grid-item" style="text-decoration: none; color: inherit;">
+          <div class="grid-item">
             <img src={brand.image} alt={brand.description} />
-            <div class="brand-label">{brand.name}</div>
-          </a>
+            <div class="brand-content">
+              <div class="brand-label">{brand.name}</div>
+              {brand.pdfUrl && (
+                <a href={brand.pdfUrl} class="download-btn" target="_blank" rel="noopener noreferrer">
+                  <svg class="download-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7,10 12,15 17,10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
         ))}
     </div>
 
     <!-- Hidden brands that will be shown when expanded -->
     <div class="image-grid expanded-brands" id="expandedBrands" style="display: none;">
         {remainingBrands.map((brand, index) => (
-          <a href="/services" class="grid-item" style="text-decoration: none; color: inherit;">
+          <div class="grid-item">
             <img src={brand.image} alt={brand.description} />
-            <div class="brand-label">{brand.name}</div>
-          </a>
+            <div class="brand-content">
+              <div class="brand-label">{brand.name}</div>
+              {brand.pdfUrl && (
+                <a href={brand.pdfUrl} class="download-btn" target="_blank" rel="noopener noreferrer">
+                  <svg class="download-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7,10 12,15 17,10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
         ))}
     </div>
 
@@ -181,10 +206,16 @@ const remainingBrands = brands.slice(initialBrandsToShow);
     transform: scale(1.05);
   }
 
-  .brand-label {
+  .brand-content {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .brand-label {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(4px);
     padding: 0.5rem 1rem;
@@ -194,6 +225,23 @@ const remainingBrands = brands.slice(initialBrandsToShow);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+  }
+
+  .download-btn {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .download-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-2px);
   }
 
 
