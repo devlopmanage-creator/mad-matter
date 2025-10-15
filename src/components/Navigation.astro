@@ -15,7 +15,7 @@ const navItems: NavItem[] = [
     label: "Home",
     href: "/",
     submenu: [
-      { label: "Overview", href: "/" },
+      { label: "Overview", href: "/#home" },
       { label: "Featured Brands", href: "/#brands" },
       { label: "Wonda Collection", href: "/#wonda" },
       { label: "Contact Us", href: "/#contact" }
@@ -58,7 +58,7 @@ const mobileMenuItems: NavItem[] = [
     label: "Home",
     href: "/",
     submenu: [
-      { label: "Overview", href: "/" },
+      { label: "Overview", href: "/#home" },
       { label: "Featured Brands", href: "/#brands" },
       { label: "Wonda Collection", href: "/#wonda" },
       { label: "Contact Us", href: "/#contact" }
@@ -222,7 +222,9 @@ const mobileMenuItems: NavItem[] = [
     width: 100%;
     z-index: 1000;
     background: transparent;
-    transition: transform 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+    transition: transform 0.3s ease, 
+                background-color 0.3s ease 0.5s, 
+                backdrop-filter 0.3s ease 0.5s;
     transform: translateY(0);
   }
 
@@ -243,6 +245,9 @@ const mobileMenuItems: NavItem[] = [
   nav.dropdown-open {
     background: rgba(26, 26, 26, 0.95) !important;
     backdrop-filter: blur(10px) !important;
+    transition: transform 0.3s ease, 
+                background-color 0.3s ease 0s, 
+                backdrop-filter 0.3s ease 0s !important;
   }
 
   .nav-container {
