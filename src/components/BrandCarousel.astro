@@ -1,0 +1,204 @@
+---
+const brands = [
+  {
+    name: "TILES",
+    logo: `<img src="/brand/tiles-logo.svg" alt="TILES" style="width: 100%; height: 100%; object-fit: contain;" />`
+  },
+  {
+    name: "WONDA",
+    logo: `<img src="/brand/WONDA logo.png" alt="WONDA" style="width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1);" />`
+  },
+  {
+    name: "JOMOO",
+    logo: `<img src="/brand/JOMOO 一排 白色.png" alt="JOMOO" style="width: 100%; height: 100%; object-fit: contain;" />`
+  },
+  {
+    name: "LACONCEPT",
+    logo: `<img src="/brand/LOGO_LACONCEPT.svg" alt="LACONCEPT" style="width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1);" />`
+  },
+  {
+    name: "I-SPA",
+    logo: `<img src="/brand/i-spa-logo.svg" alt="I-SPA" style="width: 100%; height: 100%; object-fit: contain;" />`
+  },
+  {
+    name: "RADAWAY",
+    logo: `<img src="/brand/radaway logo transparent.png" alt="RADAWAY" style="width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1);" />`
+  },
+  {
+    name: "RAMONSOLAR",
+    logo: `<img src="/brand/ramonsolar-logo.svg" alt="RAMONSOLAR" style="width: 100%; height: 100%; object-fit: contain;" />`
+  },
+  {
+    name: "TECE",
+    logo: `<img src="/brand/tece-logo.svg" alt="TECE" style="width: 100%; height: 100%; object-fit: contain;" />`
+  },
+  {
+    name: "STRATOZ",
+    logo: `<img src="/brand/stratoz-logo.svg" alt="STRATOZ" style="width: 100%; height: 100%; object-fit: contain;" />`
+  }
+];
+---
+
+<!-- Brands Carousel -->
+<section class="brands-carousel-section">
+  <div class="container">
+    <div class="brands-carousel">
+      <div class="brands-track">
+        {[...brands, ...brands, ...brands].map((brand, index) => (
+          <div class="brand-item">
+            <div class="brand-logo" set:html={brand.logo} />
+            <span class="brand-name">{brand.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Brands Carousel Styles */
+  .brands-carousel-section {
+    text-align: center;
+    background: #000000;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+
+  .brands-carousel {
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+    padding: 1rem 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .brands-track {
+    display: flex;
+    animation: scroll 60s linear infinite;
+    gap: 4rem;
+    width: calc(300% + 12rem);
+    padding: 0 2rem;
+    align-items: center;
+  }
+
+  .brand-item {
+    flex-shrink: 0;
+    background: transparent;
+    padding: 1.5rem 2rem;
+    border-radius: 0;
+    border: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 220px;
+    max-width: 250px;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .brand-logo {
+    width: 150px;
+    height: 50px;
+    margin: 0 auto 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .brand-logo :global(svg) {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .brand-item:hover .brand-logo :global(svg) {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  .brand-name {
+    font-weight: 300;
+    color: #ffffff;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
+
+  .brand-item:hover .brand-name {
+    opacity: 1;
+    color: #ffffff;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-33.33% - 4rem));
+    }
+  }
+
+
+  @media (max-width: 767px) {
+    .brands-carousel-section {
+      padding: 1.5rem 0;
+    }
+    
+    .brands-track {
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    
+    .brand-item {
+      padding: 1rem 1.2rem;
+      min-width: 160px;
+      max-width: 180px;
+    }
+    
+    .brand-logo {
+      width: 120px;
+      height: 40px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .brand-name {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .brands-carousel-section {
+      padding: 1.8rem 0;
+    }
+    
+    .brand-item {
+      padding: 1.2rem 1.8rem;
+      min-width: 200px;
+      max-width: 220px;
+    }
+    
+    .brand-logo {
+      width: 130px;
+      height: 45px;
+    }
+  }
+</style>
