@@ -1,50 +1,6 @@
 ---
-interface Feature {
-  icon: string;
-  title: string;
-  description: string;
-}
-
-const features: Feature[] = [
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18V3H3zm9 4h6m-6 4h6m-6 4h6M5 7h2m-2 4h2m-2 4h2"></path>
-          </svg>`,
-    title: "Premium Quality",
-    description: "World-class materials engineered for lasting excellence"
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-          </svg>`,
-    title: "Expert Consultation",
-    description: "Professional guidance from design to installation"
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>`,
-    title: "Trusted Brands",
-    description: "Exclusive partnerships with global industry leaders"
-  }
-];
-
 const brands = ["TILES", "WONDA", "JOMOO", "F.LLI FRATTINI", "I-SPA", "RADAWAY", "RAMONSOLAR", "TECE", "STRATOZ"];
 ---
-
-<section class="features">
-  <div class="container">
-    <div class="features-grid">
-      {features.map(feature => (
-        <div class="feature-card">
-          <div class="icon-container" set:html={feature.icon} />
-          <h3>{feature.title}</h3>
-          <p>{feature.description}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
 
 <!-- Brands Carousel -->
 <section class="brands-carousel-section">
@@ -63,89 +19,6 @@ const brands = ["TILES", "WONDA", "JOMOO", "F.LLI FRATTINI", "I-SPA", "RADAWAY",
 </section>
 
 <style>
-  .features {
-    padding-bottom: calc(var(--spacing-xl) * 2); /* Increased bottom padding for more space before 'Choose your brand' */
-    padding-top: var(--spacing-xl);
-    background-color: #15242a; /* Adjusted to match --color-background (#15242a) */
-    width: 100%;
-    position: relative;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
-    width: 100%;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-    text-align: center;
-    width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    .features-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-xl);
-    }
-  }
-
-  .feature-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--spacing-md); /* Reduced from spacing-lg to spacing-md */
-    background-color: #15242a; /* Changed to solid color */
-    border-radius: var(--radius-md); /* Reduced radius size */
-    border: 1px solid rgba(34, 197, 94, 0.1);
-    transition: all 0.3s ease;
-  }
-
-  .feature-card:hover {
-    background-color: #15242a; /* Same as default background color */
-    border-color: rgba(34, 197, 94, 0.3);
-    transform: translateY(-2px);
-  }
-
-  .icon-container {
-    width: 3.5rem; /* Reduced from 4rem */
-    height: 3.5rem; /* Reduced from 4rem */
-    background-color: rgba(34, 197, 94, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-sm); /* Reduced from spacing-md to spacing-sm */
-    border: 1px solid rgba(34, 197, 94, 0.2); /* Reduced border width */
-  }
-
-  .icon-container :global(svg) {
-    width: 2rem;
-    height: 2rem;
-    fill: none;
-    stroke: #bfa16b;
-    stroke-width: 2;
-  }
-
-  h3 {
-    font-size: 1.1rem; /* Reduced from 1.25rem */
-    font-weight: 600;
-    color: var(--color-foreground);
-    margin-bottom: var(--spacing-xs); /* Reduced from spacing-sm to spacing-xs */
-    text-align: center;
-  }
-
-  p {
-    color: var(--color-muted);
-    line-height: 1.4; /* Reduced from 1.6 */
-    text-align: center;
-    max-width: 300px;
-    font-size: 0.9rem; /* Added smaller font size */
-  }
-
   /* Brands Carousel Styles - Voke Studios Inspired */
   .brands-carousel-section {
     padding: var(--spacing-xl) 0;
@@ -235,27 +108,27 @@ const brands = ["TILES", "WONDA", "JOMOO", "F.LLI FRATTINI", "I-SPA", "RADAWAY",
 
   @media (max-width: 767px) {
     .brands-carousel-section {
-      padding: var(--spacing-md) 0; /* Reduced padding for mobile */
-      margin-top: var(--spacing-sm); /* Reduced margin */
+      padding: var(--spacing-md) 0;
+      margin-top: var(--spacing-sm);
     }
     
     .carousel-title {
-      font-size: 1.2rem; /* Reduced font size */
-      margin-bottom: var(--spacing-md); /* Reduced margin */
+      font-size: 1.2rem;
+      margin-bottom: var(--spacing-md);
     }
     
     .brands-track {
-      gap: 2rem; /* Reduced gap between brands */
-      padding: 0 1rem; /* Reduced padding */
+      gap: 2rem;
+      padding: 0 1rem;
     }
     
     .brand-item {
-      padding: var(--spacing-xs) var(--spacing-sm); /* Reduced padding */
-      min-width: 120px; /* Reduced min-width */
+      padding: var(--spacing-xs) var(--spacing-sm);
+      min-width: 120px;
     }
     
     .brand-item span {
-      font-size: 0.8rem; /* Reduced font size */
+      font-size: 0.8rem;
     }
   }
 </style>
