@@ -56,10 +56,6 @@ import Footer from '../components/Footer.astro';
       </div>
       </div>
     </section>
-    <section class="section design-card">
-      <h1 class="design-title">RADAWAY</h1>
-      <div class="design-subtitle">INDOOR &mdash; OUTDOOR</div>
-    </section>
     <section class="section design-card gallery-section">
       <h2 class="design-title">Gallery</h2>
       <div class="design-subtitle">COLLECTION SHOWCASE</div>
@@ -99,7 +95,7 @@ import Footer from '../components/Footer.astro';
             From contemporary furniture to architectural elements, explore how we transform spaces into living experiences.
           </p>
           <div class="inspiration-cta">
-            <a href="/services" class="cta-button">Explore Our Services</a>
+            <a href="https://wa.me/15551234567?text=Hello%2C%20I%27m%20interested%20in%20your%20building%20materials%20and%20services" class="cta-button" target="_blank" rel="noopener noreferrer">Explore Our Services</a>
             <a href="/about-us" class="cta-button secondary">Learn More</a>
           </div>
         </div>
@@ -126,8 +122,8 @@ import Footer from '../components/Footer.astro';
             navigation: true,
             scrollHorizontally: false,
             fitToSection: true,
-            anchors: ['collections', 'radaway', 'gallery-link','inspiration'],
-            navigationTooltips: ['Collections', 'Radaway', 'Gallery Link','Inspiration'],
+            anchors: ['collections', 'gallery-link','inspiration'],
+            navigationTooltips: ['Collections', 'Gallery Link','Inspiration'],
             showActiveTooltip: true,
             responsiveWidth: 900,
             credits: { enabled: false },
@@ -247,7 +243,7 @@ import Footer from '../components/Footer.astro';
       function startAutoPlay() {
         autoPlayInterval = setInterval(() => {
           changeSlide(1);
-        }, 4000);
+        }, 2500);
         // Hide play indicator when playing
         const playIndicator = document.querySelector('.carousel-play-indicator');
         if (playIndicator) {
