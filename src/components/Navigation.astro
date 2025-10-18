@@ -231,11 +231,11 @@ const mobileMenuItems: NavItem[] = [
 
   /* Change navbar background when dropdown is open */
   nav.dropdown-open {
-    background: rgba(26, 26, 26, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
+    background: rgba(26, 26, 26, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
     transition: transform 0.3s ease, 
-                background-color 0.3s ease 0s, 
-                backdrop-filter 0.3s ease 0s !important;
+                background-color 0.15s ease, 
+                backdrop-filter 0.15s ease !important;
   }
 
   .nav-container {
@@ -316,13 +316,13 @@ const mobileMenuItems: NavItem[] = [
     width: 100%;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px);
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                visibility 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-10px);
+    transition: opacity 0.15s ease, 
+                visibility 0.15s ease,
+                transform 0.15s ease;
     z-index: 999;
-    background: rgba(26, 26, 26, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(26, 26, 26, 0.98);
+    backdrop-filter: blur(15px);
     pointer-events: none;
   }
 
@@ -337,10 +337,22 @@ const mobileMenuItems: NavItem[] = [
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, 
-                visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
-                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+    transition: opacity 0.15s ease, 
+                visibility 0.15s ease,
+                transform 0.15s ease;
     pointer-events: auto;
+  }
+
+  /* Create invisible bridge between navbar and dropdown */
+  .has-dropdown:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    right: 0;
+    height: 1rem;
+    background: #1a1a1a;
+    z-index: 998;
   }
 
   .dropdown-close {
@@ -386,7 +398,7 @@ const mobileMenuItems: NavItem[] = [
   }
 
   .dropdown-left {
-    padding: 3.5rem 0;
+    padding: 2rem 0 3.5rem 0;
     background: transparent;
     display: flex;
     flex-direction: column;
@@ -443,7 +455,6 @@ const mobileMenuItems: NavItem[] = [
     transition: color 0.3s ease, padding-left 0.3s ease, opacity 0.4s ease, transform 0.4s ease;
     display: block;
     padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     opacity: 0;
     transform: translateX(-10px);
     pointer-events: none;
@@ -463,10 +474,7 @@ const mobileMenuItems: NavItem[] = [
   .has-dropdown:hover .dropdown-item:nth-child(5) { transition-delay: 0.4s; }
   .has-dropdown:hover .dropdown-item:nth-child(6) { transition-delay: 0.45s; }
 
-  .dropdown-item:last-child {
-    border-bottom: none;
-  }
-
+g
   .dropdown-item:hover {
     color: #bfa16b;
     padding-left: 0.5rem;
