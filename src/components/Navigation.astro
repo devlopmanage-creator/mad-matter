@@ -308,6 +308,15 @@ const mobileMenuItems: NavItem[] = [
     transform: rotate(180deg);
   }
 
+  /* Smooth hover transitions for nav links */
+  .nav-link {
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #bfa16b;
+  }
+
   /* Dropdown Menu */
   .dropdown-menu {
     position: fixed;
@@ -343,6 +352,35 @@ const mobileMenuItems: NavItem[] = [
     pointer-events: auto;
   }
 
+  /* Prevent flickering by adding a small delay before closing */
+  .dropdown-menu {
+    transition: opacity 0.15s ease 0.1s, 
+                visibility 0.15s ease 0.1s,
+                transform 0.15s ease 0.1s;
+  }
+
+  /* Ensure dropdown stays open when hovering over the bridge */
+  .has-dropdown:hover::after {
+    pointer-events: auto;
+  }
+
+  /* Smooth transitions for dropdown items */
+  .has-dropdown:hover .dropdown-title {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .has-dropdown:hover .dropdown-description {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .has-dropdown:hover .dropdown-item {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
   /* Create invisible bridge between navbar and dropdown */
   .has-dropdown:hover::after {
     content: '';
@@ -353,6 +391,17 @@ const mobileMenuItems: NavItem[] = [
     height: 1rem;
     background: #1a1a1a;
     z-index: 998;
+    pointer-events: auto;
+  }
+
+  /* Ensure dropdown items don't cause flickering */
+  .dropdown-item {
+    pointer-events: auto;
+  }
+
+  /* Add hover area to dropdown content */
+  .dropdown-content {
+    pointer-events: auto;
   }
 
   .dropdown-close {
@@ -474,7 +523,7 @@ const mobileMenuItems: NavItem[] = [
   .has-dropdown:hover .dropdown-item:nth-child(5) { transition-delay: 0.4s; }
   .has-dropdown:hover .dropdown-item:nth-child(6) { transition-delay: 0.45s; }
 
-g
+  /* Hover effects for dropdown items */
   .dropdown-item:hover {
     color: #bfa16b;
     padding-left: 0.5rem;
@@ -847,24 +896,34 @@ g
 
     // Change navbar background when dropdown is open
     dropdownItems.forEach(item => {
+      let hoverTimeout: ReturnType<typeof setTimeout> | undefined;
+      
       item.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
         nav?.classList.add('dropdown-open');
       });
       
       item.addEventListener('mouseleave', () => {
-        nav?.classList.remove('dropdown-open');
+        hoverTimeout = setTimeout(() => {
+          nav?.classList.remove('dropdown-open');
+        }, 100);
       });
     });
 
     // Also listen to dropdown-menu hover
     const dropdownMenus = document.querySelectorAll('.dropdown-menu');
     dropdownMenus.forEach(menu => {
+      let menuHoverTimeout: ReturnType<typeof setTimeout> | undefined;
+      
       menu.addEventListener('mouseenter', () => {
+        clearTimeout(menuHoverTimeout);
         nav?.classList.add('dropdown-open');
       });
       
       menu.addEventListener('mouseleave', () => {
-        nav?.classList.remove('dropdown-open');
+        menuHoverTimeout = setTimeout(() => {
+          nav?.classList.remove('dropdown-open');
+        }, 100);
       });
     });
 
