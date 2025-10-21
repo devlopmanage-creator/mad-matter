@@ -231,11 +231,12 @@ const mobileMenuItems: NavItem[] = [
 
   /* Change navbar background when dropdown is open */
   nav.dropdown-open {
-    background: rgba(26, 26, 26, 0.98) !important;
-    backdrop-filter: blur(15px) !important;
-    transition: transform 0.3s ease, 
-                background-color 0.15s ease, 
-                backdrop-filter 0.15s ease !important;
+    background: rgba(0, 0, 0, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
 
   .nav-container {
@@ -325,14 +326,16 @@ const mobileMenuItems: NavItem[] = [
     width: 100%;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.15s ease, 
-                visibility 0.15s ease,
-                transform 0.15s ease;
+    transform: translateY(-20px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
-    background: rgba(26, 26, 26, 0.98);
-    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
     pointer-events: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   }
 
   @media (min-width: 1024px) {
@@ -346,18 +349,13 @@ const mobileMenuItems: NavItem[] = [
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    transition: opacity 0.15s ease, 
-                visibility 0.15s ease,
-                transform 0.15s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: auto;
   }
 
-  /* Prevent flickering by adding a small delay before closing */
-  .dropdown-menu {
-    transition: opacity 0.15s ease 0.1s, 
-                visibility 0.15s ease 0.1s,
-                transform 0.15s ease 0.1s;
-  }
+  /* Smooth dropdown animations */
 
   /* Ensure dropdown stays open when hovering over the bridge */
   .has-dropdown:hover::after {
@@ -389,7 +387,7 @@ const mobileMenuItems: NavItem[] = [
     left: 0;
     right: 0;
     height: 1rem;
-    background: #1a1a1a;
+    background: transparent;
     z-index: 998;
     pointer-events: auto;
   }
@@ -406,25 +404,34 @@ const mobileMenuItems: NavItem[] = [
 
   .dropdown-close {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 40px;
-    height: 40px;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.1);
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
     z-index: 10;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .has-dropdown:hover .dropdown-close {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .dropdown-close:hover {
     background: rgba(255, 255, 255, 0.2);
-    transform: rotate(90deg);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1) rotate(90deg);
+    color: white;
   }
 
   .dropdown-menu.force-hide {
@@ -437,22 +444,32 @@ const mobileMenuItems: NavItem[] = [
   .dropdown-content {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 700px;
     gap: 3rem;
     overflow: hidden;
-    min-height: 500px;
+    min-height: 400px;
     pointer-events: auto;
+    position: relative;
   }
 
   .dropdown-left {
-    padding: 2rem 0 3.5rem 0;
+    padding: 1.5rem 0 2rem 0;
     background: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     pointer-events: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, 
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+  }
+
+  .has-dropdown:hover .dropdown-left {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .dropdown-header {
@@ -466,8 +483,9 @@ const mobileMenuItems: NavItem[] = [
     margin: 0 0 1rem 0;
     line-height: 1.2;
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+    transform: translateY(15px);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, 
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
   }
 
   .has-dropdown:hover .dropdown-title {
@@ -476,13 +494,14 @@ const mobileMenuItems: NavItem[] = [
   }
 
   .dropdown-description {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.875rem;
     line-height: 1.6;
     margin: 0;
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+    transform: translateY(15px);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.25s, 
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
   }
 
   .has-dropdown:hover .dropdown-description {
@@ -498,16 +517,20 @@ const mobileMenuItems: NavItem[] = [
   }
 
   .dropdown-item {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-size: 1rem;
-    transition: color 0.3s ease, padding-left 0.3s ease, opacity 0.4s ease, transform 0.4s ease;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
     padding: 0.75rem 0;
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-20px);
     pointer-events: none;
     cursor: pointer;
+    position: relative;
   }
 
   .has-dropdown:hover .dropdown-item {
@@ -516,17 +539,34 @@ const mobileMenuItems: NavItem[] = [
     pointer-events: auto;
   }
 
-  .has-dropdown:hover .dropdown-item:nth-child(1) { transition-delay: 0.2s; }
-  .has-dropdown:hover .dropdown-item:nth-child(2) { transition-delay: 0.25s; }
-  .has-dropdown:hover .dropdown-item:nth-child(3) { transition-delay: 0.3s; }
-  .has-dropdown:hover .dropdown-item:nth-child(4) { transition-delay: 0.35s; }
-  .has-dropdown:hover .dropdown-item:nth-child(5) { transition-delay: 0.4s; }
-  .has-dropdown:hover .dropdown-item:nth-child(6) { transition-delay: 0.45s; }
+  .has-dropdown:hover .dropdown-item:nth-child(1) { transition-delay: 0.3s; }
+  .has-dropdown:hover .dropdown-item:nth-child(2) { transition-delay: 0.35s; }
+  .has-dropdown:hover .dropdown-item:nth-child(3) { transition-delay: 0.4s; }
+  .has-dropdown:hover .dropdown-item:nth-child(4) { transition-delay: 0.45s; }
+  .has-dropdown:hover .dropdown-item:nth-child(5) { transition-delay: 0.5s; }
+  .has-dropdown:hover .dropdown-item:nth-child(6) { transition-delay: 0.55s; }
 
   /* Hover effects for dropdown items */
   .dropdown-item:hover {
     color: #bfa16b;
     padding-left: 0.5rem;
+    transform: translateX(5px);
+  }
+
+  .dropdown-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background: #bfa16b;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dropdown-item:hover::before {
+    width: 6px;
   }
 
   .dropdown-right {
@@ -896,34 +936,24 @@ const mobileMenuItems: NavItem[] = [
 
     // Change navbar background when dropdown is open
     dropdownItems.forEach(item => {
-      let hoverTimeout: ReturnType<typeof setTimeout> | undefined;
-      
       item.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
         nav?.classList.add('dropdown-open');
       });
       
       item.addEventListener('mouseleave', () => {
-        hoverTimeout = setTimeout(() => {
-          nav?.classList.remove('dropdown-open');
-        }, 100);
+        nav?.classList.remove('dropdown-open');
       });
     });
 
     // Also listen to dropdown-menu hover
     const dropdownMenus = document.querySelectorAll('.dropdown-menu');
     dropdownMenus.forEach(menu => {
-      let menuHoverTimeout: ReturnType<typeof setTimeout> | undefined;
-      
       menu.addEventListener('mouseenter', () => {
-        clearTimeout(menuHoverTimeout);
         nav?.classList.add('dropdown-open');
       });
       
       menu.addEventListener('mouseleave', () => {
-        menuHoverTimeout = setTimeout(() => {
-          nav?.classList.remove('dropdown-open');
-        }, 100);
+        nav?.classList.remove('dropdown-open');
       });
     });
 

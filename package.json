@@ -7,14 +7,22 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "build:analyze": "astro build && npx vite-bundle-analyzer dist"
+    "build:analyze": "astro build && npx vite-bundle-analyzer dist",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "astro": "^5.13.5"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.0.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@vitest/ui": "^3.2.4",
+    "jsdom": "^27.0.1",
     "lightningcss": "^1.21.0",
-    "vite-bundle-analyzer": "^0.7.0"
+    "vite-bundle-analyzer": "^0.7.0",
+    "vitest": "^3.2.4"
   }
 }
