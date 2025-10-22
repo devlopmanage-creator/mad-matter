@@ -1209,6 +1209,9 @@ const criticalImages = [
 
     html {
       scroll-behavior: smooth;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
     }
 
     body {
@@ -1219,6 +1222,9 @@ const criticalImages = [
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       font-weight: 300;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
     }
 
     .jomoo-main {
@@ -1226,6 +1232,8 @@ const criticalImages = [
       margin: 0;
       padding: 0;
       display: block;
+      background-color: #000;
+      min-height: 100vh;
     }
 
     /* GSAP Animation optimizations */
@@ -1424,6 +1432,7 @@ const criticalImages = [
       background: #000;
       margin: 0;
       padding: 0;
+      width: 100%;
     }
 
     .home-banner .img {
@@ -1448,29 +1457,30 @@ const criticalImages = [
     .home-banner .tbox {
       position: absolute;
       top: 50%;
-      left: 4rem;
+      left: clamp(1.5rem, 5vw, 4rem);
       transform: translateY(-50%);
       z-index: 2;
       color: white;
       max-width: 600px;
+      padding-right: 1rem;
     }
 
 
     .home-banner .title {
-      font-size: 4.5rem;
+      font-size: clamp(2rem, 6vw, 4.5rem);
       line-height: 1.1;
-      margin-bottom: 2rem;
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
       font-weight: 400;
       letter-spacing: -0.02em;
     }
 
     .home-banner .txt {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       line-height: 1.7;
       opacity: 0.95;
       font-weight: 300;
       max-width: 550px;
-      margin: 0 auto;
+      margin: 0;
     }
 
     /* Collections Section */
@@ -1483,6 +1493,7 @@ const criticalImages = [
       align-items: center;
       justify-content: center;
       position: relative;
+      width: 100%;
     }
 
     .index-box1 .box {
@@ -1523,26 +1534,27 @@ const criticalImages = [
     .index-box1 .container {
       position: absolute;
       top: 50%;
-      left: 4rem;
+      left: clamp(1.5rem, 5vw, 4rem);
       transform: translateY(-50%);
       z-index: 2;
       color: white;
       max-width: 600px;
+      padding-right: 1rem;
     }
 
 
     .index-box1 .title {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem);
       font-weight: 300;
       line-height: 1.2;
       letter-spacing: -0.01em;
     }
 
     .index-box1 .txt {
-      font-size: 1.15rem;
+      font-size: clamp(1rem, 2.25vw, 1.15rem);
       line-height: 1.7;
-      margin-bottom: 2.5rem;
+      margin-bottom: clamp(2rem, 3vw, 2.5rem);
       opacity: 0.9;
       font-weight: 300;
       max-width: 600px;
@@ -1626,6 +1638,7 @@ const criticalImages = [
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
     }
 
     .index-box2 .swiper-container {
@@ -1637,15 +1650,16 @@ const criticalImages = [
     .index-box2 .container-box {
       position: absolute;
       top: 50%;
-      left: 4rem;
+      left: clamp(1.5rem, 5vw, 4rem);
       transform: translateY(-50%);
       z-index: 2;
       max-width: 700px;
+      padding-right: 1rem;
     }
 
     .index-box2 .title {
-      font-size: 4rem;
-      margin-bottom: 2.5rem;
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
       font-weight: 300;
       line-height: 1.15;
       letter-spacing: -0.02em;
@@ -1653,7 +1667,7 @@ const criticalImages = [
     }
 
     .index-box2 .txt {
-      font-size: 1.15rem;
+      font-size: clamp(1rem, 2.25vw, 1.15rem);
       line-height: 1.75;
       opacity: 0.9;
       max-width: 600px;
@@ -1717,6 +1731,7 @@ const criticalImages = [
       padding: 6rem 0;
       min-height: auto;
       position: relative;
+      width: 100%;
     }
 
     .index-box4 .container {
@@ -1727,9 +1742,9 @@ const criticalImages = [
     }
 
     .index-box4 .title {
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 4vw, 2.8rem);
       text-align: left;
-      margin-bottom: 3.5rem;
+      margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
       color: #000;
       font-weight: 300;
       letter-spacing: -0.01em;
@@ -1907,6 +1922,7 @@ const criticalImages = [
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
     }
 
     .index-box5 .box {
@@ -1951,8 +1967,8 @@ const criticalImages = [
     }
     
     .index-box5 .title {
-      font-size: 3.5rem;
-      margin-bottom: 4.5rem;
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      margin-bottom: clamp(3rem, 5vw, 4.5rem);
       color: #1a1a1a;
       font-weight: 300;
       text-align: center;
@@ -2039,6 +2055,7 @@ const criticalImages = [
       padding: 8rem 0;
       position: relative;
       overflow: hidden;
+      width: 100%;
     }
 
     .wonda-container {
@@ -2048,9 +2065,9 @@ const criticalImages = [
     }
 
     .wonda-section .title {
-      font-size: 4rem;
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: clamp(1.25rem, 2.5vw, 1.5rem);
       color: #000;
       font-weight: 300;
       letter-spacing: -0.02em;
@@ -2062,9 +2079,9 @@ const criticalImages = [
 
     .wonda-section .subtitle {
       text-align: center;
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: #666;
-      margin-bottom: 5rem;
+      margin-bottom: clamp(3.5rem, 6vw, 5rem);
       font-weight: 300;
       letter-spacing: 0.02em;
     }
@@ -2177,305 +2194,155 @@ const criticalImages = [
     }
 
     @media (max-width: 768px) {
-      /* Adjust full-page sections for mobile */
+      /* Eliminar espacios blancos y mejorar estructura móvil */
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #000 !important;
+        overflow-x: hidden !important;
+      }
+
+      .jomoo-main {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+      }
+
+      /* Hero Banner optimizado para móvil */
+      .home-banner {
+        height: 100vh;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        background: #000;
+      }
+
       .index-box1,
       .index-box2,
       .index-box5 {
-        min-height: auto;
-        padding: 3rem 0;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
       }
 
       .index-box1 .box,
       .index-box2 .swiper-container,
       .index-box5 .box {
-        height: auto;
-        min-height: 70vh;
+        height: 100vh;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
       }
 
       .index-box5 .list ul {
         grid-template-columns: 1fr;
         gap: 2rem;
-      }
-
-      .home-banner .tbox,
-      .index-box1 .container,
-      .index-box2 .container-box {
-        left: 2rem;
-        max-width: calc(100% - 4rem);
-      }
-
-      .home-banner .title,
-      .index-box1 .title,
-      .index-box2 .title {
-        font-size: 2rem;
-      }
-
-      .index-box4 .title,
-      .index-box5 .title {
-        font-size: 2rem;
-      }
-
-      .tabs {
-        right: 2rem;
-        bottom: 2rem;
-        flex-direction: row;
-        gap: 1rem;
-      }
-
-      .tabs li {
-        font-size: 1rem;
-        padding: 0.5rem 0.8rem 0.5rem 1.5rem;
-      }
-
-      .tab-indicator {
-        width: 8px;
-        height: 8px;
-      }
-
-      .index-box2 .swiper-pagination {
-        left: 2rem;
-        bottom: 1rem;
-      }
-
-      .index-box4 .swiper-slide {
-        width: 450px;
-      }
-
-      .item {
-        height: 350px;
-      }
-
-      .item .txt {
-        font-size: 1.1rem;
-        padding: 1.5rem;
-      }
-
-      .swiper-next,
-      .swiper-prev {
-        width: 36px;
-        height: 36px;
-        margin-top: -18px;
-      }
-
-      .swiper-next {
-        right: 20px;
-      }
-
-      .swiper-prev {
-        left: 20px;
-      }
-
-      .swiper-prev svg,
-      .swiper-next svg {
-        width: 14px;
-        height: 14px;
-      }
-
-      .videoplay {
-        width: 36px;
-        height: 36px;
-        bottom: 20px;
-        right: 20px;
-      }
-
-      .videoplay svg {
-        width: 14px;
-        height: 14px;
-      }
-
-      .swiper-pagination {
-        bottom: 20px;
-      }
-
-      .swiper-pagination-bullet {
-        width: 30px;
-        height: 5px;
-      }
-
-      .ibox {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .index-box5 .list ul {
-        grid-template-columns: 1fr;
-      }
-
-      .wonda-section {
-        padding: 4rem 0;
-      }
-
-      .wonda-container {
-        padding: 0 2rem;
-      }
-
-      .wonda-gallery {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .wonda-section .title {
-        font-size: 2.5rem;
-      }
-
-      .wonda-section .subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 3rem;
-      }
-
-      .wonda-image {
-        height: 300px;
-      }
-
-      .wonda-text {
-        padding: 2rem 1.5rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .home-banner .title,
-      .index-box1 .title,
-      .index-box2 .title,
-      .index-box5 .title,
-      .ibox .title {
-        font-size: 1.5rem;
-      }
-
-      .home-banner .txt,
-      .index-box1 .txt,
-      .index-box2 .txt {
-        font-size: 1rem;
-      }
-
-      .index-box4 .swiper-slide {
-        width: 400px;
-      }
-
-      .item {
-        height: 300px;
-      }
-
-      .item .txt {
-        padding: 1.5rem 1rem;
-        font-size: 1rem;
-      }
-      
-      .home-banner {
-        height: 70vh;
-      }
-      
-      .index-box1 .list,
-      .index-box2 {
-        height: 400px;
-      }
-
-      .wonda-section .title {
-        font-size: 2rem;
-      }
-
-      .wonda-section .subtitle {
-        font-size: 1rem;
-      }
-
-      .wonda-image {
-        height: 280px;
-      }
-
-      .wonda-text h3 {
-        font-size: 1.3rem;
-      }
-
-      .wonda-text p {
-        font-size: 0.95rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .home-banner .tbox,
-      .index-box1 .container,
-      .index-box2 .container-box {
-        left: 1rem;
-        max-width: calc(100% - 2rem);
-      }
-      
-      .tabs {
-        right: 1rem;
-        bottom: 1rem;
-        gap: 0.5rem;
-      }
-
-      .tabs li {
-        font-size: 0.85rem;
-        padding: 0.4rem 0.5rem;
-      }
-      
-      .index-box2 .swiper-pagination {
-        left: 1rem;
       }
 
       .index-box5 .container {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
       }
 
-      .index-box5 .title {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
+      .home-banner .tbox,
+      .index-box1 .container,
+      .index-box2 .container-box {
+        left: 1rem;
+        right: 1rem;
+        max-width: calc(100% - 2rem);
+        padding-right: 0;
+      }
+
+      .index-box4 .container {
+        padding: 0 1rem;
+      }
+
+      .index-box4 .list {
+        padding: 0 0.5rem;
+      }
+
+      .tabs {
+        right: 1rem;
+        bottom: 1.5rem;
+        left: 1rem;
+        flex-direction: row;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        max-width: calc(100% - 2rem);
+      }
+
+      .tabs li {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.75rem 0.5rem 1.5rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .tab-indicator {
+        width: 6px;
+        height: 6px;
+      }
+
+      .index-box2 .swiper-pagination {
+        left: 1rem;
+        bottom: 1.5rem;
       }
 
       .index-box4 .swiper-slide {
-        width: 320px;
+        width: 350px;
       }
 
       .item {
-        height: 250px;
+        height: 300px;
       }
 
       .item .txt {
-        padding: 1.2rem 0.8rem;
-        font-size: 0.95rem;
+        font-size: 1rem;
+        padding: 1.25rem 1rem;
       }
-      
+
       .swiper-next,
       .swiper-prev {
-        width: 32px;
-        height: 32px;
-        margin-top: -16px;
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
       }
 
       .swiper-next {
-        right: 15px;
+        right: 12px;
       }
 
       .swiper-prev {
-        left: 15px;
+        left: 12px;
       }
 
       .swiper-prev svg,
       .swiper-next svg {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
       }
-      
+
       .videoplay {
-        width: 32px;
-        height: 32px;
-        bottom: 15px;
-        right: 15px;
+        width: 40px;
+        height: 40px;
+        bottom: 16px;
+        right: 12px;
       }
 
       .videoplay svg {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
       }
 
       .swiper-pagination {
-        bottom: 15px;
-        gap: 6px;
+        bottom: 16px;
       }
 
       .swiper-pagination-bullet {
-        width: 25px;
-        height: 4px;
+        width: 28px;
+        height: 5px;
       }
 
       .wonda-section {
@@ -2486,14 +2353,9 @@ const criticalImages = [
         padding: 0 1rem;
       }
 
-      .wonda-section .title {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-      }
-
-      .wonda-section .subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 2.5rem;
+      .wonda-gallery {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
 
       .wonda-image {
@@ -2503,17 +2365,250 @@ const criticalImages = [
       .wonda-text {
         padding: 1.5rem 1rem;
       }
+    }
+
+    @media (max-width: 600px) {
+      /* Estructura optimizada para móviles pequeños */
+      .home-banner {
+        height: 100vh;
+        min-height: 100vh;
+      }
+
+      .home-banner .txt,
+      .index-box1 .txt,
+      .index-box2 .txt {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      
+      .index-box1 .box,
+      .index-box2 .swiper-container {
+        min-height: 100vh;
+      }
+
+      .index-box4 .container {
+        padding: 0 0.75rem;
+      }
+
+      .index-box4 .list {
+        padding: 0 0.25rem;
+      }
+
+      .index-box4 .swiper-slide {
+        width: 300px;
+      }
+
+      .item {
+        height: 260px;
+      }
+
+      .item .txt {
+        padding: 1rem 0.85rem;
+        font-size: 0.9rem;
+      }
+
+      .more {
+        padding: 0.75rem 1.75rem;
+        font-size: 0.85rem;
+      }
+
+      .tabs {
+        bottom: 1rem;
+        gap: 0.4rem;
+      }
+
+      .tabs li {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem 0.4rem 1.25rem;
+        min-width: 0;
+        flex: 1;
+      }
+
+      .wonda-image {
+        height: 220px;
+      }
 
       .wonda-text h3 {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
       }
 
       .wonda-text p {
         font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .wonda-text {
+        padding: 1.5rem 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Estructura ultra-compacta para móviles muy pequeños */
+      .home-banner {
+        height: 100vh;
+        min-height: 100vh;
+      }
+
+      .home-banner .tbox,
+      .index-box1 .container,
+      .index-box2 .container-box {
+        left: 0.75rem;
+        right: 0.75rem;
+        max-width: calc(100% - 1.5rem);
+        padding-right: 0;
+      }
+      
+      .tabs {
+        right: 0.75rem;
+        bottom: 1rem;
+        left: 0.75rem;
+        gap: 0.3rem;
+        max-width: calc(100% - 1.5rem);
+      }
+
+      .tabs li {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.6rem 0.4rem 1.25rem;
+        min-height: 40px;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .tab-indicator {
+        width: 5px;
+        height: 5px;
+      }
+      
+      .index-box2 .swiper-pagination {
+        left: 0.75rem;
+        bottom: 1rem;
+      }
+
+      .index-box2 .swiper-pagination-current {
+        font-size: 2rem;
+      }
+
+      .index-box2 .swiper-pagination-total {
+        font-size: 1rem;
+      }
+
+      .index-box5 .container {
+        padding: 1.5rem 0.75rem;
+      }
+
+      .index-box4 .container {
+        padding: 0 0.5rem;
+      }
+
+      .index-box4 .list {
+        padding: 0;
+      }
+
+      .index-box4 .swiper-slide {
+        width: 280px;
+      }
+
+      .item {
+        height: 220px;
+      }
+
+      .item .txt {
+        padding: 0.85rem 0.75rem;
+        font-size: 0.85rem;
+      }
+
+      .more {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+      }
+      
+      .swiper-next,
+      .swiper-prev {
+        width: 36px;
+        height: 36px;
+        margin-top: -18px;
+      }
+
+      .swiper-next {
+        right: 8px;
+      }
+
+      .swiper-prev {
+        left: 8px;
+      }
+
+      .swiper-prev svg,
+      .swiper-next svg {
+        width: 12px;
+        height: 12px;
+      }
+      
+      .videoplay {
+        width: 36px;
+        height: 36px;
+        bottom: 12px;
+        right: 8px;
+      }
+
+      .videoplay svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      .swiper-pagination {
+        bottom: 12px;
+        gap: 6px;
+      }
+
+      .swiper-pagination-bullet {
+        width: 24px;
+        height: 4px;
+      }
+
+      .wonda-section {
+        padding: 2.5rem 0;
+      }
+
+      .wonda-container {
+        padding: 0 0.75rem;
+      }
+
+      .wonda-image {
+        height: 200px;
+      }
+
+      .wonda-text {
+        padding: 1.25rem 0.75rem;
+      }
+
+      .wonda-text h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .wonda-text p {
+        font-size: 0.85rem;
+        line-height: 1.6;
       }
 
       .wonda-cta .more {
-        padding: 0.9rem 2rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.8rem;
+      }
+
+      .index-box5 .public-img {
+        height: 180px;
+      }
+
+      .index-box5 .txt {
+        padding: 1.5rem 1rem;
+      }
+
+      .index-box5 .txt h3 {
+        font-size: 1.1rem;
+      }
+
+      .index-box5 .txt p {
         font-size: 0.9rem;
       }
     }
