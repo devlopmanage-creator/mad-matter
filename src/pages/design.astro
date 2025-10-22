@@ -1063,6 +1063,84 @@ const criticalImages = [
             }
           });
 
+          // Add click functionality to services section
+          const servicesSection = document.querySelector('.index-box2');
+          if (servicesSection) {
+            // Click on content area to go to next slide
+            const containerBox = servicesSection.querySelector('.container-box');
+            if (containerBox) {
+              containerBox.style.cursor = 'pointer';
+              containerBox.addEventListener('click', function() {
+                if (featuresSwiper && !featuresSwiper.isEnd) {
+                  featuresSwiper.slideNext();
+                } else if (featuresSwiper && featuresSwiper.isEnd) {
+                  featuresSwiper.slideTo(0); // Go back to first slide
+                }
+              });
+            }
+
+            // Click on pagination to navigate directly
+            const paginationCurrent = servicesSection.querySelector('.swiper-pagination-current');
+            const paginationTotal = servicesSection.querySelector('.swiper-pagination-total');
+            
+            if (paginationCurrent) {
+              paginationCurrent.style.cursor = 'pointer';
+              paginationCurrent.addEventListener('click', function() {
+                if (featuresSwiper && !featuresSwiper.isEnd) {
+                  featuresSwiper.slideNext();
+                } else if (featuresSwiper && featuresSwiper.isEnd) {
+                  featuresSwiper.slideTo(0);
+                }
+              });
+            }
+
+            if (paginationTotal) {
+              paginationTotal.style.cursor = 'pointer';
+              paginationTotal.addEventListener('click', function() {
+                if (featuresSwiper && !featuresSwiper.isEnd) {
+                  featuresSwiper.slideNext();
+                } else if (featuresSwiper && featuresSwiper.isEnd) {
+                  featuresSwiper.slideTo(0);
+                }
+              });
+            }
+
+            // Click on progress bar to navigate
+            const progressBar = servicesSection.querySelector('.progress-bar');
+            if (progressBar) {
+              progressBar.style.cursor = 'pointer';
+              progressBar.addEventListener('click', function() {
+                if (featuresSwiper && !featuresSwiper.isEnd) {
+                  featuresSwiper.slideNext();
+                } else if (featuresSwiper && featuresSwiper.isEnd) {
+                  featuresSwiper.slideTo(0);
+                }
+              });
+            }
+
+            // Add visual feedback for clickable elements
+            const clickableElements = [containerBox, paginationCurrent, paginationTotal, progressBar];
+            clickableElements.forEach(element => {
+              if (element) {
+                element.addEventListener('mouseenter', function() {
+                  gsap.to(this, {
+                    scale: 1.02,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                  });
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                  gsap.to(this, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                  });
+                });
+              }
+            });
+          }
+
           // Projects Swiper
           const projectsSwiper = new Swiper('.index-box4 .swiper-container', {
             slidesPerView: 'auto',
@@ -1723,6 +1801,31 @@ const criticalImages = [
       background: white;
       transition: width 0.3s ease;
       width: 25%;
+      cursor: pointer;
+    }
+
+    .index-box2 .progress-bar:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .index-box2 .container-box {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .index-box2 .container-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .index-box2 .swiper-pagination-current,
+    .index-box2 .swiper-pagination-total {
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .index-box2 .swiper-pagination-current:hover,
+    .index-box2 .swiper-pagination-total:hover {
+      opacity: 0.8;
     }
 
     /* Projects Section */
