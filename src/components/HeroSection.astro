@@ -3,18 +3,8 @@
 ---
 
 <section id="home">
-  <!-- Background with optimized loading -->
+  <!-- Background with video only -->
   <div class="background">
-    <img
-      class="background-placeholder"
-      id="heroPlaceholder"
-      src="https://res.cloudinary.com/doleg7smw/image/upload/c_scale,w_1920,q_auto,f_auto/v1758771282/photo_2025-09-25_00-14-17_kspwix.jpg"
-      alt="Building materials showcase"
-      loading="eager"
-      decoding="async"
-      width="1920"
-      height="1080"
-    />
     <video
       class="background-video active"
       id="heroVideo"
@@ -22,9 +12,10 @@
       muted
       loop
       playsinline
-      preload="auto"
+      preload="metadata"
       width="1920"
       height="1080"
+      webkit-playsinline
     >
       <source src="https://res.cloudinary.com/doleg7smw/video/upload/c_scale,w_1920,q_auto,f_auto/v1758669242/Clip_1_kxpdba.mp4" type="video/mp4" />
       Your browser does not support the video tag.
@@ -115,6 +106,18 @@
     opacity: 0.01;
   }
 
+  .background-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    will-change: opacity;
+  }
+
   @keyframes subtleZoom {
     0% {
       transform: scale(1.3) translateZ(0);
@@ -124,22 +127,6 @@
     }
   }
 
-  .background-placeholder {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    transform: scale(1.3) translateZ(0);
-    opacity: 1;
-    transition: opacity 0.6s ease-out;
-  }
-
-  .background-placeholder.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
 
   .overlay {
     position: absolute;
@@ -582,10 +569,17 @@
 <script>
   import { gsap } from 'gsap';
   
-  // Video carousel with optimizations
+  // Video carousel with optimizations and cache busting
+  const cacheBuster = Date.now();
   const videos = [
-    'https://res.cloudinary.com/doleg7smw/video/upload/c_scale,w_1920,q_auto,f_auto/v1758669242/Clip_1_kxpdba.mp4',
-    'https://res.cloudinary.com/doleg7smw/video/upload/v1759340239/WONDA_MOVIE__dlaopm.mp4'
+    `https://res.cloudinary.com/doleg7smw/video/upload/c_scale,w_1920,q_auto,f_auto/v1758669242/Clip_1_kxpdba.mp4?v=${cacheBuster}`,
+    `https://res.cloudinary.com/doleg7smw/video/upload/v1759340239/WONDA_MOVIE__dlaopm.mp4?v=${cacheBuster}`
+  ];
+
+  // Preload images for fallback (like design.astro)
+  const fallbackImages = [
+    'https://cdn-eow.jomoo.com/admin/dev/f786ed8423fc030f0d53f737ff503a2c.jpg',
+    'https://cdn-eow.jomoo.com/admin/dev/ef3ceff016ee473cb637941071ff405b.jpg'
   ];
 
   // Content for each video
@@ -609,7 +603,6 @@
   const autoplayDelay = 8000; // 8 seconds
   
   const videoElement = document.getElementById('heroVideo') as HTMLVideoElement;
-  const placeholderElement = document.getElementById('heroPlaceholder') as HTMLImageElement;
   const prevBtn = document.querySelector('.nav-btn-left') as HTMLButtonElement;
   const nextBtn = document.querySelector('.nav-btn-right') as HTMLButtonElement;
   const indicators = document.querySelectorAll('.indicator') as NodeListOf<HTMLButtonElement>;
@@ -620,12 +613,93 @@
   const heroDescription = document.getElementById('heroDescription') as HTMLParagraphElement;
   const accentWrapper = document.getElementById('accentWrapper') as HTMLDivElement;
 
-  // Hide placeholder when video loads
-  if (videoElement && placeholderElement) {
-    videoElement.addEventListener('loadeddata', () => {
-      placeholderElement.classList.add('hidden');
+  // Enhanced video loading with fallback (like design.astro approach)
+  if (videoElement) {
+    let videoReady = false;
+    let fallbackUsed = false;
+    
+    // Preload fallback images
+    fallbackImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+    
+    // Create fallback background image
+    const createFallbackBackground = (imageSrc: string) => {
+      const backgroundDiv = document.createElement('div');
+      backgroundDiv.className = 'background-placeholder';
+      backgroundDiv.style.cssText = `
+        position: absolute;
+        inset: 0;
+        background-image: url(${imageSrc});
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+      `;
+      return backgroundDiv;
+    };
+    
+    // Multiple event listeners for better compatibility
+    const handleVideoReady = () => {
+      if (videoReady) return;
+      videoReady = true;
+      
       videoElement.classList.add('active');
-    }, { once: true });
+      
+      // Ensure video plays immediately with retry mechanism
+      const playVideo = () => {
+        videoElement.play().catch(error => {
+          console.log('Autoplay prevented:', error);
+          
+          // Use fallback image if video fails
+          if (!fallbackUsed) {
+            fallbackUsed = true;
+            const fallbackBg = createFallbackBackground(fallbackImages[0]);
+            if (videoElement.parentElement) {
+              videoElement.parentElement.appendChild(fallbackBg);
+              
+              // Fade in fallback
+              setTimeout(() => {
+                fallbackBg.style.opacity = '1';
+              }, 100);
+            }
+          }
+          
+          // Retry after a short delay
+          setTimeout(() => {
+            videoElement.play().catch(() => {
+              console.log('Retry autoplay failed');
+            });
+          }, 500);
+        });
+      };
+      
+      // Try to play immediately
+      playVideo();
+    };
+    
+    // Listen to multiple events for better compatibility
+    videoElement.addEventListener('canplay', handleVideoReady, { once: true });
+    videoElement.addEventListener('loadeddata', handleVideoReady, { once: true });
+    videoElement.addEventListener('loadedmetadata', handleVideoReady, { once: true });
+    
+    // Handle video errors with fallback
+    videoElement.addEventListener('error', () => {
+      if (!fallbackUsed) {
+        fallbackUsed = true;
+        const fallbackBg = createFallbackBackground(fallbackImages[0]);
+        if (videoElement.parentElement) {
+          videoElement.parentElement.appendChild(fallbackBg);
+          
+          setTimeout(() => {
+            fallbackBg.style.opacity = '1';
+          }, 100);
+        }
+      }
+    });
   }
 
   // Preload next video for smoother transitions
@@ -636,6 +710,30 @@
       link.as = 'video';
       link.href = videos[index];
       document.head.appendChild(link);
+    }
+  }
+
+  // Force video reload with cache busting
+  function forceVideoReload() {
+    if (videoElement) {
+      const currentTime = videoElement.currentTime;
+      const wasPlaying = !videoElement.paused;
+      
+      // Add cache buster to current video
+      const sourceElement = videoElement.querySelector('source') as HTMLSourceElement;
+      if (sourceElement) {
+        const baseUrl = sourceElement.src.split('?')[0];
+        sourceElement.src = `${baseUrl}?v=${Date.now()}`;
+        videoElement.load();
+        
+        // Restore playback state
+        videoElement.addEventListener('canplay', () => {
+          videoElement.currentTime = currentTime;
+          if (wasPlaying) {
+            videoElement.play().catch(console.log);
+          }
+        }, { once: true });
+      }
     }
   }
 
@@ -797,7 +895,7 @@
     }, 300);
   }
 
-  // Change video with smooth transition
+  // Change video with smooth transition (enhanced like design.astro)
   async function changeVideo(newIndex: number) {
     if (isTransitioning || newIndex === currentVideoIndex) return;
     
@@ -827,26 +925,108 @@
         sourceElement.src = videos[newIndex];
         videoElement.load();
         
-        // Wait for video to be ready
+        // Wait for video to be ready with better error handling
         await new Promise<void>((resolve, reject) => {
+          let resolved = false;
+          
           const onCanPlay = () => {
+            if (resolved) return;
+            resolved = true;
             videoElement.removeEventListener('canplay', onCanPlay);
             videoElement.removeEventListener('error', onError);
+            videoElement.removeEventListener('stalled', onStalled);
             resolve();
           };
           
           const onError = () => {
+            if (resolved) return;
+            resolved = true;
             videoElement.removeEventListener('canplay', onCanPlay);
             videoElement.removeEventListener('error', onError);
-            reject(new Error('Video load failed'));
+            videoElement.removeEventListener('stalled', onStalled);
+            
+            // Use fallback image for this video
+            const fallbackBg = document.createElement('div');
+            fallbackBg.className = 'background-placeholder';
+            fallbackBg.style.cssText = `
+              position: absolute;
+              inset: 0;
+              background-image: url(${fallbackImages[newIndex] || fallbackImages[0]});
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              z-index: 1;
+              opacity: 0;
+              transition: opacity 0.8s ease-in-out;
+            `;
+            if (videoElement.parentElement) {
+              videoElement.parentElement.appendChild(fallbackBg);
+              
+              setTimeout(() => {
+                fallbackBg.style.opacity = '1';
+              }, 100);
+            }
+            
+            resolve(); // Continue with fallback
+          };
+          
+          const onStalled = () => {
+            console.log('Video stalled, retrying...');
+            // Retry loading
+            videoElement.load();
           };
           
           videoElement.addEventListener('canplay', onCanPlay, { once: true });
           videoElement.addEventListener('error', onError, { once: true });
+          videoElement.addEventListener('stalled', onStalled);
+          
+          // Timeout fallback
+          setTimeout(() => {
+            if (!resolved) {
+              resolved = true;
+              videoElement.removeEventListener('canplay', onCanPlay);
+              videoElement.removeEventListener('error', onError);
+              videoElement.removeEventListener('stalled', onStalled);
+              resolve(); // Continue even if not fully loaded
+            }
+          }, 5000);
         });
         
-        // Play and fade in
-        await videoElement.play();
+        // Play and fade in with retry mechanism
+        try {
+          await videoElement.play();
+        } catch (playError) {
+          console.log('Play failed, retrying...', playError);
+          // Retry play after a short delay
+          await new Promise(resolve => setTimeout(resolve, 100));
+          try {
+            await videoElement.play();
+          } catch (retryError) {
+            console.log('Retry play failed, using fallback');
+            // Use fallback image
+            const fallbackBg = document.createElement('div');
+            fallbackBg.className = 'background-placeholder';
+            fallbackBg.style.cssText = `
+              position: absolute;
+              inset: 0;
+              background-image: url(${fallbackImages[newIndex] || fallbackImages[0]});
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              z-index: 1;
+              opacity: 0;
+              transition: opacity 0.8s ease-in-out;
+            `;
+            if (videoElement.parentElement) {
+              videoElement.parentElement.appendChild(fallbackBg);
+              
+              setTimeout(() => {
+                fallbackBg.style.opacity = '1';
+              }, 100);
+            }
+          }
+        }
+        
         videoElement.classList.add('active');
         
         currentVideoIndex = newIndex;
@@ -916,6 +1096,11 @@
       handlePrevious();
     } else if (e.key === 'ArrowRight') {
       handleNext();
+    } else if (e.key === 'r' && e.ctrlKey) {
+      // Ctrl+R to force reload video
+      e.preventDefault();
+      forceVideoReload();
+      console.log('Video cache cleared and reloaded');
     }
   });
 
@@ -997,10 +1182,55 @@
     }, 100);
   });
 
-  // Preload second video on page load
+  // Preload second video on page load and ensure first video plays (enhanced like design.astro)
   if (typeof window !== 'undefined') {
     window.addEventListener('load', () => {
       preloadVideo(1);
+      
+      // Preload fallback images
+      fallbackImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+      
+      // Ensure first video is playing with better error handling
+      if (videoElement) {
+        // Check if video is already playing
+        if (videoElement.paused) {
+          videoElement.play().catch(error => {
+            console.log('Autoplay prevented on load:', error);
+            
+            // Use fallback image if video fails to play
+            const fallbackBg = document.createElement('div');
+            fallbackBg.className = 'background-placeholder';
+            fallbackBg.style.cssText = `
+              position: absolute;
+              inset: 0;
+              background-image: url(${fallbackImages[0]});
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+              z-index: 1;
+              opacity: 0;
+              transition: opacity 0.8s ease-in-out;
+            `;
+            if (videoElement.parentElement) {
+              videoElement.parentElement.appendChild(fallbackBg);
+              
+              setTimeout(() => {
+                fallbackBg.style.opacity = '1';
+              }, 100);
+            }
+            
+            // Show play button or handle gracefully
+            if (playPauseBtn) {
+              playPauseBtn.style.opacity = '1';
+              playPauseBtn.style.visibility = 'visible';
+            }
+          });
+        }
+      }
+      
       // Start autoplay after animations (1.5s like design.astro)
       setTimeout(() => {
         startAutoplay();
