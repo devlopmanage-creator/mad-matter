@@ -191,6 +191,7 @@
     letter-spacing: 0.03em;
     line-height: 1.3;
     opacity: 0;
+    transform: translateY(50px);
   }
 
   h1.multiline {
@@ -251,6 +252,7 @@
     letter-spacing: 0.015em;
     line-height: 1.6;
     opacity: 0;
+    transform: translateY(30px);
   }
 
   /* Navigation Buttons - JOMOO Style */
@@ -332,7 +334,7 @@
     position: absolute;
     bottom: 30px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(20px);
     z-index: 50;
     display: flex;
     gap: 8px;
@@ -394,6 +396,7 @@
     transition: all 0.3s ease;
     will-change: transform, background, border-color;
     opacity: 0;
+    transform: scale(0.8);
   }
 
   .videoplay:hover {
@@ -913,44 +916,45 @@
       console.log('GSAP loaded, initializing hero animations...');
       
       // Initial page load animations (like design.astro home-banner)
-      gsap.from('#heroTitle', {
+      gsap.to('#heroTitle', {
         duration: 1.2,
-        y: 50,
-        opacity: 0,
+        y: 0,
+        opacity: 1,
         ease: 'power3.out',
         delay: 0.3
       });
       
-      gsap.from('#heroDescription', {
+      gsap.to('#heroDescription', {
         duration: 1,
-        y: 30,
-        opacity: 0,
+        y: 0,
+        opacity: 1,
         ease: 'power3.out',
         delay: 0.6
       });
       
       // Animate navigation buttons
-      gsap.from('.nav-btn', {
+      gsap.to('.nav-btn', {
         duration: 0.8,
-        opacity: 0,
+        opacity: 1,
         ease: 'power3.out',
         delay: 0.8
       });
       
       // Animate indicators
-      gsap.from('.video-indicators', {
+      gsap.to('.video-indicators', {
         duration: 0.8,
-        y: 20,
-        opacity: 0,
+        x: '-50%',
+        y: 0,
+        opacity: 1,
         ease: 'power3.out',
         delay: 0.9
       });
       
       // Animate play/pause button
-      gsap.from('.videoplay', {
+      gsap.to('.videoplay', {
         duration: 0.8,
-        scale: 0.8,
-        opacity: 0,
+        scale: 1,
+        opacity: 1,
         ease: 'back.out(1.7)',
         delay: 1
       });
