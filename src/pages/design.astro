@@ -1,1133 +1,2538 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+
+// Preload critical images for better performance
+const criticalImages = [
+  'https://cdn-eow.jomoo.com/admin/dev/f786ed8423fc030f0d53f737ff503a2c.jpg',
+  'https://cdn-eow.jomoo.com/admin/dev/ef3ceff016ee473cb637941071ff405b.jpg',
+  'https://cdn-eow.jomoo.com/admin/dev/1dfe14c482669be0a845c05b6c0d58ce.jpg'
+];
 ---
 
-
 <Layout 
-  title="Design Inspiration - FAMUAE | Modern Interior & Exterior Design Solutions"
-  description="Discover design inspiration with FAMUAE's modern interior and exterior solutions. Explore our focus on indoor-outdoor living and contemporary design trends."
-  keywords="design inspiration, modern interior design, exterior design, indoor outdoor living, contemporary design UAE, design trends, FAMUAE design"
+  title="WONDA Design Solutions" 
+  description="Premium bathroom and kitchen solutions with intelligent technology and elegant design" 
+  keywords="WONDA, bathroom, kitchen, design, luxury, smart technology, intelligent fixtures, modern design"
 >
   <Navigation />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.24/fullpage.min.css" />
-  <div id="fullpage">
-    <section class="section design-hero collections-section">
-      <!-- Simple CSS Carousel -->
-      <div class="simple-carousel">
-        <div class="carousel-container">
-          <div class="carousel-slide active">
-            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343593/23_fvxxy7.jpg" alt="Collection 1" class="design-img" loading="eager" />
-          </div>
-          <div class="carousel-slide">
-            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/21_tucbvi.jpg" alt="Collection 2" class="design-img" loading="lazy" />
-          </div>
-          <div class="carousel-slide">
-            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/20_ggtfms.jpg" alt="Collection 3" class="design-img" loading="lazy" />
-          </div>
-          <div class="carousel-slide">
-            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/16_pp0gc8.jpg" alt="Collection 4" class="design-img" loading="lazy" />
-          </div>
-          <div class="carousel-slide">
-            <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/19_yldl5w.jpg" alt="Collection 5" class="design-img" loading="lazy" />
+  
+  <main class="jomoo-main" role="main">
+    <!-- Hero Banner Section -->
+    <section class="home-banner" aria-label="Hero banner with product showcases">
+      <div class="swiper-container swiper-container-fade" role="region" aria-label="Product showcase carousel">
+        <div class="swiper-wrapper">
+          <article class="swiper-slide swiper-slide-active" role="article" aria-label="Intelligent Luxury showcase">
+            <div class="img">
+              <img 
+                src="https://cdn-eow.jomoo.com/admin/dev/f786ed8423fc030f0d53f737ff503a2c.jpg" 
+                alt="Modern luxury bathroom with intelligent fixtures and elegant design" 
+                loading="eager"
+                width="1920"
+                height="1080"
+              />
+            </div>
+            <div class="tbox">
+              <h1 class="title baseFont1">Intelligent Luxury. Beyond Design.</h1>
+              <p class="txt">Where technology anticipates your needs, and every detail feels like an extension of you. Welcome to a new era of personalized elegance.</p>
+            </div>
+          </article>
+          
+          <article class="swiper-slide" role="article" aria-label="AI-powered bathroom technology">
+            <div class="img">
+              <img 
+                src="https://cdn-eow.jomoo.com/admin/dev/ef3ceff016ee473cb637941071ff405b.jpg" 
+                alt="AI-powered bathroom technology with smart fixtures" 
+                loading="lazy"
+                width="1920"
+                height="1080"
+              />
+            </div>
+            <div class="tbox">
+              <h2 class="title baseFont1">Power by AI</h2>
+              <p class="txt">A home where every product works together to make life easier and more enjoyable. Our AI bath suite learns from you, creating a connected space that truly understands your needs. It's technology with a personal touch.</p>
+            </div>
+          </article>
+        
+          <article class="swiper-slide" role="article" aria-label="Nature-inspired design collection">
+            <div class="img">
+              <img 
+                src="https://cdn-eow.jomoo.com/admin/dev/f786ed8423fc030f0d53f737ff503a2c.jpg" 
+                alt="Nature-inspired bathroom design with marble elements" 
+                loading="lazy"
+                width="1920"
+                height="1080"
+              />
+            </div>
+            <div class="tbox">
+              <h2 class="title baseFont1">The Essence of Nature</h2>
+              <p class="txt">Inspired by the timeless beauty of marble, the ELEMENT Collection reflects nature's serene elegance. Each piece is a celebration of organic form and texture, blending the tranquility of natural stone with modern sophistication. Step into a space where the essence of nature creates an atmosphere of quiet luxury and calm reflection.</p>
+            </div>
+          </article>
+        </div>
+        
+        <!-- Hero Navigation -->
+        <div class="swiper-pagination swiper-pagination-hero" aria-label="Carousel pagination"></div>
+        <div class="swiper-prev swiper-prev-hero" aria-label="Previous slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="swiper-next swiper-next-hero" aria-label="Next slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <button class="videoplay videoplay-hero" aria-label="Play/pause carousel">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5V19L19 12L8 5Z" fill="white"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+      
+    <!-- Collections Section -->
+    <section class="index-box1" aria-label="Product collections showcase">
+      <div class="box">
+        <div class="list">
+          <div class="swiper-container swiper-container-fade" role="region" aria-label="Collections carousel">
+            <div class="swiper-wrapper">
+              <article class="swiper-slide swiper-slide-active" role="article" aria-label="MX Collection">
+                <div class="img">
+                  <img 
+                    src="https://cdn-eow.jomoo.com/admin/dev/1dfe14c482669be0a845c05b6c0d58ce.jpg" 
+                    alt="MX Collection - Porsche collaboration bathroom fixtures" 
+                    loading="lazy"
+                    width="1920"
+                    height="1080"
+                  />
+                </div>
+                <div class="container">
+                  <h2 class="title baseFont1"><span>MX</span></h2>
+                  <p class="txt">Witness the industry's first collaboration between Porsche and intelligent design. The MX Collection seamlessly fuses cutting-edge technology with artistic sensibilities, creating a harmonious blend of form and function.</p>
+                  <a href="/collections/mx" class="more" aria-label="Explore MX Collection">Explore More</a>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="ELEMENTS Collection">
+                <div class="img">
+                  <img 
+                    src="https://cdn-eow.jomoo.com/admin/dev/9782e3df45aaee25c7ddcfba21ad8b4b.jpg" 
+                    alt="ELEMENTS Collection - nature-inspired bathroom design" 
+                    loading="lazy"
+                    width="1920"
+                    height="1080"
+                  />
+                </div>
+                <div class="container">
+                  <h2 class="title baseFont1"><span>ELEMENTS</span></h2>
+                  <p class="txt">Drawing from nature's elegance, the ELEMENTS Collection celebrates simplicity. Light luxury, fine craftsmanship, and artistic flair converge to craft timeless pieces that resonate with discerning tastes.</p>
+                  <a href="/collections/elements" class="more" aria-label="Explore ELEMENTS Collection">Explore More</a>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="FONTAINE Collection">
+                <div class="img">
+                  <img 
+                    src="https://cdn-eow.jomoo.com/admin/dev/cb1420eae1a83b6aa0ea225c51cf7815.jpg" 
+                    alt="FONTAINE Collection - elegant amber and light gold fixtures" 
+                    loading="lazy"
+                    width="1920"
+                    height="1080"
+                  />
+                </div>
+                <div class="container">
+                  <h2 class="title baseFont1"><span>FONTAINE</span></h2>
+                  <p class="txt">The FONTAINE Collection marries amber and light gold hues with delicate knurling, resulting in a stunning and elegant aesthetic. Elevate your space with this exquisite design.</p>
+                  <a href="/collections/fontaine" class="more" aria-label="Explore FONTAINE Collection">Explore More</a>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="MUA Collection">
+                <div class="img">
+                  <img 
+                    src="https://cdn-eow.jomoo.com/admin/dev/a53b97ce5fac7019d34d6246a2f64fba.jpg" 
+                    alt="MUA Collection - warm and trendy bathroom design" 
+                    loading="lazy"
+                    width="1920"
+                    height="1080"
+                  />
+                </div>
+                <div class="container">
+                  <h2 class="title baseFont1"><span>MUA</span></h2>
+                  <p class="txt">The MUA collection effortlessly balances trendiness and warmth. Its palette of deep, inviting tones creates a serene and snug atmosphere, inviting you to unwind and enjoy life's simple pleasures.</p>
+                  <a href="/collections/mua" class="more" aria-label="Explore MUA Collection">Explore More</a>
+                </div>
+              </article>
+            </div>
+            
           </div>
         </div>
         
-      <!-- Navigation (hidden for collections) -->
-      <div class="carousel-nav" style="display: none;">
-        <button class="carousel-btn prev" data-direction="-1">‹</button>
-        <button class="carousel-btn next" data-direction="1">›</button>
-      </div>
-      
-      <!-- Dots (hidden for collections) -->
-      <div class="carousel-dots" style="display: none;">
-        <span class="dot active" data-slide="1"></span>
-        <span class="dot" data-slide="2"></span>
-        <span class="dot" data-slide="3"></span>
-        <span class="dot" data-slide="4"></span>
-        <span class="dot" data-slide="5"></span>
-      </div>
-      
-      <!-- Play/Pause indicator (appears when paused) -->
-      <div class="carousel-play-indicator" style="display: none;">
-        <button class="play-btn" onclick="resumeCarousel()">▶️</button>
-        <span class="play-text">Click to resume slideshow</span>
-      </div>
-      </div>
-    </section>
-    <section class="section design-card">
-      <h1 class="design-title">RADAWAY</h1>
-      <div class="design-subtitle">INDOOR &mdash; OUTDOOR</div>
-    </section>
-    <section class="section design-card gallery-section">
-      <h2 class="design-title">Gallery</h2>
-      <div class="design-subtitle">COLLECTION SHOWCASE</div>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343593/23_fvxxy7.jpg" alt="Collection 1" class="gallery-img" />
-        </div>
-        <div class="gallery-item">
-          <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/21_tucbvi.jpg" alt="Collection 2" class="gallery-img" />
-        </div>
-        <div class="gallery-item">
-          <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343560/20_ggtfms.jpg" alt="Collection 3" class="gallery-img" />
-        </div>
-        <div class="gallery-item">
-          <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/16_pp0gc8.jpg" alt="Collection 4" class="gallery-img" />
-        </div>
-        <div class="gallery-item">
-          <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/19_yldl5w.jpg" alt="Collection 5" class="gallery-img" />
-        </div>
-        <div class="gallery-item">
-          <img src="https://res.cloudinary.com/doleg7smw/image/upload/v1759343559/16_pp0gc8.jpg" alt="Collection 6" class="gallery-img" />
-        </div>
-      </div>
-      <div class="design-subtitle gallery-link-container">
-        <a href="/gallery" class="design-link">
-          VIEW FULL GALLERY →
-        </a>
+        <ul class="tabs" role="tablist" aria-label="Product collections">
+          <li class="active" role="tab" aria-selected="true" tabindex="0"><span class="tab-indicator"></span>MX</li>
+          <li role="tab" aria-selected="false" tabindex="-1"><span class="tab-indicator"></span>ELEMENTS</li>
+          <li role="tab" aria-selected="false" tabindex="-1"><span class="tab-indicator"></span>FONTAINE</li>
+          <li role="tab" aria-selected="false" tabindex="-1"><span class="tab-indicator"></span>MUA</li>
+        </ul>
       </div>
     </section>
 
-    <section class="section design-hero inspiration-section">
-      <div class="inspiration-content">
-        <div class="inspiration-text">
-          <h2 class="inspiration-title">Design Inspiration</h2>
-          <p class="inspiration-description">
-            Discover the perfect blend of indoor and outdoor living with our curated collection of modern design solutions. 
-            From contemporary furniture to architectural elements, explore how we transform spaces into living experiences.
-          </p>
-          <div class="inspiration-cta">
-            <a href="https://wa.me/15551234567?text=Hello%2C%20I%27m%20interested%20in%20your%20building%20materials%20and%20services" class="cta-button" target="_blank" rel="noopener noreferrer">Explore Our Services</a>
-            <a href="/about-us" class="cta-button secondary">Learn More</a>
-          </div>
+    <!-- Features Section -->
+    <section class="index-box2" aria-label="Technology features showcase">
+      <div class="swiper-container swiper-container-fade" role="region" aria-label="Features carousel">
+        <div class="swiper-wrapper">
+          <article class="swiper-slide swiper-slide-active" role="article" aria-label="Touchless Technology">
+            <div class="container-box">
+              <h2 class="title baseFont1">Touchless Technology</h2>
+              <p class="txt">Infrared sensing technology boasts sensitive recognition, guaranteeing a healthy and reliable water usage.</p>
+            </div>
+          </article>
+          
+          <article class="swiper-slide" role="article" aria-label="Pump-Assisted High-Efficient Flush">
+            <div class="container-box">
+              <h2 class="title baseFont1">Pump-Assisted High-Efficient Flush</h2>
+              <p class="txt">Powerful pump ensures efficient, one-time thorough flushing without pressure.</p>
+            </div>
+          </article>
+          
+          <article class="swiper-slide" role="article" aria-label="Initiated Rare Earth Antibacterial Glaze">
+            <div class="container-box">
+              <h2 class="title baseFont1">Initiated Rare Earth Antibacterial Glaze</h2>
+              <p class="txt">For long-lasting antibacterial health protection, the special glaze makes sure a 99.9% antibacterial rate.</p>
+            </div>
+          </article>
+          
+          <article class="swiper-slide" role="article" aria-label="Smart Digital Display">
+            <div class="container-box">
+              <h2 class="title baseFont1">Smart Digital Display</h2>
+              <p class="txt">Temperature display ensures safe, comfortable shower with easy water temperature monitoring.</p>
+            </div>
+          </article>
         </div>
-        <div class="inspiration-image">
-          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=80" alt="Design Inspiration" class="design-img" />
-          <div class="image-overlay">
-            <div class="overlay-content">
-              <span class="overlay-text">Modern Living Spaces</span>
+        
+        <div class="swiper-pagination swiper-pagination-features">
+          <span class="swiper-pagination-current">01</span>
+          <span class="swiper-pagination-total">/04</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section class="index-box4" aria-label="Global projects showcase">
+      <div class="container">
+        <h2 class="title baseFont1">Projects over the world</h2>
+        <div class="list">
+          <div class="swiper-container" role="region" aria-label="Projects carousel">
+            <div class="swiper-wrapper">
+              <article class="swiper-slide" role="article" aria-label="Beijing Daxing International Airport">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/1dfe14c482669be0a845c05b6c0d58ce.jpg" 
+                      alt="Beijing Daxing International Airport" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">Beijing Daxing International Airport</div>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="Beijing National Stadium">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/9782e3df45aaee25c7ddcfba21ad8b4b.jpg" 
+                      alt="Beijing National Stadium" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">Beijing National Stadium</div>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="Grand Hotel du Cap-Ferrat">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/cb1420eae1a83b6aa0ea225c51cf7815.jpg" 
+                      alt="Grand Hotel du Cap-Ferrat" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">Grand Hotel du Cap-Ferrat</div>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="Millennium Tower">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/a53b97ce5fac7019d34d6246a2f64fba.jpg" 
+                      alt="Millennium Tower" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">Millennium Tower</div>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="The Forbidden City">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/f786ed8423fc030f0d53f737ff503a2c.jpg" 
+                      alt="The Forbidden City" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">The Forbidden City</div>
+                </div>
+              </article>
+              
+              <!-- Duplicate slides for continuous loop -->
+              <article class="swiper-slide" role="article" aria-label="Beijing Daxing International Airport">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/1dfe14c482669be0a845c05b6c0d58ce.jpg" 
+                      alt="Beijing Daxing International Airport" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">Beijing Daxing International Airport</div>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="Beijing National Stadium">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/9782e3df45aaee25c7ddcfba21ad8b4b.jpg" 
+                      alt="Beijing National Stadium" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">Beijing National Stadium</div>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="Grand Hotel du Cap-Ferrat">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/cb1420eae1a83b6aa0ea225c51cf7815.jpg" 
+                      alt="Grand Hotel du Cap-Ferrat" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">Grand Hotel du Cap-Ferrat</div>
+                </div>
+              </article>
+              
+              <article class="swiper-slide" role="article" aria-label="Millennium Tower">
+                <div class="item">
+                  <div class="img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/a53b97ce5fac7019d34d6246a2f64fba.jpg" 
+                      alt="Millennium Tower" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">Millennium Tower</div>
+                </div>
+              </article>
             </div>
           </div>
+          
+          <a href="/ForProfessionals/reference/" class="more" aria-label="See more projects">
+            See More
+            <img src="https://en.jomoogroup.com/_nuxt/arrow-r2.1fd4ca5e.svg" alt="Arrow" width="20" height="20" />
+          </a>
         </div>
       </div>
     </section>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.24/fullpage.min.js" is:inline></script>
-  <script is:inline>
-    // Initialize fullPage.js when DOM is loaded
-    document.addEventListener('DOMContentLoaded', () => {
-      // Check if fullpage is available and element exists
-      if (typeof fullpage !== 'undefined' && document.getElementById('fullpage')) {
-        try {
-          new fullpage('#fullpage', {
-            autoScrolling: true,
-            navigation: true,
-            scrollHorizontally: false,
-            fitToSection: true,
-            anchors: ['collections', 'gallery-link','inspiration'],
-            navigationTooltips: ['Collections', 'Gallery Link','Inspiration'],
-            showActiveTooltip: true,
-            responsiveWidth: 900,
-            credits: { enabled: false },
-            // Optimizaciones para móviles
-            scrollBar: false,
-            easingcss3: 'ease',
-            scrollingSpeed: 700,
-            // Asegurar que las secciones ocupen toda la altura en móviles
-            paddingTop: '0px',
-            paddingBottom: '0px',
-            afterRender: function() {
-              // Always start at first section
-              if (window.location.hash) {
-                if (typeof fullpage_api !== 'undefined') {
-                  fullpage_api.moveTo(1);
-                }
-                history.replaceState(null, '', window.location.pathname);
-              }
+
+    <!-- Wonda Section -->
+    <section class="wonda-section" aria-label="Wonda Collection Showcase">
+      <div class="wonda-container">
+        <h2 class="title baseFont1">@WONDA</h2>
+        <p class="subtitle">Experience the fusion of cutting-edge technology and timeless design</p>
+        
+        <div class="wonda-gallery">
+          <article class="wonda-item">
+            <div class="wonda-image">
+              <img 
+                src="/wonda/1.png" 
+                alt="Wonda bathroom collection - modern design" 
+                loading="lazy"
+                width="800"
+                height="600"
+              />
+            </div>
+            <div class="wonda-text">
+              <h3>Smart Integration</h3>
+              <p>Seamlessly connect your bathroom with intelligent features that adapt to your lifestyle</p>
+            </div>
+          </article>
+          
+          <article class="wonda-item">
+            <div class="wonda-image">
+              <img 
+                src="/wonda/2.png" 
+                alt="Wonda bathroom collection - elegant fixtures" 
+                loading="lazy"
+                width="800"
+                height="600"
+              />
+            </div>
+            <div class="wonda-text">
+              <h3>Elegant Craftsmanship</h3>
+              <p>Every detail meticulously designed to create a harmonious and luxurious atmosphere</p>
+            </div>
+          </article>
+          
+          <article class="wonda-item">
+            <div class="wonda-image">
+              <img 
+                src="/wonda/3.png" 
+                alt="Wonda bathroom collection - premium quality" 
+                loading="lazy"
+                width="800"
+                height="600"
+              />
+            </div>
+            <div class="wonda-text">
+              <h3>Premium Quality</h3>
+              <p>Crafted with the finest materials to ensure durability and sophistication</p>
+            </div>
+          </article>
+        </div>
+        
+        <div class="wonda-cta">
+          <a href="/collections/wonda" class="more" aria-label="Explore Wonda Collection">Explore Collection</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Legacy Section -->
+    <section class="index-box5" aria-label="Environmental commitment and legacy">
+      <div class="box">
+        <div class="bg">
+          <img 
+            src="https://cdn-eow.jomoo.com/admin/dev/ef3ceff016ee473cb637941071ff405b.jpg" 
+            alt="Live Light, Leaving a Legacy" 
+            loading="lazy"
+            width="1920"
+            height="1080"
+          />
+        </div>
+        <div class="imgs">
+          <img 
+            src="https://cdn-eow.jomoo.com/admin/dev/f786ed8423fc030f0d53f737ff503a2c.jpg" 
+            alt="WONDA Environmental Commitment" 
+            loading="lazy"
+            width="400"
+            height="300"
+          />
+        </div>
+        <div class="container">
+          <h2 class="title baseFont1">Live Light, Leaving a Legacy</h2>
+          <div class="list">
+            <ul>
+              <li>
+                <a href="/factory" aria-label="WONDA's Environmentally Conscious Manufacturing">
+                  <div class="public-img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/1dfe14c482669be0a845c05b6c0d58ce.jpg" 
+                      alt="WONDA's Environmentally Conscious Manufacturing" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">
+                    <h3>WONDA's Environmentally Conscious Manufacturing</h3>
+                    <p>We prioritize eco-friendly practices in our factory operations</p>
+                    <span>Learn More</span>
+                  </div>
+                </a>
+              </li>
               
-              // Ajustar altura en móviles después del render
-              if (window.innerWidth <= 768) {
-                setTimeout(() => {
-                  const sections = document.querySelectorAll('.section');
-                  sections.forEach(section => {
-                    section.style.height = '100vh';
-                    section.style.minHeight = '100vh';
-                  });
-                }, 100);
-              }
-            }
-          });
-        } catch (error) {
-          console.warn('FullPage.js initialization failed:', error);
-        }
-      }
+              <li>
+                <a href="/about/commitment" aria-label="WONDA's Path to Carbon Neutrality by 2058">
+                  <div class="public-img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/9782e3df45aaee25c7ddcfba21ad8b4b.jpg" 
+                      alt="WONDA's Path to Carbon Neutrality by 2058" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">
+                    <h3>WONDA's Path to Carbon Neutrality by 2058</h3>
+                    <p>Our vision to eliminate carbon footprint globally</p>
+                    <span>Learn More</span>
+                  </div>
+                </a>
+              </li>
+              
+              <li>
+                <a href="/news" aria-label="2023 Award for Green Design Contributions">
+                  <div class="public-img">
+                    <img 
+                      src="https://cdn-eow.jomoo.com/admin/dev/cb1420eae1a83b6aa0ea225c51cf7815.jpg" 
+                      alt="2023 Award for Green Design Contributions" 
+                      loading="lazy"
+                      width="300"
+                      height="200"
+                    />
+                  </div>
+                  <div class="txt">
+                    <h3>2023 Award for Green Design Contributions</h3>
+                    <p>WONDA receives acclaim for its sustainable design efforts</p>
+                    <span>Learn More</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      // Remove watermark after initialization
-      setTimeout(() => {
-        const watermarks = document.querySelectorAll('.fp-watermark');
-        watermarks.forEach(el => el.remove());
-      }, 1000);
+  </main>
 
-      // Simple carousel functionality
-      let slideIndex = 1;
-      let autoPlayInterval;
-      
-      // Initialize carousel
-      function initCarousel() {
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.querySelector('.carousel-btn.prev');
-        const nextBtn = document.querySelector('.carousel-btn.next');
-        
-        // Preload images for better performance
-        preloadImages();
-        
-        // Show first slide
-        showSlide(1);
-        
-        // Add event listeners to navigation buttons
-        if (prevBtn) {
-          prevBtn.addEventListener('click', () => changeSlide(-1));
-        }
-        
-        if (nextBtn) {
-          nextBtn.addEventListener('click', () => changeSlide(1));
-        }
-        
-        // Add event listeners to dots
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => currentSlide(index + 1));
-        });
-        
-        
-        // Start auto-play
-        startAutoPlay();
-      }
-      
-      function changeSlide(n) {
-        const slides = document.querySelectorAll('.carousel-slide');
-        slideIndex += n;
-        
-        if (slideIndex > slides.length) { 
-          slideIndex = 1; 
-        }
-        if (slideIndex < 1) { 
-          slideIndex = slides.length; 
-        }
-        
-        showSlide(slideIndex);
-        restartAutoPlay(); // Restart auto-play when user interacts
-      }
-      
-      function currentSlide(n) {
-        slideIndex = n;
-        showSlide(slideIndex);
-        restartAutoPlay(); // Restart auto-play when user interacts
-      }
-      
-      function showSlide(n) {
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.dot');
-        
-        // Remove active class from all slides and dots
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        
-        // Add active class to current slide and dot
-        if (slides[n - 1]) {
-          slides[n - 1].classList.add('active');
-        }
-        if (dots[n - 1]) {
-          dots[n - 1].classList.add('active');
-        }
-      }
-      
-      function startAutoPlay() {
-        autoPlayInterval = setInterval(() => {
-          changeSlide(1);
-        }, 2500);
-        // Hide play indicator when playing
-        const playIndicator = document.querySelector('.carousel-play-indicator');
-        if (playIndicator) {
-          playIndicator.style.display = 'none';
-        }
-      }
-      
-      function stopAutoPlay() {
-        if (autoPlayInterval) {
-          clearInterval(autoPlayInterval);
-        }
-        // Show play indicator when paused
-        const playIndicator = document.querySelector('.carousel-play-indicator');
-        if (playIndicator) {
-          playIndicator.style.display = 'flex';
-        }
-      }
-      
-      function restartAutoPlay() {
-        stopAutoPlay();
-        startAutoPlay();
-      }
-      
-      // Preload images to prevent layout shifts
-      function preloadImages() {
-        const images = document.querySelectorAll('.carousel-slide .design-img');
-        let loadedCount = 0;
-        
-        images.forEach((img, index) => {
-          const imageLoader = new Image();
-          imageLoader.onload = function() {
-            loadedCount++;
-            if (loadedCount === images.length) {
-              console.log('All images preloaded successfully');
-            }
-          };
-          imageLoader.onerror = function() {
-            loadedCount++;
-          };
-          imageLoader.src = img.src;
-        });
-      }
-      
-      // Initialize carousel when DOM is ready
-      initCarousel();
-      
-      // Initialize gallery modal functionality
-      initGalleryModal();
-    });
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  
+  <!-- GSAP with ScrollTrigger -->
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Make GSAP available globally for inline script
+    (window as any).gsap = gsap;
+    (window as any).ScrollTrigger = ScrollTrigger;
   </script>
   
   <script is:inline>
-    // Global function to resume carousel
-    function resumeCarousel() {
-      if (typeof startAutoPlay === 'function') {
-        startAutoPlay();
-        console.log('Carousel resumed');
-      }
-    }
-    
-    // Gallery modal functionality
-    function initGalleryModal() {
-      const galleryItems = document.querySelectorAll('.gallery-item');
-      
-      galleryItems.forEach((item, index) => {
-        item.addEventListener('click', function(e) {
-          e.preventDefault();
+    document.addEventListener('DOMContentLoaded', function() {
+      // Wait for Swiper and GSAP to load
+      setTimeout(function() {
+        if (typeof Swiper !== 'undefined' && typeof gsap !== 'undefined') {
+          console.log('Swiper and GSAP loaded, initializing with advanced effects...');
           
-          const img = this.querySelector('.gallery-img');
-          if (!img) return;
+          // ========================================
+          // GSAP ANIMATIONS SETUP
+          // ========================================
           
-          const imgSrc = img.src;
-          const imgAlt = img.alt;
+          // Initial page load animations
+          gsap.from('.home-banner .tbox .title', {
+            duration: 1.2,
+            y: 50,
+            opacity: 0,
+            ease: 'power3.out',
+            delay: 0.3
+          });
           
-          openImageModal(imgSrc, imgAlt, index + 1);
-        });
-      });
-    }
-    
-    function openImageModal(imgSrc, imgAlt, slideNumber) {
-      // Remove any existing modal first
-      const existingModal = document.querySelector('.image-modal');
-      if (existingModal) {
-        existingModal.remove();
-      }
-      
-      // Create modal overlay
-      const modal = document.createElement('div');
-      modal.className = 'image-modal';
-      modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-        cursor: pointer;
-        backdrop-filter: blur(5px);
-      `;
-      
-      modal.innerHTML = `
-        <div class="modal-content" style="
-          background: white;
-          border-radius: 12px;
-          max-width: 90vw;
-          max-height: 90vh;
-          display: flex;
-          flex-direction: column;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-          overflow: hidden;
-          cursor: default;
-        ">
-          <div class="modal-header" style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid #eee;
-            background: #f8f8f8;
-          ">
-            <h3 style="margin: 0; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #222;">${imgAlt}</h3>
-            <button class="close-btn" style="
-              background: none;
-              border: none;
-              font-size: 1.5rem;
-              cursor: pointer;
-              color: #666;
-              padding: 0;
-              width: 30px;
-              height: 30px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-radius: 50%;
-              transition: all 0.2s ease;
-            ">&times;</button>
-          </div>
-          <div class="modal-body" style="
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background: #fafafa;
-          ">
-            <img src="${imgSrc}" alt="${imgAlt}" class="modal-image" style="
-              max-width: 100%;
-              max-height: 70vh;
-              object-fit: contain;
-              border-radius: 8px;
-              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            " />
-          </div>
-        </div>
-      `;
-      
-      document.body.appendChild(modal);
-      document.body.style.overflow = 'hidden';
-      
-      // Add event listeners
-      const closeBtn = modal.querySelector('.close-btn');
-      
-      closeBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        closeImageModal();
-      });
-      
-      closeBtn.addEventListener('mouseenter', function() {
-        this.style.background = '#e0e0e0';
-        this.style.color = '#222';
-      });
-      
-      closeBtn.addEventListener('mouseleave', function() {
-        this.style.background = 'none';
-        this.style.color = '#666';
-      });
-      
-      // Close when clicking outside
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          closeImageModal();
+          gsap.from('.home-banner .tbox .txt', {
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            ease: 'power3.out',
+            delay: 0.6
+          });
+          
+          // Hero Banner Parallax with GSAP ScrollTrigger (subtle effect)
+          gsap.to('.home-banner .img img', {
+            scale: 1.05,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.home-banner',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 1
+            }
+          });
+          
+          // Collections Section Parallax (subtle effect)
+          gsap.to('.index-box1 .img img', {
+            scale: 1.05,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.index-box1',
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1
+            }
+          });
+          
+          // Collections text animation
+          ScrollTrigger.create({
+            trigger: '.index-box1',
+            start: 'top 80%',
+            onEnter: () => {
+              gsap.from('.index-box1 .container', {
+                duration: 1,
+                x: -50,
+                opacity: 0,
+                ease: 'power3.out'
+              });
+            },
+            once: true
+          });
+          
+          // Features Section Animation
+          ScrollTrigger.create({
+            trigger: '.index-box2',
+            start: 'top 80%',
+            onEnter: () => {
+              gsap.from('.index-box2 .container-box', {
+                duration: 1.2,
+                y: 50,
+                opacity: 0,
+                ease: 'power3.out'
+              });
+            },
+            once: true
+          });
+          
+          // Projects Section - Stagger animation
+          gsap.from('.index-box4 .title', {
+            scrollTrigger: {
+              trigger: '.index-box4',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            },
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            ease: 'power3.out'
+          });
+          
+          // Individual project items with stagger
+          gsap.from('.index-box4 .item', {
+            scrollTrigger: {
+              trigger: '.index-box4',
+              start: 'top 70%',
+              toggleActions: 'play none none none'
+            },
+            duration: 0.8,
+            y: 50,
+            opacity: 0,
+            stagger: 0.15,
+            ease: 'power3.out'
+          });
+          
+          // Wonda Section Animations
+          gsap.from('.wonda-section .title', {
+            scrollTrigger: {
+              trigger: '.wonda-section',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            },
+            duration: 1,
+            scale: 0.9,
+            opacity: 0,
+            ease: 'back.out(1.3)'
+          });
+          
+          gsap.from('.wonda-section .subtitle', {
+            scrollTrigger: {
+              trigger: '.wonda-section',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            },
+            duration: 1,
+            y: 20,
+            opacity: 0,
+            ease: 'power3.out',
+            delay: 0.2
+          });
+          
+          gsap.from('.wonda-item', {
+            scrollTrigger: {
+              trigger: '.wonda-gallery',
+              start: 'top 75%',
+              toggleActions: 'play none none none'
+            },
+            duration: 0.8,
+            y: 60,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power3.out'
+          });
+          
+          // Legacy Section Animations
+          gsap.from('.index-box5 .title', {
+            scrollTrigger: {
+              trigger: '.index-box5',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            },
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            ease: 'power3.out'
+          });
+          
+          gsap.from('.index-box5 .list li', {
+            scrollTrigger: {
+              trigger: '.index-box5 .list',
+              start: 'top 75%',
+              toggleActions: 'play none none none'
+            },
+            duration: 0.8,
+            y: 50,
+            opacity: 0,
+            stagger: 0.15,
+            ease: 'power3.out'
+          });
+          
+          // Enhanced hover animations with GSAP
+          document.querySelectorAll('.item').forEach(item => {
+            const img = item.querySelector('.img img');
+            item.addEventListener('mouseenter', () => {
+              gsap.to(img, {
+                scale: 1.08,
+                duration: 0.6,
+                ease: 'power2.out'
+              });
+            });
+            item.addEventListener('mouseleave', () => {
+              gsap.to(img, {
+                scale: 1,
+                duration: 0.6,
+                ease: 'power2.out'
+              });
+            });
+          });
+          
+          // Wonda items hover effects
+          document.querySelectorAll('.wonda-item').forEach(item => {
+            const img = item.querySelector('.wonda-image img');
+            item.addEventListener('mouseenter', () => {
+              gsap.to(item, {
+                y: -10,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.15)',
+                duration: 0.4,
+                ease: 'power2.out'
+              });
+              gsap.to(img, {
+                scale: 1.08,
+                duration: 0.6,
+                ease: 'power2.out'
+              });
+            });
+            item.addEventListener('mouseleave', () => {
+              gsap.to(item, {
+                y: 0,
+                boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+                duration: 0.4,
+                ease: 'power2.out'
+              });
+              gsap.to(img, {
+                scale: 1,
+                duration: 0.6,
+                ease: 'power2.out'
+              });
+            });
+          });
+          
+          // Legacy items hover
+          document.querySelectorAll('.index-box5 .list li a').forEach(link => {
+            const img = link.querySelector('.public-img img');
+            link.addEventListener('mouseenter', () => {
+              gsap.to(link, {
+                y: -8,
+                boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+                duration: 0.4,
+                ease: 'power2.out'
+              });
+              gsap.to(img, {
+                scale: 1.08,
+                duration: 0.7,
+                ease: 'power2.out'
+              });
+            });
+            link.addEventListener('mouseleave', () => {
+              gsap.to(link, {
+                y: 0,
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                duration: 0.4,
+                ease: 'power2.out'
+              });
+              gsap.to(img, {
+                scale: 1,
+                duration: 0.7,
+                ease: 'power2.out'
+              });
+            });
+          });
+          
+          // Tab indicator animations
+          document.querySelectorAll('.tabs li').forEach(tab => {
+            const indicator = tab.querySelector('.tab-indicator');
+            tab.addEventListener('mouseenter', () => {
+              if (!tab.classList.contains('active')) {
+                gsap.to(indicator, {
+                  opacity: 0.5,
+                  scale: 1.2,
+                  duration: 0.3,
+                  ease: 'power2.out'
+                });
+              }
+            });
+            tab.addEventListener('mouseleave', () => {
+              if (!tab.classList.contains('active')) {
+                gsap.to(indicator, {
+                  opacity: 0,
+                  scale: 1,
+                  duration: 0.3,
+                  ease: 'power2.out'
+                });
+              }
+            });
+          });
+          
+          // ========================================
+          // SWIPER INITIALIZATION
+          // ========================================
+          
+          // Hero Banner Swiper with enhanced GSAP animations
+          const heroSwiper = new Swiper('.home-banner .swiper-container', {
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true
+            },
+            loop: true,
+            autoplay: {
+              delay: 5000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            },
+            speed: 1000,
+            pagination: {
+              el: '.home-banner .swiper-pagination-hero',
+              clickable: true,
+              renderBullet: function (index, className) {
+                return '<span class="' + className + '"><i></i></span>';
+              },
+            },
+            navigation: {
+              nextEl: '.home-banner .swiper-next-hero',
+              prevEl: '.home-banner .swiper-prev-hero',
+            },
+            parallax: true,
+            on: {
+              init: function() {
+                updatePaginationProgress(this);
+              },
+              slideChange: function() {
+                updatePaginationProgress(this);
+                
+                // Animate content on slide change
+                const activeSlide = this.slides[this.activeIndex];
+                const title = activeSlide.querySelector('.title');
+                const txt = activeSlide.querySelector('.txt');
+                const img = activeSlide.querySelector('img');
+                
+                if (img) {
+                  gsap.fromTo(img, 
+                    { scale: 1 },
+                    { scale: 1.1, duration: 1, ease: 'power2.out' }
+                  ).then(() => {
+                    gsap.to(img, { scale: 1, duration: 5, ease: 'power2.inOut' });
+                  });
+                }
+                
+                if (title) {
+                  gsap.from(title, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                  });
+                }
+                
+                if (txt) {
+                  gsap.from(txt, {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: 0.2,
+                    ease: 'power3.out'
+                  });
+                }
+              },
+              autoplayTimeLeft: function(swiper, time, progress) {
+                const bullets = document.querySelectorAll('.home-banner .swiper-pagination-bullet-active i');
+                if (bullets.length > 0) {
+                  bullets[0].style.width = ((1 - progress) * 100) + '%';
+                }
+              }
+            }
+          });
+
+          function updatePaginationProgress(swiper) {
+            const bullets = document.querySelectorAll('.home-banner .swiper-pagination-bullet');
+            bullets.forEach((bullet, index) => {
+              const progressBar = bullet.querySelector('i');
+              if (progressBar) {
+                if (index === swiper.realIndex) {
+                  progressBar.style.width = '0%';
+                } else if (index < swiper.realIndex) {
+                  progressBar.style.width = '100%';
+                } else {
+                  progressBar.style.width = '0%';
+                }
+              }
+            });
+          }
+
+          // Collections Swiper with GSAP animations
+          const collectionsSwiper = new Swiper('.index-box1 .swiper-container', {
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true
+            },
+            loop: true,
+            autoplay: {
+              delay: 4000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            },
+            speed: 800,
+            on: {
+              slideChange: function() {
+                const tabs = document.querySelectorAll('.tabs li');
+                tabs.forEach((tab, index) => {
+                  if (index === this.realIndex) {
+                    tab.classList.add('active');
+                    gsap.fromTo(tab.querySelector('.tab-indicator'),
+                      { scale: 0, opacity: 0 },
+                      { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.5)' }
+                    );
+                  } else {
+                    tab.classList.remove('active');
+                    gsap.to(tab.querySelector('.tab-indicator'),
+                      { scale: 0, opacity: 0, duration: 0.3 }
+                    );
+                  }
+                });
+                
+                // Animate slide content
+                const activeSlide = this.slides[this.activeIndex];
+                const title = activeSlide.querySelector('.title');
+                const txt = activeSlide.querySelector('.txt');
+                const button = activeSlide.querySelector('.more');
+                
+                if (title) {
+                  gsap.from(title, {
+                    x: -50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                  });
+                }
+                
+                if (txt) {
+                  gsap.from(txt, {
+                    x: -50,
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: 0.2,
+                    ease: 'power3.out'
+                  });
+                }
+                
+                if (button) {
+                  gsap.from(button, {
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: 0.4,
+                    ease: 'power3.out'
+                  });
+                }
+              }
+            }
+          });
+
+          // Features Swiper with GSAP
+          const featuresSwiper = new Swiper('.index-box2 .swiper-container', {
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true
+            },
+            loop: true,
+            autoplay: {
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            },
+            speed: 800,
+            on: {
+              slideChange: function() {
+                const current = this.realIndex + 1;
+                const total = 4;
+                const currentEl = document.querySelector('.index-box2 .swiper-pagination-current');
+                const totalEl = document.querySelector('.index-box2 .swiper-pagination-total');
+                const progressBar = document.querySelector('.index-box2 .progress-bar');
+                
+                if (currentEl) {
+                  gsap.to(currentEl, {
+                    innerHTML: String(current).padStart(2, '0'),
+                    duration: 0.3,
+                    snap: { innerHTML: 1 }
+                  });
+                }
+                
+                if (progressBar) {
+                  const percentage = (current / total) * 100;
+                  gsap.to(progressBar, {
+                    width: `${percentage}%`,
+                    duration: 0.5,
+                    ease: 'power2.out'
+                  });
+                }
+                
+                // Animate content
+                const activeSlide = this.slides[this.activeIndex];
+                const title = activeSlide.querySelector('.title');
+                const txt = activeSlide.querySelector('.txt');
+                
+                if (title) {
+                  gsap.from(title, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.9,
+                    ease: 'power3.out'
+                  });
+                }
+                
+                if (txt) {
+                  gsap.from(txt, {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.9,
+                    delay: 0.2,
+                    ease: 'power3.out'
+                  });
+                }
+              }
+            }
+          });
+
+          // Projects Swiper
+          const projectsSwiper = new Swiper('.index-box4 .swiper-container', {
+            slidesPerView: 'auto',
+            spaceBetween: 30,
+            freeMode: {
+              enabled: true,
+              sticky: false,
+            },
+            autoplay: {
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            },
+            speed: 5000,
+            loop: true,
+            allowTouchMove: true,
+            grabCursor: true,
+            breakpoints: {
+              320: {
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2.5,
+                spaceBetween: 25,
+              },
+              1024: {
+                slidesPerView: 3.5,
+                spaceBetween: 30,
+              },
+              1200: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+              }
+            }
+          });
+
+          // Collection tabs with GSAP animations
+          const collectionTabs = document.querySelectorAll('.tabs li');
+          collectionTabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+              collectionTabs.forEach(t => {
+                t.classList.remove('active');
+                gsap.to(t.querySelector('.tab-indicator'), {
+                  scale: 0,
+                  opacity: 0,
+                  duration: 0.3
+                });
+              });
+              
+              tab.classList.add('active');
+              gsap.fromTo(tab.querySelector('.tab-indicator'),
+                { scale: 0, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.5)' }
+              );
+              
+              collectionsSwiper.slideTo(index);
+            });
+          });
+
+          // Play/Pause with GSAP animations
+          const playPauseButtons = document.querySelectorAll('.videoplay');
+          playPauseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+              const section = this.closest('section');
+              let swiper = null;
+              
+              if (section) {
+                const swiperContainer = section.querySelector('.swiper-container');
+                if (swiperContainer && swiperContainer.swiper) {
+                  swiper = swiperContainer.swiper;
+                }
+              }
+              
+              if (swiper?.autoplay) {
+                gsap.to(this, {
+                  scale: 0.9,
+                  duration: 0.1,
+                  yoyo: true,
+                  repeat: 1,
+                  ease: 'power2.inOut'
+                });
+                
+                if (swiper.autoplay.running) {
+                  swiper.autoplay.stop();
+                  this.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 4H10V20H6V4Z" fill="white"/><path d="M14 4H18V20H14V4Z" fill="white"/></svg>';
+                  this.classList.add('paused');
+                } else {
+                  swiper.autoplay.start();
+                  this.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5V19L19 12L8 5Z" fill="white"/></svg>';
+                  this.classList.remove('paused');
+                }
+              }
+            });
+          });
+
+          // Enhanced touch interactions
+          let touchStartX = 0;
+          let touchEndX = 0;
+
+          document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+          }, { passive: true });
+
+          document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+              if (diff > 0) {
+                heroSwiper.slideNext();
+                collectionsSwiper.slideNext();
+                featuresSwiper.slideNext();
+              } else {
+                heroSwiper.slidePrev();
+                collectionsSwiper.slidePrev();
+                featuresSwiper.slidePrev();
+              }
+            }
+          }, { passive: true });
+
+          console.log('All Swipers and GSAP animations initialized successfully');
+          
+        } else {
+          console.log('Swiper or GSAP not loaded, using fallback');
         }
-      });
-      
-      // Close with Escape key
-      const escapeHandler = function(e) {
-        if (e.key === 'Escape') {
-          closeImageModal();
-          document.removeEventListener('keydown', escapeHandler);
-        }
-      };
-      document.addEventListener('keydown', escapeHandler);
-    }
-    
-    function closeImageModal() {
-      const modal = document.querySelector('.image-modal');
-      if (modal) {
-        modal.remove();
-        document.body.style.overflow = 'auto';
-      }
-    }
+      }, 100);
+    });
   </script>
-  <!-- COMMENTED OUT FOOTER -->
-  <!-- <Footer /> -->
-</Layout>
+  
   <style>
-    .design-main {
-      min-height: 100vh;
-      width: 100vw;
+    /* Reset and Base Styles - Optimized */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    * {
       margin: 0;
       padding: 0;
     }
-    .section {
-      width: 100vw;
-      height: 100vh;
-      min-height: 100vh;
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 300;
+    }
+
+    .jomoo-main {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+
+    /* GSAP Animation optimizations */
+    .home-banner .tbox .title,
+    .home-banner .tbox .txt,
+    .index-box1 .container,
+    .index-box2 .container-box,
+    .index-box4 .item,
+    .wonda-item,
+    .index-box5 .list li {
+      will-change: transform, opacity;
+    }
+    
+    /* Smooth transitions for all interactive elements */
+    .more,
+    .tabs li,
+    .swiper-next,
+    .swiper-prev,
+    .videoplay {
+      transition: none; /* Let GSAP handle transitions */
+    }
+
+    /* Swiper Styles */
+    .swiper-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      position: relative;
+      transition-property: transform;
+      box-sizing: content-box;
     }
-    .design-img {
-      width: 100vw;
-      height: 100vh;
-      min-height: 400px;
-      object-fit: cover;
-      margin: 0;
-      display: block;
-    }
-    .design-card {
-  width: 100vw;
-  background: #fff;
-  box-shadow: 0 2px 24px #0002;
-  text-align: center;
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  min-height: 320px;
-    }
-    .design-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      font-weight: 400;
-      color: #222;
-      margin-bottom: 1.2rem;
-      letter-spacing: 1px;
-    }
-    .design-subtitle {
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1.1rem;
-      color: #222;
-      letter-spacing: 2px;
-      margin-bottom: 0;
-      text-transform: uppercase;
-      font-weight: 400;
-    }
-    .gallery-link-container {
-      margin-top: 1.5rem;
-    }
-    
-    .design-link {
-      display: inline-block;
-      color: #fff;
-      background: #bfa16b;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.7rem 1.8rem;
-      font-size: 0.95rem;
-      letter-spacing: 1.5px;
-      transition: all 0.3s ease;
-      border: 2px solid #bfa16b;
-      cursor: pointer;
-      box-shadow: 0 3px 12px rgba(191, 161, 107, 0.25);
-    }
-    
-    .design-link:hover {
-      background: transparent;
-      color: #bfa16b;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(191, 161, 107, 0.35);
-    }
-    
-    .design-link:active {
-      transform: translateY(-1px);
-    }
-    
-    /* Simple Carousel Styles */
-    .collections-section {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .simple-carousel {
-      width: 100vw;
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .carousel-container {
+
+    .swiper-slide {
+      flex-shrink: 0;
       width: 100%;
       height: 100%;
       position: relative;
-      overflow: hidden;
+      transition-property: transform;
     }
-    
-    .carousel-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      overflow: hidden;
+
+    .swiper-container-fade .swiper-slide {
+      pointer-events: none;
+      transition-property: opacity;
     }
-    
-    .carousel-slide.active {
-      opacity: 1;
+
+    .swiper-container-fade .swiper-slide-active,
+    .swiper-container-fade .swiper-slide-active .swiper-slide-duplicate-active {
+      pointer-events: auto;
     }
-    
-    .carousel-slide .design-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      margin: 0;
-      padding: 0;
-      transition: opacity 0.5s ease-in-out;
-      background-color: #f0f0f0;
-    }
-    
-    /* Preloader for images */
-    .carousel-slide .design-img:not([src]) {
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-    }
-    
-    @keyframes loading {
-      0% {
-        background-position: 200% 0;
-      }
-      100% {
-        background-position: -200% 0;
-      }
-    }
-    
-    /* Navigation buttons */
-    .carousel-nav {
+
+    /* JOMOO-Style Navigation Arrows */
+    .swiper-prev,
+    .swiper-next {
       position: absolute;
       top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 30px;
+      width: 44px;
+      height: 44px;
+      margin-top: -22px;
       z-index: 10;
-      transform: translateY(-50%);
-    }
-    
-    .carousel-btn {
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid rgba(191, 161, 107, 0.3);
-      color: #bfa16b;
-      font-size: 24px;
-      font-weight: bold;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
       cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      user-select: none;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
       outline: none;
     }
-    
-    .carousel-btn:hover {
-      background: rgba(191, 161, 107, 0.25);
-      border-color: rgba(191, 161, 107, 0.6);
-      transform: scale(1.1);
-      color: #fff;
+
+    .swiper-prev:hover,
+    .swiper-next:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.8);
     }
-    
-    .carousel-btn:active {
-      transform: scale(0.95);
+
+    .swiper-next {
+      right: 30px;
     }
-    
-    /* Dots */
-    .carousel-dots {
+
+    .swiper-prev {
+      left: 30px;
+    }
+
+    .swiper-prev svg,
+    .swiper-next svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* JOMOO-Style Pagination with Progress Bars */
+    .swiper-pagination {
       position: absolute;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
       z-index: 10;
-    }
-    
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-    
-    .dot.active {
-      background: #bfa16b;
-      transform: scale(1.2);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-    
-    .dot:hover {
-      background: rgba(191, 161, 107, 0.8);
-      transform: scale(1.1);
-    }
-    
-    
-    
-    /* Play/Pause indicator */
-    .carousel-play-indicator {
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
       align-items: center;
-      gap: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px 20px;
-      border-radius: 25px;
-      backdrop-filter: blur(10px);
-      z-index: 10;
-    }
-    
-    .play-btn {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    
-    .play-btn:hover {
-      transform: scale(1.1);
-    }
-    
-    .play-text {
-      color: white;
-      font-size: 0.9rem;
-      font-family: 'Montserrat', Arial, sans-serif;
-    }
-    
-    
-    /* Responsive Styles */
-    @media (max-width: 900px) {
-      .design-title { font-size: 2rem; }
-      .design-card { padding: 1.5rem 0.5rem 1.2rem 0.5rem; }
-      
-      .design-link {
-        padding: 0.65rem 1.5rem;
-        font-size: 0.9rem;
-      }
-      
-      .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-      }
-      
-      .carousel-nav {
-        padding: 0 15px;
-      }
-      
-      .carousel-dots {
-        bottom: 20px;
-      }
-      
-      .dot {
-        width: 10px;
-        height: 10px;
-      }
-    }
-    
-    @media (max-width: 600px) {
-      /* Asegurar que no haya espacio blanco en móviles */
-      body, html {
-        height: 100%;
-        overflow-x: hidden;
-      }
-      
-      #fullpage {
-        height: 100vh;
-        min-height: 100vh;
-      }
-      
-      .section {
-        height: 100vh !important;
-        min-height: 100vh !important;
-        max-height: 100vh;
-      }
-      
-      .design-title { font-size: 1.5rem; }
-      .design-subtitle { font-size: 0.9rem; }
-      
-      .design-link { 
-        font-size: 0.85rem;
-        padding: 0.6rem 1.3rem;
-        letter-spacing: 1.2px;
-      }
-      
-      .gallery-link-container {
-        margin-top: 1.2rem;
-      }
-      
-      .design-card { padding: 1rem 0.5rem 0.8rem 0.5rem; min-height: 240px; }
-      
-      .carousel-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-        display: none; /* Hide navigation arrows on very small screens */
-      }
-      
-      .dot {
-        width: 8px;
-        height: 8px;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin: 1.5rem 0;
-        max-width: 600px;
-      }
-      
-      .gallery-img {
-        height: 150px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      /* Play indicator responsive */
-      .carousel-play-indicator {
-        bottom: 30px;
-        padding: 8px 15px;
-      }
-      
-      .play-text {
-        font-size: 0.8rem;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        margin: 1rem 0;
-        max-width: 300px;
-      }
-      
-      .gallery-img {
-        height: 200px;
-      }
+      gap: 8px;
     }
 
-    /* Gallery Section Styles */
-    .gallery-section {
-      background: #fff;
-      padding: 2rem;
-      overflow: hidden;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin: 2rem 0;
-      max-width: 800px;
-      width: 100%;
-    }
-    
-    .gallery-item {
+    .swiper-pagination-bullet {
+      width: 40px;
+      height: 6px;
+      display: inline-block;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.3);
+      opacity: 1;
+      cursor: pointer;
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      background: #f8f8f8;
+      margin: 0;
     }
-    
-    .gallery-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-    
-    .gallery-item:hover::after {
-      content: '';
+
+    .swiper-pagination-bullet i {
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(191, 161, 107, 0.1);
-      z-index: 1;
-    }
-    
-    .gallery-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-    
-    .gallery-item:hover .gallery-img {
-      transform: scale(1.05);
+      width: 0%;
+      height: 100%;
+      background: white;
+      transition: width 0.1s linear;
+      border-radius: 3px;
     }
 
-    /* Inspiration Section Styles */
-    .inspiration-section {
-      background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
-      padding: 0;
-      overflow: hidden;
+    .swiper-pagination-bullet-active {
+      background: rgba(255, 255, 255, 0.4);
     }
-    
-    .inspiration-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 100vh;
-      width: 100vw;
+
+    .swiper-pagination-bullet-active i {
+      animation: progressBar 5s linear;
     }
-    
-    .inspiration-text {
+
+    @keyframes progressBar {
+      from {
+        width: 0%;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    /* JOMOO-Style Play/Pause Button */
+    .videoplay {
+      position: absolute;
+      bottom: 26px;
+      right: 30px;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
-      padding: 4rem 3rem;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      position: relative;
-      z-index: 2;
+      cursor: pointer;
+      z-index: 10;
+      outline: none;
     }
-    
-    .inspiration-title {
+
+    .videoplay:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .videoplay svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Typography */
+    .baseFont1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+
+    .baseFont2 {
+      font-family: 'Montserrat', sans-serif;
       font-weight: 400;
-      color: #222;
-      margin-bottom: 1.5rem;
-      letter-spacing: 1px;
-      line-height: 1.2;
     }
-    
-    .inspiration-description {
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-      max-width: 500px;
-    }
-    
-    .inspiration-cta {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .cta-button {
-      padding: 1rem 2rem;
-      border: 2px solid #bfa16b;
-      background: #bfa16b;
-      color: white;
-      text-decoration: none;
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-radius: 0;
-      transition: all 0.3s ease;
-      display: inline-block;
-      text-align: center;
-      min-width: 180px;
-    }
-    
-    .cta-button:hover {
-      background: transparent;
-      color: #bfa16b;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(191, 161, 107, 0.3);
-    }
-    
-    .cta-button.secondary {
-      background: transparent;
-      color: #bfa16b;
-    }
-    
-    .cta-button.secondary:hover {
-      background: #bfa16b;
-      color: white;
-    }
-    
-    .inspiration-image {
+
+    /* Hero Banner Section */
+    .home-banner {
       position: relative;
-      overflow: hidden;
       height: 100vh;
+      overflow: hidden;
+      background: #000;
+      margin: 0;
+      padding: 0;
     }
-    
-    .inspiration-image .design-img {
+
+    .home-banner .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    .home-banner .img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      transition: transform 0.5s ease;
+      display: block;
     }
-    
-    .image-overlay {
+
+
+    .home-banner .tbox {
+      position: absolute;
+      top: 50%;
+      left: 4rem;
+      transform: translateY(-50%);
+      z-index: 2;
+      color: white;
+      max-width: 600px;
+    }
+
+
+    .home-banner .title {
+      font-size: 4.5rem;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .home-banner .txt {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      opacity: 0.95;
+      font-weight: 300;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    /* Collections Section */
+    .index-box1 {
+      background: #f8f9fa;
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .index-box1 .box {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .index-box1 .list {
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, rgba(191, 161, 107, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 3rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      width: 100%;
+      height: 100%;
     }
-    
-    .inspiration-image:hover .image-overlay {
+
+    .index-box1 .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+      will-change: transform;
+    }
+
+    .index-box1 .img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    .index-box1 .container {
+      position: absolute;
+      top: 50%;
+      left: 4rem;
+      transform: translateY(-50%);
+      z-index: 2;
+      color: white;
+      max-width: 600px;
+    }
+
+
+    .index-box1 .title {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .index-box1 .txt {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+      font-weight: 300;
+      max-width: 600px;
+    }
+
+    .more {
+      display: inline-block;
+      background: transparent;
+      color: white;
+      border: 1.5px solid white;
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .more:hover {
+      background: white;
+      color: #000;
+    }
+
+    .tabs {
+      position: absolute;
+      bottom: 4rem;
+      right: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      z-index: 3;
+      list-style: none;
+    }
+
+    .tabs li {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 300;
+      cursor: pointer;
+      padding: 0.8rem 0;
+      padding-left: 2rem;
+      opacity: 0.7;
+      letter-spacing: 0.05em;
+      position: relative;
+    }
+
+    .tab-indicator {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border: 2px solid white;
+      border-radius: 50%;
+      opacity: 0;
+      /* Transitions handled by GSAP */
+    }
+
+    .tabs li.active .tab-indicator {
       opacity: 1;
     }
-    
-    .inspiration-image:hover .design-img {
-      transform: scale(1.05);
-    }
-    
-    .overlay-content {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 1.5rem 2rem;
-      border-radius: 8px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(191, 161, 107, 0.2);
-    }
-    
-    .overlay-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #222;
+
+    .tabs li.active {
+      opacity: 1;
       font-weight: 400;
-      letter-spacing: 1px;
+    }
+
+    .tabs li:hover {
+      opacity: 1;
+    }
+
+    /* Features Section */
+    .index-box2 {
+      background: #000000;
+      color: white;
+      padding: 0;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .index-box2 .swiper-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .index-box2 .container-box {
+      position: absolute;
+      top: 50%;
+      left: 4rem;
+      transform: translateY(-50%);
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .index-box2 .title {
+      font-size: 4rem;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 700px;
+    }
+
+    .index-box2 .txt {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      opacity: 0.9;
+      max-width: 600px;
+      font-weight: 300;
+    }
+
+    /* Features counter with progress bar */
+    .index-box2 .swiper-pagination {
+      position: absolute;
+      bottom: 4rem;
+      left: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      transform: none;
+      color: white;
+      width: auto;
+    }
+
+    .index-box2 .swiper-pagination-features {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .index-box2 .swiper-pagination-current {
+      color: white;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .index-box2 .swiper-pagination-total {
+      color: white;
+      opacity: 0.5;
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+
+    /* Progress bar under counter */
+    .index-box2 .progress-bar-container {
+      width: 180px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .index-box2 .progress-bar {
+      height: 100%;
+      background: white;
+      transition: width 0.3s ease;
+      width: 25%;
+    }
+
+    /* Projects Section */
+    .index-box4 {
+      background: #f5f5f5;
+      padding: 6rem 0;
+      min-height: auto;
+      position: relative;
+    }
+
+    .index-box4 .container {
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .index-box4 .title {
+      font-size: 2.8rem;
+      text-align: left;
+      margin-bottom: 3.5rem;
+      color: #000;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+
+    .index-box4 .list {
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .index-box4 .swiper-container {
+      overflow: visible;
+    }
+
+    .index-box4 .swiper-wrapper {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .index-box4 .swiper-slide {
+      width: 700px;
+      height: auto;
+      margin-right: 30px;
+    }
+
+    .item {
+      background: white;
+      border-radius: 0;
+      overflow: hidden;
+      height: 450px;
+      position: relative;
+      box-shadow: none;
+    }
+
+    .item .img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .item .img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      /* Transitions handled by GSAP */
+    }
+
+    .item .txt {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: white;
+      text-align: center;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      z-index: 2;
+      letter-spacing: 0.02em;
+    }
+
+    .index-box4 .more {
+      position: absolute;
+      top: 0;
+      right: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: #000;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1rem;
+      transition: all 0.35s ease;
+      z-index: 10;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .index-box4 .more:hover {
+      color: #333;
+      transform: translateX(5px);
+    }
+
+    .index-box4 .more img {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .index-box4 .more:hover img {
+      transform: translateX(5px);
+    }
+
+    /* Projects Section - Enhanced Effects */
+    .index-box4 .swiper-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .index-box4 .swiper-container::before,
+    .index-box4 .swiper-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .index-box4 .swiper-container::before {
+      left: 0;
+      background: linear-gradient(to right, white, transparent);
+    }
+
+    .index-box4 .swiper-container::after {
+      right: 0;
+      background: linear-gradient(to left, white, transparent);
+    }
+
+
+
+    /* Smooth scrolling effect */
+    .index-box4 .swiper-wrapper {
+      transition-timing-function: linear;
+    }
+
+    /* Enhanced Parallax Effects - Optimized */
+    .home-banner .img,
+    .index-box1 .img,
+    .index-box2 .img {
+      will-change: transform;
+      transform: translateZ(0); /* Force hardware acceleration */
+    }
+
+    /* Smooth transitions for all carousels - Optimized */
+    .swiper-slide {
+      will-change: transform, opacity;
+      transform: translateZ(0); /* Force hardware acceleration */
+    }
+
+    /* Performance optimizations */
+    .swiper-container,
+    .swiper-wrapper,
+    .swiper-slide {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+
+    /* Removed duplicate hover effects - now using JOMOO-style above */
+
+
+
+    /* Enhanced pagination */
+    .swiper-pagination-bullet {
+      transition: all 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+      transform: scale(1.2);
+    }
+
+    /* Legacy Section */
+    .index-box5 {
+      background: #f0f2f5;
+      padding: 0;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .index-box5 .box {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .index-box5 .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
     }
     
-    /* Inspiration Section Responsive */
-    @media (max-width: 900px) {
-      .inspiration-content {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-      }
-      
-      .inspiration-text {
-        padding: 2rem 1.5rem;
-        min-height: 40vh;
-      }
-      
-      .inspiration-title {
-        font-size: 2.2rem;
-      }
-      
-      .inspiration-description {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-      }
-      
-      .inspiration-cta {
-        gap: 1rem;
-      }
-      
-      .cta-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-        min-width: 150px;
-      }
-      
-      .inspiration-image {
-        height: 60vh;
-        min-height: 300px;
-      }
-      
-      .image-overlay {
-        padding: 2rem 1.5rem;
-      }
-      
-      .overlay-content {
-        padding: 1rem 1.5rem;
-      }
-      
-      .overlay-text {
-        font-size: 1.2rem;
-      }
+    .index-box5 .bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+    }
+
+    .index-box5 .imgs {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      z-index: 2;
+      display: none;
+    }
+
+    .index-box5 .container {
+      position: relative;
+      z-index: 2;
+      padding: 5rem 4rem;
+      max-width: 1400px;
+      width: 100%;
     }
     
-    @media (max-width: 600px) {
-      .inspiration-content {
-        height: 100vh;
-        min-height: 100vh;
-      }
-      
-      .inspiration-text {
-        padding: 1.5rem 1rem;
-        min-height: 45vh;
-      }
-      
-      .inspiration-title {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-      }
-      
-      .inspiration-description {
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-      }
-      
-      .inspiration-cta {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      
-      .cta-button {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.85rem;
-        min-width: 140px;
-      }
-      
-      .inspiration-image {
-        height: 55vh;
-        min-height: 55vh;
-        flex: 1;
-      }
-      
-      .image-overlay {
-        padding: 1.5rem 1rem;
-      }
-      
-      .overlay-content {
-        padding: 0.8rem 1.2rem;
-      }
-      
-      .overlay-text {
-        font-size: 1rem;
+    .index-box5 .title {
+      font-size: 3.5rem;
+      margin-bottom: 4.5rem;
+      color: #1a1a1a;
+      font-weight: 300;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+
+    .index-box5 .list ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .index-box5 .list li a {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      height: 100%;
+      /* Transitions handled by GSAP */
+    }
+
+    .index-box5 .public-img {
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .index-box5 .public-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      /* Transitions handled by GSAP */
+    }
+
+    .index-box5 .txt {
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .index-box5 .txt h3 {
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+
+    .index-box5 .txt p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.65;
+      font-weight: 300;
+      flex-grow: 1;
+    }
+
+    .index-box5 .txt span {
+      color: #000;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.8px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .index-box5 .list li a:hover .txt span {
+      transform: translateX(5px);
+      color: #333;
+    }
+
+    /* Wonda Section */
+    .wonda-section {
+      background: #ffffff;
+      padding: 8rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wonda-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 4rem;
+    }
+
+    .wonda-section .title {
+      font-size: 4rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #000;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+
+    .wonda-section .subtitle {
+      text-align: center;
+      font-size: 1.25rem;
+      color: #666;
+      margin-bottom: 5rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    .wonda-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .wonda-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #f8f9fa;
+      /* Transitions handled by GSAP */
+    }
+
+    .wonda-image {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      background: #f0f2f5;
+    }
+
+    .wonda-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      /* Transitions handled by GSAP */
+    }
+
+    .wonda-text {
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .wonda-text h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .wonda-text p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .wonda-cta {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .wonda-cta .more {
+      background: #000;
+      color: white;
+      border: 2px solid #000;
+      padding: 1.1rem 3rem;
+      font-size: 1rem;
+      display: inline-block;
+    }
+
+    .wonda-cta .more:hover {
+      background: transparent;
+      color: #000;
+    }
+
+    /* Responsive Design - Enhanced */
+    @media (max-width: 1400px) {
+      .home-banner .tbox,
+      .index-box1 .container,
+      .index-box2 .container-box {
+        max-width: 500px;
       }
     }
 
+    @media (max-width: 1200px) {
+      .home-banner .title,
+      .index-box1 .title,
+      .index-box2 .title,
+      .index-box5 .title {
+        font-size: 2.5rem;
+      }
+      
+      .index-box4 .swiper-slide {
+        width: 500px;
+      }
+
+      .wonda-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+      }
+
+      .wonda-section .title {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Adjust full-page sections for mobile */
+      .index-box1,
+      .index-box2,
+      .index-box5 {
+        min-height: auto;
+        padding: 3rem 0;
+      }
+
+      .index-box1 .box,
+      .index-box2 .swiper-container,
+      .index-box5 .box {
+        height: auto;
+        min-height: 70vh;
+      }
+
+      .index-box5 .list ul {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .home-banner .tbox,
+      .index-box1 .container,
+      .index-box2 .container-box {
+        left: 2rem;
+        max-width: calc(100% - 4rem);
+      }
+
+      .home-banner .title,
+      .index-box1 .title,
+      .index-box2 .title {
+        font-size: 2rem;
+      }
+
+      .index-box4 .title,
+      .index-box5 .title {
+        font-size: 2rem;
+      }
+
+      .tabs {
+        right: 2rem;
+        bottom: 2rem;
+        flex-direction: row;
+        gap: 1rem;
+      }
+
+      .tabs li {
+        font-size: 1rem;
+        padding: 0.5rem 0.8rem 0.5rem 1.5rem;
+      }
+
+      .tab-indicator {
+        width: 8px;
+        height: 8px;
+      }
+
+      .index-box2 .swiper-pagination {
+        left: 2rem;
+        bottom: 1rem;
+      }
+
+      .index-box4 .swiper-slide {
+        width: 450px;
+      }
+
+      .item {
+        height: 350px;
+      }
+
+      .item .txt {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+      }
+
+      .swiper-next,
+      .swiper-prev {
+        width: 36px;
+        height: 36px;
+        margin-top: -18px;
+      }
+
+      .swiper-next {
+        right: 20px;
+      }
+
+      .swiper-prev {
+        left: 20px;
+      }
+
+      .swiper-prev svg,
+      .swiper-next svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .videoplay {
+        width: 36px;
+        height: 36px;
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .videoplay svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .swiper-pagination {
+        bottom: 20px;
+      }
+
+      .swiper-pagination-bullet {
+        width: 30px;
+        height: 5px;
+      }
+
+      .ibox {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .index-box5 .list ul {
+        grid-template-columns: 1fr;
+      }
+
+      .wonda-section {
+        padding: 4rem 0;
+      }
+
+      .wonda-container {
+        padding: 0 2rem;
+      }
+
+      .wonda-gallery {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .wonda-section .title {
+        font-size: 2.5rem;
+      }
+
+      .wonda-section .subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+      }
+
+      .wonda-image {
+        height: 300px;
+      }
+
+      .wonda-text {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .home-banner .title,
+      .index-box1 .title,
+      .index-box2 .title,
+      .index-box5 .title,
+      .ibox .title {
+        font-size: 1.5rem;
+      }
+
+      .home-banner .txt,
+      .index-box1 .txt,
+      .index-box2 .txt {
+        font-size: 1rem;
+      }
+
+      .index-box4 .swiper-slide {
+        width: 400px;
+      }
+
+      .item {
+        height: 300px;
+      }
+
+      .item .txt {
+        padding: 1.5rem 1rem;
+        font-size: 1rem;
+      }
+      
+      .home-banner {
+        height: 70vh;
+      }
+      
+      .index-box1 .list,
+      .index-box2 {
+        height: 400px;
+      }
+
+      .wonda-section .title {
+        font-size: 2rem;
+      }
+
+      .wonda-section .subtitle {
+        font-size: 1rem;
+      }
+
+      .wonda-image {
+        height: 280px;
+      }
+
+      .wonda-text h3 {
+        font-size: 1.3rem;
+      }
+
+      .wonda-text p {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .home-banner .tbox,
+      .index-box1 .container,
+      .index-box2 .container-box {
+        left: 1rem;
+        max-width: calc(100% - 2rem);
+      }
+      
+      .tabs {
+        right: 1rem;
+        bottom: 1rem;
+        gap: 0.5rem;
+      }
+
+      .tabs li {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.5rem;
+      }
+      
+      .index-box2 .swiper-pagination {
+        left: 1rem;
+      }
+
+      .index-box5 .container {
+        padding: 1.5rem;
+      }
+
+      .index-box5 .title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .index-box4 .swiper-slide {
+        width: 320px;
+      }
+
+      .item {
+        height: 250px;
+      }
+
+      .item .txt {
+        padding: 1.2rem 0.8rem;
+        font-size: 0.95rem;
+      }
+      
+      .swiper-next,
+      .swiper-prev {
+        width: 32px;
+        height: 32px;
+        margin-top: -16px;
+      }
+
+      .swiper-next {
+        right: 15px;
+      }
+
+      .swiper-prev {
+        left: 15px;
+      }
+
+      .swiper-prev svg,
+      .swiper-next svg {
+        width: 12px;
+        height: 12px;
+      }
+      
+      .videoplay {
+        width: 32px;
+        height: 32px;
+        bottom: 15px;
+        right: 15px;
+      }
+
+      .videoplay svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      .swiper-pagination {
+        bottom: 15px;
+        gap: 6px;
+      }
+
+      .swiper-pagination-bullet {
+        width: 25px;
+        height: 4px;
+      }
+
+      .wonda-section {
+        padding: 3rem 0;
+      }
+
+      .wonda-container {
+        padding: 0 1rem;
+      }
+
+      .wonda-section .title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .wonda-section .subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .wonda-image {
+        height: 250px;
+      }
+
+      .wonda-text {
+        padding: 1.5rem 1rem;
+      }
+
+      .wonda-text h3 {
+        font-size: 1.2rem;
+      }
+
+      .wonda-text p {
+        font-size: 0.9rem;
+      }
+
+      .wonda-cta .more {
+        padding: 0.9rem 2rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .swiper-next,
+      .swiper-prev,
+      .videoplay,
+      .swiper-pagination {
+        display: none !important;
+      }
+      
+      .home-banner,
+      .index-box1,
+      .index-box2 {
+        height: auto !important;
+      }
+    }
+
+    /* Enhanced hover effects for JOMOO style */
+    .swiper-next:hover,
+    .swiper-prev:hover {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .videoplay:hover {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Smooth transitions */
+    .swiper-pagination-bullet,
+    .swiper-pagination-bullet i {
+      will-change: width, background;
+    }
+
+    .swiper-next,
+    .swiper-prev,
+    .videoplay {
+      will-change: transform, background, border-color;
+    }
   </style>
 </Layout>
+

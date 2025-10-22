@@ -54,11 +54,23 @@
     <span class="arrow" aria-hidden="true">›</span>
   </button>
 
-  <!-- Video indicators -->
+  <!-- Video indicators with progress bars -->
   <div class="video-indicators">
-    <button class="indicator active" aria-label="Video 1" data-index="0"></button>
-    <button class="indicator" aria-label="Video 2" data-index="1"></button>
+    <button class="indicator active" aria-label="Video 1" data-index="0">
+      <i></i>
+    </button>
+    <button class="indicator" aria-label="Video 2" data-index="1">
+      <i></i>
+    </button>
   </div>
+
+  <!-- Play/Pause Button -->
+  <button class="videoplay" aria-label="Play/pause carousel" type="button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 4H10V20H6V4Z" fill="white"/>
+      <path d="M14 4H18V20H14V4Z" fill="white"/>
+    </svg>
+  </button>
 </section>
 
 <style>
@@ -76,6 +88,7 @@
     inset: 0;
     z-index: 0;
     overflow: hidden;
+    background-color: #1a1a1a;
   }
 
   .background-video {
@@ -86,15 +99,29 @@
     inset: 0;
     z-index: 0;
     transform: scale(1.3) translateZ(0);
-    will-change: opacity;
+    will-change: opacity, transform;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+    transition: opacity 0.8s ease-in-out, transform 8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .background-video.active {
     opacity: 1;
+    animation: subtleZoom 8s ease-out forwards;
+  }
+
+  .background-video.loading {
+    opacity: 0.01;
+  }
+
+  @keyframes subtleZoom {
+    0% {
+      transform: scale(1.3) translateZ(0);
+    }
+    100% {
+      transform: scale(1.35) translateZ(0);
+    }
   }
 
   .background-placeholder {
@@ -103,20 +130,22 @@
     object-fit: cover;
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: 1;
     transform: scale(1.3) translateZ(0);
-    transition: opacity 0.3s ease-out;
+    opacity: 1;
+    transition: opacity 0.6s ease-out;
   }
 
   .background-placeholder.hidden {
     opacity: 0;
+    pointer-events: none;
   }
 
   .overlay {
     position: absolute;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    z-index: 2;
   }
 
   .content {
@@ -126,25 +155,28 @@
     padding: 0 1.5rem;
     max-width: 64rem;
     margin: 0 auto;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
   }
 
   .content-fade-out {
     opacity: 0;
+    transform: translateY(15px);
   }
 
   .content-fade-in {
-    animation: fadeInContent 0.6s ease-in-out forwards;
+    animation: fadeInContent 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   @keyframes fadeInContent {
-    from {
+    0% {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(20px) scale(0.98);
     }
-    to {
+    100% {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 
@@ -158,6 +190,7 @@
     overflow: visible;
     letter-spacing: 0.03em;
     line-height: 1.3;
+    opacity: 0;
   }
 
   h1.multiline {
@@ -217,25 +250,26 @@
     margin-right: auto;
     letter-spacing: 0.015em;
     line-height: 1.6;
+    opacity: 0;
   }
 
-  /* Navigation Buttons */
+  /* Navigation Buttons - JOMOO Style */
   .nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%) translateZ(0);
     z-index: 50;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     will-change: transform, background, opacity;
@@ -254,7 +288,7 @@
   }
 
   .nav-btn .arrow {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 400;
     line-height: 0.9;
     color: white;
@@ -264,12 +298,14 @@
   }
 
   .nav-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.4);
-    transform: translateY(-50%) scale(1.05) translateZ(0);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) translateZ(0);
   }
 
   .nav-btn:active:not(:disabled) {
-    transform: translateY(-50%) scale(0.95) translateZ(0);
+    transform: translateY(-50%) scale(0.9) translateZ(0);
   }
 
   .nav-btn:disabled {
@@ -284,43 +320,55 @@
   }
 
   .nav-btn-left {
-    left: 1rem;
+    left: 30px;
   }
 
   .nav-btn-right {
-    right: 1rem;
+    right: 30px;
   }
 
-  /* Video Indicators */
+  /* Video Indicators with Progress Bars */
   .video-indicators {
     position: absolute;
-    bottom: 2rem;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 50;
     display: flex;
-    gap: 0.75rem;
+    gap: 8px;
+    opacity: 0;
   }
 
   .indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
+    width: 40px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.3);
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .indicator i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: width 0.1s linear;
   }
 
   .indicator:hover {
-    background: rgba(255, 255, 255, 0.6);
-    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.4);
   }
 
   .indicator.active {
-    background: rgba(232, 212, 160, 0.9);
-    transform: scale(1.3);
+    background: rgba(255, 255, 255, 0.4);
   }
 
   .indicator:focus {
@@ -328,41 +376,156 @@
     outline-offset: 2px;
   }
 
+  /* Play/Pause Button */
+  .videoplay {
+    position: absolute;
+    bottom: 26px;
+    right: 30px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    transition: all 0.3s ease;
+    will-change: transform, background, border-color;
+    opacity: 0;
+  }
+
+  .videoplay:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+
+  .videoplay:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 3px;
+  }
+
+  .videoplay:active {
+    transform: scale(0.9);
+  }
+
+  .videoplay svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .videoplay.paused {
+    animation: pulsePause 2s ease-in-out infinite;
+  }
+
+  .videoplay.paused svg path {
+    fill: rgba(232, 212, 160, 0.9);
+  }
+
+  /* Animations */
+  @keyframes progressBarAnimation {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes pulsePause {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(232, 212, 160, 0.3);
+      border-color: rgba(232, 212, 160, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(232, 212, 160, 0.5);
+      border-color: rgba(232, 212, 160, 0.9);
+    }
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .nav-btn {
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       opacity: 1;
       visibility: visible;
     }
 
     .nav-btn .arrow {
-      font-size: 24px;
+      font-size: 20px;
+    }
+
+    .nav-btn-left {
+      left: 20px;
+    }
+
+    .nav-btn-right {
+      right: 20px;
     }
 
     .video-indicators {
-      bottom: 1.5rem;
+      bottom: 20px;
     }
 
     .indicator {
-      width: 8px;
-      height: 8px;
+      width: 30px;
+      height: 5px;
+    }
+
+    .videoplay {
+      width: 36px;
+      height: 36px;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .videoplay svg {
+      width: 14px;
+      height: 14px;
     }
   }
 
   @media (max-width: 480px) {
     .nav-btn {
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
     }
 
     .nav-btn .arrow {
-      font-size: 22px;
+      font-size: 18px;
+    }
+
+    .nav-btn-left {
+      left: 15px;
+    }
+
+    .nav-btn-right {
+      right: 15px;
     }
 
     .video-indicators {
-      bottom: 1rem;
+      bottom: 15px;
+      gap: 6px;
+    }
+
+    .indicator {
+      width: 25px;
+      height: 4px;
+    }
+
+    .videoplay {
+      width: 32px;
+      height: 32px;
+      bottom: 15px;
+      right: 15px;
+    }
+
+    .videoplay svg {
+      width: 12px;
+      height: 12px;
     }
   }
 
@@ -378,6 +541,8 @@
 </style>
 
 <script>
+  import { gsap } from 'gsap';
+  
   // Video carousel with optimizations
   const videos = [
     'https://res.cloudinary.com/doleg7smw/video/upload/c_scale,w_1920,q_auto,f_auto/v1758669242/Clip_1_kxpdba.mp4',
@@ -400,11 +565,16 @@
 
   let currentVideoIndex = 0;
   let isTransitioning = false;
+  let autoplayInterval: number | null = null;
+  let isAutoplayActive = true;
+  const autoplayDelay = 8000; // 8 seconds
+  
   const videoElement = document.getElementById('heroVideo') as HTMLVideoElement;
   const placeholderElement = document.getElementById('heroPlaceholder') as HTMLImageElement;
   const prevBtn = document.querySelector('.nav-btn-left') as HTMLButtonElement;
   const nextBtn = document.querySelector('.nav-btn-right') as HTMLButtonElement;
   const indicators = document.querySelectorAll('.indicator') as NodeListOf<HTMLButtonElement>;
+  const playPauseBtn = document.querySelector('.videoplay') as HTMLButtonElement;
   const heroTitle = document.getElementById('heroTitle') as HTMLHeadingElement;
   const heroAccentTop = document.getElementById('heroAccentTop') as HTMLSpanElement;
   const heroAccentBottom = document.getElementById('heroAccentBottom') as HTMLSpanElement;
@@ -433,9 +603,86 @@
   // Update indicators
   function updateIndicators(index: number) {
     indicators.forEach((indicator, i) => {
-      indicator.classList.toggle('active', i === index);
-      indicator.setAttribute('aria-pressed', String(i === index));
+      const isActive = i === index;
+      indicator.classList.toggle('active', isActive);
+      indicator.setAttribute('aria-pressed', String(isActive));
+      
+      // Reset progress bar
+      const progressBar = indicator.querySelector('i');
+      if (progressBar) {
+        (progressBar as HTMLElement).style.width = '0%';
+      }
     });
+  }
+
+  // Start progress bar animation for active indicator
+  function startProgressBar() {
+    const activeIndicator = document.querySelector('.indicator.active i') as HTMLElement;
+    if (activeIndicator && isAutoplayActive) {
+      activeIndicator.style.transition = `width ${autoplayDelay}ms linear`;
+      activeIndicator.style.width = '100%';
+    }
+  }
+
+  // Reset all progress bars
+  function resetProgressBars() {
+    indicators.forEach(indicator => {
+      const progressBar = indicator.querySelector('i') as HTMLElement;
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+      }
+    });
+  }
+
+  // Start autoplay
+  function startAutoplay() {
+    stopAutoplay();
+    isAutoplayActive = true;
+    startProgressBar();
+    
+    autoplayInterval = window.setInterval(() => {
+      const nextIndex = (currentVideoIndex + 1) % videos.length;
+      changeVideo(nextIndex);
+    }, autoplayDelay);
+  }
+
+  // Stop autoplay
+  function stopAutoplay() {
+    if (autoplayInterval !== null) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+    isAutoplayActive = false;
+    resetProgressBars();
+  }
+
+  // Toggle autoplay with play/pause button
+  function toggleAutoplay() {
+    if (isAutoplayActive) {
+      stopAutoplay();
+      // Update button to show play icon
+      if (playPauseBtn) {
+        playPauseBtn.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5V19L19 12L8 5Z" fill="white"/>
+          </svg>
+        `;
+        playPauseBtn.classList.add('paused');
+      }
+    } else {
+      startAutoplay();
+      // Update button to show pause icon
+      if (playPauseBtn) {
+        playPauseBtn.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 4H10V20H6V4Z" fill="white"/>
+            <path d="M14 4H18V20H14V4Z" fill="white"/>
+          </svg>
+        `;
+        playPauseBtn.classList.remove('paused');
+      }
+    }
   }
 
   // Update navigation buttons visibility
@@ -520,6 +767,10 @@
     
     isTransitioning = true;
     
+    // Stop autoplay during transition
+    const wasAutoplayActive = isAutoplayActive;
+    stopAutoplay();
+    
     // Disable buttons during transition
     if (prevBtn) prevBtn.disabled = true;
     if (nextBtn) nextBtn.disabled = true;
@@ -567,11 +818,20 @@
         // Preload next video
         const nextIndex = (currentVideoIndex + 1) % videos.length;
         preloadVideo(nextIndex);
+        
+        // Restart autoplay if it was active
+        if (wasAutoplayActive) {
+          startAutoplay();
+        }
       }
     } catch (error) {
       console.error('Error changing video:', error);
       // Fallback: show current video again
       videoElement.classList.add('active');
+      // Restart autoplay if it was active
+      if (wasAutoplayActive) {
+        startAutoplay();
+      }
     } finally {
       isTransitioning = false;
       
@@ -599,6 +859,11 @@
 
   if (nextBtn) {
     nextBtn.addEventListener('click', handleNext);
+  }
+
+  // Play/Pause button
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', toggleAutoplay);
   }
 
   // Indicator click handlers
@@ -641,10 +906,65 @@
     }
   }
 
+  // Initial page load animations with GSAP (exactly like design.astro)
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait a bit like in design.astro
+    setTimeout(function() {
+      console.log('GSAP loaded, initializing hero animations...');
+      
+      // Initial page load animations (like design.astro home-banner)
+      gsap.from('#heroTitle', {
+        duration: 1.2,
+        y: 50,
+        opacity: 0,
+        ease: 'power3.out',
+        delay: 0.3
+      });
+      
+      gsap.from('#heroDescription', {
+        duration: 1,
+        y: 30,
+        opacity: 0,
+        ease: 'power3.out',
+        delay: 0.6
+      });
+      
+      // Animate navigation buttons
+      gsap.from('.nav-btn', {
+        duration: 0.8,
+        opacity: 0,
+        ease: 'power3.out',
+        delay: 0.8
+      });
+      
+      // Animate indicators
+      gsap.from('.video-indicators', {
+        duration: 0.8,
+        y: 20,
+        opacity: 0,
+        ease: 'power3.out',
+        delay: 0.9
+      });
+      
+      // Animate play/pause button
+      gsap.from('.videoplay', {
+        duration: 0.8,
+        scale: 0.8,
+        opacity: 0,
+        ease: 'back.out(1.7)',
+        delay: 1
+      });
+    }, 100);
+  });
+
   // Preload second video on page load
   if (typeof window !== 'undefined') {
     window.addEventListener('load', () => {
       preloadVideo(1);
+      // Start autoplay after animations (1.5s like design.astro)
+      setTimeout(() => {
+        startAutoplay();
+      }, 1500);
     }, { once: true });
   }
 
@@ -655,5 +975,27 @@
   // Initialize content state for first video
   if (heroTitle) {
     heroTitle.classList.add('has-accent-below');
+  }
+
+  // Pause autoplay when user hovers over the section
+  const heroSection = document.querySelector('section') as HTMLElement;
+  if (heroSection) {
+    heroSection.addEventListener('mouseenter', () => {
+      if (isAutoplayActive) {
+        const activeIndicator = document.querySelector('.indicator.active i') as HTMLElement;
+        if (activeIndicator) {
+          activeIndicator.style.animationPlayState = 'paused';
+        }
+      }
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      if (isAutoplayActive) {
+        const activeIndicator = document.querySelector('.indicator.active i') as HTMLElement;
+        if (activeIndicator) {
+          activeIndicator.style.animationPlayState = 'running';
+        }
+      }
+    });
   }
 </script>
