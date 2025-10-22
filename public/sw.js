@@ -2,7 +2,7 @@
 const CACHE_NAME = 'mad-matter-v1';
 const urlsToCache = [
   '/',
-  '/favicon.svg'
+  '/FAM.png'
 ];
 
 // Install event
