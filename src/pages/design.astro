@@ -1284,12 +1284,19 @@ const criticalImages = [
       margin: 0;
       padding: 0;
     }
+    
+    /* Prevent horizontal overflow globally */
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
 
     html {
       scroll-behavior: smooth;
-      background-color: #000;
+      background-color: #ffffff;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     body {
@@ -1300,7 +1307,7 @@ const criticalImages = [
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       font-weight: 300;
-      background-color: #000;
+      background-color: #ffffff;
       margin: 0;
       padding: 0;
     }
@@ -1310,8 +1317,9 @@ const criticalImages = [
       margin: 0;
       padding: 0;
       display: block;
-      background-color: #000;
+      background-color: #ffffff;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     /* GSAP Animation optimizations */
@@ -2026,6 +2034,7 @@ const criticalImages = [
       align-items: center;
       justify-content: center;
       width: 100%;
+      overflow: hidden;
     }
 
     .index-box5 .box {
@@ -2067,6 +2076,7 @@ const criticalImages = [
       padding: 5rem 4rem;
       max-width: 1400px;
       width: 100%;
+      overflow: hidden;
     }
     
     .index-box5 .title {
@@ -2083,6 +2093,9 @@ const criticalImages = [
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2.5rem;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
     }
 
     .index-box5 .list li a {
@@ -2272,6 +2285,93 @@ const criticalImages = [
       .index-box2 .container-box {
         max-width: 500px;
       }
+      
+      /* Medium laptop optimization for values section */
+      .index-box5 .list ul {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      
+      .index-box5 .container {
+        padding: 4rem 3rem;
+      }
+      
+      .index-box5 .public-img {
+        height: 200px;
+      }
+      
+      .index-box5 .txt {
+        padding: 2rem 1.5rem;
+      }
+      
+      .index-box5 .txt h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .index-box5 .txt p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+    }
+    
+    /* Medium laptop specific breakpoint */
+    @media (max-width: 1200px) and (min-width: 1024px) {
+      .index-box5 .list ul {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        max-width: 100%;
+      }
+      
+      .index-box5 .container {
+        padding: 3.5rem 2.5rem;
+        max-width: 1200px;
+        width: 100%;
+      }
+      
+      .index-box5 .public-img {
+        height: 180px;
+      }
+      
+      .index-box5 .txt {
+        padding: 1.8rem 1.2rem;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      
+      .index-box5 .txt h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+        line-height: 1.3;
+        flex-shrink: 0;
+      }
+      
+      .index-box5 .txt p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      
+      .index-box5 .txt span {
+        font-size: 0.8rem;
+        letter-spacing: 0.6px;
+        flex-shrink: 0;
+        margin-top: auto;
+      }
+      
+      /* Ensure cards maintain equal height */
+      .index-box5 .list li a {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 1200px) {
@@ -2295,20 +2395,70 @@ const criticalImages = [
         font-size: 3rem;
       }
     }
+    
+    /* Medium laptop optimization for WONDA section */
+    @media (max-width: 1200px) and (min-width: 1024px) {
+      .wonda-gallery {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 100%;
+      }
+      
+      .wonda-container {
+        padding: 0 3rem;
+        max-width: 1200px;
+      }
+      
+      .wonda-image {
+        height: 320px;
+      }
+      
+      .wonda-text {
+        padding: 2rem 1.5rem;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      
+      .wonda-text h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        flex-shrink: 0;
+      }
+      
+      .wonda-text p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        flex-grow: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      
+      /* Ensure WONDA items maintain equal height */
+      .wonda-item {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+    }
 
     @media (max-width: 768px) {
       /* Eliminar espacios blancos y mejorar estructura móvil */
       html, body {
         margin: 0 !important;
         padding: 0 !important;
-        background-color: #000 !important;
+        background-color: #ffffff !important;
         overflow-x: hidden !important;
       }
 
       .jomoo-main {
         margin: 0;
         padding: 0;
-        background-color: #000;
+        background-color: #ffffff;
+        overflow-x: hidden;
       }
 
       /* Hero Banner optimizado para móvil */
