@@ -2450,14 +2450,14 @@ const criticalImages = [
       html, body {
         margin: 0 !important;
         padding: 0 !important;
-        background-color: #ffffff !important;
+        background-color: #f0f2f5 !important;
         overflow-x: hidden !important;
       }
 
       .jomoo-main {
         margin: 0;
         padding: 0;
-        background-color: #ffffff;
+        background-color: #f0f2f5;
         overflow-x: hidden;
       }
 
@@ -2471,18 +2471,30 @@ const criticalImages = [
       }
 
       .index-box1,
-      .index-box2,
-      .index-box5 {
+      .index-box2 {
         min-height: 100vh;
         margin: 0;
         padding: 0;
       }
+      
+      .index-box5 {
+        min-height: auto;
+        margin: 0;
+        padding: 3rem 0 0 0;
+        background: #f0f2f5;
+      }
 
       .index-box1 .box,
-      .index-box2 .swiper-container,
-      .index-box5 .box {
+      .index-box2 .swiper-container {
         height: 100vh;
         min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .index-box5 .box {
+        height: auto;
+        min-height: auto;
         margin: 0;
         padding: 0;
       }
@@ -2494,6 +2506,8 @@ const criticalImages = [
 
       .index-box5 .container {
         padding: 2rem 1.5rem;
+        max-width: 100%;
+        width: 100%;
       }
 
       .home-banner .tbox,
@@ -2746,7 +2760,22 @@ const criticalImages = [
       }
 
       .index-box5 .container {
-        padding: 1.5rem 0.75rem;
+        padding: 1.5rem 0.75rem 0 0.75rem;
+        max-width: 100%;
+        width: 100%;
+      }
+      
+      .index-box5 {
+        min-height: auto;
+        padding: 2rem 0 0 0;
+        overflow: visible;
+        background: #f0f2f5;
+      }
+      
+      .index-box5 .box {
+        height: auto;
+        min-height: auto;
+        display: block;
       }
 
       .index-box4 .container {
