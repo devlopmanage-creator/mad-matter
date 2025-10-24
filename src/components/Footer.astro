@@ -2,10 +2,10 @@
 const footerLinks = [];
 
 const services = [
-  { name: "Tiles", url: "/services" },
-  { name: "WONDA", url: "/services" },
-  { name: "JOMOO", url: "/services" },
-  { name: "F.lli Frattini", url: "/services" }
+  { name: "Sanitary Ware", url: "/services" },
+  { name: "Faucets", url: "/services" },
+  { name: "Wellness Solutions", url: "/services" },
+  { name: "Building Materials", url: "/services" }
 ];
 
 const socialLinks = [
@@ -43,7 +43,7 @@ const socialLinks = [
       <h3>Services</h3>
       <ul>
         {services.map(service => (
-          <li><a href={service.url}>{service.name}</a></li>
+          <li><a href="#" onclick="return false;">{service.name}</a></li>
         ))}
       </ul>
     </div>
@@ -106,7 +106,7 @@ const socialLinks = [
 
 <style>
   footer {
-    background-color: #15242a;
+    background-color: #0A0F14;
     color: #fff;
     padding: 4rem 2rem 2rem;
     width: 100%;
@@ -123,7 +123,7 @@ const socialLinks = [
   }
 
   h2 {
-    color: rgb(0, 178, 169);
+    color: #e8d4a0;
     font-size: 1.5rem;
     margin: 0 0 1rem;
   }
@@ -156,7 +156,7 @@ const socialLinks = [
   }
 
   .footer-services a:hover {
-    color: rgb(0, 178, 169);
+    color: #BFA16B !important;
   }
 
   .footer-contact ul {
@@ -175,7 +175,14 @@ const socialLinks = [
   .icon {
     width: 1.25rem;
     height: 1.25rem;
-    color: rgb(0, 178, 169);
+    color: #BFA16B;
+    transition: all 0.3s ease;
+  }
+
+  .footer-contact li:hover .icon {
+    color: #e8d4a0;
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 2px 4px rgba(191, 161, 107, 0.3));
   }
 
   .newsletter-form {
@@ -219,11 +226,11 @@ const socialLinks = [
   }
 
   .social-link:hover {
-    background-color: rgb(0, 178, 169);
+    background-color: #BFA16B;
     color: white;
     transform: translateY(-2px);
-    border-color: rgb(0, 178, 169);
-    box-shadow: 0 4px 12px rgba(0, 178, 169, 0.3);
+    border-color: #BFA16B;
+    box-shadow: 0 4px 12px rgba(191, 161, 107, 0.3);
   }
 
   .social-icon {
@@ -258,7 +265,7 @@ const socialLinks = [
   }
 
   .footer-legal a:hover {
-    color: rgb(0, 178, 169);
+    color: #BFA16B;
   }
 
   @media (max-width: 1024px) {

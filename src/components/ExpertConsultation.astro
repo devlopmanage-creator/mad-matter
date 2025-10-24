@@ -29,8 +29,8 @@
   .image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(45deg, rgba(0, 178, 169, 0.95), #15242a);
-    z-index: -1;
+    background: linear-gradient(40deg, rgba(0, 178, 169, 0.80), #15242a);
+    z-index: -4;
   }
 
   .container {
@@ -64,20 +64,30 @@
   }
 
   .cta-button {
-    display: inline-block;
-    background-color: white;
-    color: rgb(0, 178, 169);
-    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #BFA16B 0%, #BFA16B 100%);
+    color: #ffffff;
+    padding: 1rem 3rem;
+    border: none;
     border-radius: 0.5rem;
-    text-decoration: none;
     font-weight: 600;
-    transition: all 0.2s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 20px rgba(32, 178, 170, 0.3);
   }
 
   .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 30px rgba(32, 178, 170, 0.4);
+    background: linear-gradient(135deg, #BFA16B 0%, #BFA16B 100%);
   }
 
   @media (max-width: 640px) {
